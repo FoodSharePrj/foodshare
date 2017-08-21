@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.fs.mapper.UserMapper">
+	
+	<!-- id와 pw가 일치하는 회원 정보 리턴 -->
+	<select id="login" resultType="UserVO">
+	select * from tbl_user where uid=#{uid} and upw=#{upw}
+	</select>
+	
+	<!-- 자동로그인에 사용할 세션키값 update -->
+	<update id="keepLogin">
+	update tbl_user set skey = #{sessionKey} where uid=#{uid}
+	</update>
+	
+	<!-- 세션키 값이 일치하는 회원 정보 리턴 -->
+	<select id="getUserWithSessionkey" resultType="UserVO">
+	select * from tbl_user where skey = #{sessionKey}
+	</select>
+	
+</mapper>

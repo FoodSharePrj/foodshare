@@ -48,28 +48,28 @@
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 			aria-haspopup="true" aria-expanded="false">지역별 검색<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="/list"> 서울/인천</a></li>
-				<li><a href="/list"> 경기/강원</a></li>
-				<li><a href="/list"> 대전/충청</a></li>
-				<li><a href="/list"> 부산/울산/경남</a></li>
-				<li><a href="/list"> 대구/경북</a></li>
-				<li><a href="/list"> 광주/전라</a></li>
-				<li><a href="/list"> 제주도</a></li>
+				<li><a href="/board/list"> 서울/인천</a></li>
+				<li><a href="/board/list"> 경기/강원</a></li>
+				<li><a href="/board/list"> 대전/충청</a></li>
+				<li><a href="/board/list"> 부산/울산/경남</a></li>
+				<li><a href="/board/list"> 대구/경북</a></li>
+				<li><a href="/board/list"> 광주/전라</a></li>
+				<li><a href="/board/list"> 제주도</a></li>
 			</ul>
 			</li>
 			<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
 			aria-haspopup="true" aria-expanded="false">종류별 검색<span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="/list"> 육류</a></li>
-				<li><a href="/list"> 어패류</a></li>
-				<li><a href="/list"> 채소류</a></li>
-				<li><a href="/list"> 과일류</a></li>
-				<li><a href="/list"> 가공식품</a></li>
+				<li><a href="/board/list"> 육류</a></li>
+				<li><a href="/board/list"> 어패류</a></li>
+				<li><a href="/board/list"> 채소류</a></li>
+				<li><a href="/board/list"> 과일류</a></li>
+				<li><a href="/board/list"> 가공식품</a></li>
 			</ul>
 			</li>
 		</ul>
-                    <li role="presentation"><a href="/login">로그인</a></li>
-                    <li role="presentation"><a href="/join">회원가입</a></li>
+                    <li role="presentation"><a href="/user/login">로그인</a></li>
+                    <li role="presentation"><a href="/user/join">회원가입</a></li>
                 </ul>
             </div>
         </div>
@@ -91,14 +91,14 @@
         <div class="jumbotron">
             <h1>Start Food Share</h1>
             <p>나눔을 시작해 보세요. 지금 버리려는 것이 누군가에겐 필요합니다! </p>
-            <p><a class="btn btn-info btn-lg" role="button" href="/list">Let's Share</a></p>
+            <p><a class="btn btn-info btn-lg" role="button" href="/board/list">Let's Share</a></p>
         </div>
     </div>
 <div class="container">
 	<h2>나눔리스트</h2>
 	<div class="row">
 		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -106,7 +106,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -114,7 +114,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -122,7 +122,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -130,7 +130,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -138,7 +138,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -146,7 +146,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -154,7 +154,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -162,7 +162,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -170,7 +170,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -178,7 +178,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -186,7 +186,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -194,7 +194,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -202,7 +202,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -210,7 +210,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -218,7 +218,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -226,7 +226,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -234,7 +234,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -242,7 +242,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -250,7 +250,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -258,7 +258,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -266,7 +266,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -274,7 +274,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -282,7 +282,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -290,7 +290,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -298,7 +298,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -306,7 +306,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -314,7 +314,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -322,7 +322,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -330,7 +330,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>
@@ -338,7 +338,7 @@
     		</div>
   		</div>
   		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/detail">
+    		<div class="thumbnail"><a href="/board/detail">
       		<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
 	        	<h3>글제목</h3>

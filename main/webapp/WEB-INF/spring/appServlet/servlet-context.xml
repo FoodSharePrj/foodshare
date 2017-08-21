@@ -21,6 +21,29 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<!-- com.fs.interceptor.LoginInterceptor -->
+	<beans:bean id="loginInterceptor" class="com.fs.interceptor.LoginInterceptor">
+	</beans:bean>
+	
+	<!-- com.fs.interceptor.AuthInterceptor -->
+	<beans:bean id="authInterceptor" class="com.fs.interceptor.AuthInterceptor">
+	</beans:bean>
+	
+	<interceptors>
+		<!-- 로그인 정보 세션 저장 인터셉터 -->
+		<interceptor>
+			<mapping path="/user/loginPost"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+		
+		<!-- 로그인 인증 인터셉터 -->
+		<interceptor>
+			<mapping path="/aaaa"/>
+			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		
+	</interceptors>
+	
 	<context:component-scan base-package="com.fs.controller" />
 	
 	

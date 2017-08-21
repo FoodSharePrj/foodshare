@@ -1,40 +1,40 @@
 package com.fs.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.inject.Inject;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.util.WebUtils;
 
-// 화면 전환 컨트롤러
+import com.fs.domain.UserVO;
+import com.fs.service.UserService;
+
 @Controller
 public class HomeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	@Inject
+	UserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home() {
+	public String home(HttpServletRequest request) {
+		
+		// 자동로그인 쿠키 유무에 따른 처리
+		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+		
+		if(loginCookie != null) {
+			
+			UserVO userVO = userService.getUserWithSessionkey(loginCookie.getValue());
+			
+			if(userVO != null) {
+				
+				HttpSession session = request.getSession();
+				session.setAttribute("login", userVO);
+			}
+		}
 		return "index";
 	}
-	
-	@RequestMapping(value="/join", method = RequestMethod.GET)
-	public String join() {
-		return "join";
-	}
-	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
-	public String login() {
-		return "login";
-	}
-	
-	@RequestMapping(value="/list", method = RequestMethod.GET)
-	public String list() {
-		return "list";
-	}
-	
-	@RequestMapping(value="/detail", method = RequestMethod.GET)
-	public String detail() {
-		return "detail";
-	}
-	
 }
