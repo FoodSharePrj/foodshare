@@ -133,7 +133,7 @@
             </div>
         </div>
     </div>
-    <footer class="hidden-sm hidden-xs"><footer>
+    <footer class="hidden-sm hidden-xs">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 col-sm-6 footer-navigation">
