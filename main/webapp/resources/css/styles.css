@@ -1,0 +1,91 @@
+#promo {
+  text-align:center;
+  padding:40px;
+  background:url(../../assets/img/background.jpg) no-repeat;
+  background-size:cover;
+  margin-top:0px;
+  margin-bottom:20px;
+}
+#detail{
+	font-size:3ex;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+@media (max-width:991px) {
+  #promo {
+    padding:20px;
+  } 
+}
+
+#promo .jumbotron {
+  border-radius:20px;
+  padding:40px;
+  background-color:rgba(255,255,255,0.75);
+  max-width:800px;
+  margin:auto;
+}
+@grid-float-breakpoint: @screen-md-min;
+@media (max-width:991px) {
+  #promo .jumbotron {
+    padding:20px;
+  }
+}
+
+.site-section {
+  text-align:center;
+  padding-bottom:70px;
+}
+
+body {
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+#welcome p {
+  max-width:800px;
+  font-size:20px;
+  margin:0 auto;
+  color:#666;
+}
+
+.site-section h1 {
+  font-weight:normal;
+  margin-bottom:30px;
+  margin-top:60px;
+}
+
+#why .item i {
+  font-size:42px;
+  color:rgb(251,185,163);
+}
+
+#why .item h2 {
+  font-weight:normal;
+  margin-top:13px;
+  margin-bottom:20px;
+  font-size:24px;
+}
+
+#why .item {
+  padding-top:36px;
+}
+
+.dark-section {
+  background-color:#f0f6fc;
+}
+
+#logo {
+  max-height:42px;
+  margin-right:10px;
+  margin-top:-3px;
+  display:inline-block;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+  background-color:rgb(255,255,118);
+  border-color:transparent;
+}
+
+#why .item p {
+  color:#928f8f;
+}
+
