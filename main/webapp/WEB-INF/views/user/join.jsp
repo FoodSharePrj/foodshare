@@ -287,8 +287,8 @@
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 	<script	src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
 	<script type="text/javascript">
-		var result = "${result}";
-		if(result == "fail"){
+		var result = '${result}';
+		if(result=="fail"){
 			alert("회원가입 실패!!");
 		}
 		var check1 = false;
@@ -323,7 +323,6 @@
 		}
 		
 		$("#submitBtn").click(function(){
-			alert(check1);
 			if (check1) {
 				var birthdate = '';
 				birthdate += $("#InputYear").val();

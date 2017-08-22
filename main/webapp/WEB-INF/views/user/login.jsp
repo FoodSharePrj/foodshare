@@ -162,8 +162,8 @@
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
     <script type="text/javascript">
-    	var result = ${result};
-    	if(result == "success"){
+    	var result = '${result}';
+    	if(result=="success"){
     		alert("회원가입 성공!!");
     	}
     </script>

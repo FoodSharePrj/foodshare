@@ -21,7 +21,8 @@
 	
 	<!-- 회원가입 -->
 	<insert id="insertUser">
-	insert into tbl_user ('uid','upw','name,'birthdate','gender','phone','email','addr') values (#{uid},#{upw},#{name},#{birthdate},#{gender},#{phone},#{email},#{addr})
+	insert into tbl_user (uid, upw, name, birthdate, gender, phone, email, addr) 
+	values (#{uid},#{upw},#{name},#{birthdate},#{gender},#{phone},#{email},#{addr})
 	</insert>
 	
 </mapper>

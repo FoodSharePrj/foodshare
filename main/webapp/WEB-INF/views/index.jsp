@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE html>
 <html>
 
@@ -40,7 +41,7 @@
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right loginchange">
 					<form class="navbar-form navbar-left hidden-sm hidden-md">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="내용을 입력하세요">
@@ -74,8 +75,14 @@
 								<li><a href="/board/list"> 가공식품</a></li>
 							</ul></li>
 					</ul>
+					<c:if test="${empty login}">
 					<li role="presentation"><a href="/user/login">로그인</a></li>
 					<li role="presentation"><a href="/user/join">회원가입</a></li>
+					</c:if>
+					<c:if test="${not empty login}">
+					<li role="presentation"><a href="/">MyPage</a></li>
+					<li role="presentation"><a href="/user/logout">Logout</a></li>
+					</c:if>
 				</ul>
 			</div>
 		</div>
@@ -202,8 +209,7 @@
 	</footer>
 	<script src="/resources/js/jquery.min.js"></script>
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
 </body>
 
 </html>

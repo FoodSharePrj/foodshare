@@ -29,19 +29,22 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
 		
 		Object userVO = modelAndView.getModel().get("userVO");
-		
+
 		if(userVO != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("login", userVO);
 			
 			Cookie loginCookie = null;
+			
 			if(request.getParameter("useCookie") != null) {
 				loginCookie = new Cookie("loginCookie", session.getId());
 				loginCookie.setMaxAge(60*60*24*7);//일주일
+				loginCookie.setPath("/");
 				response.addCookie(loginCookie);
 			}else {
 				loginCookie = new Cookie("loginCookie", session.getId());
 				loginCookie.setMaxAge(0);//0
+				loginCookie.setPath("/");
 				response.addCookie(loginCookie);
 			}
 			

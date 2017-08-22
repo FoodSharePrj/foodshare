@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
 import com.fs.domain.UserVO;
@@ -31,19 +32,18 @@ public class UserController {
 	
 	// 회원가입 처리
 	@RequestMapping(value="/join", method = RequestMethod.POST)
-	public void joinPOST(UserVO userVO, HttpServletRequest request ,HttpServletResponse response, Model model) throws Exception {
-		request.setCharacterEncoding("UTF-8");
+	public String joinPOST(UserVO userVO, HttpServletRequest request ,HttpServletResponse response, Model model, RedirectAttributes rttr) throws Exception {
+		
 		try {
-			System.out.println(userVO);
 			// 가입 성공시 로그인화면으로 이동
 			userService.insertUser(userVO);
-			model.addAttribute("result", "success");
-			response.sendRedirect("/user/login");
+			rttr.addFlashAttribute("result", "success");
+			return "redirect:/user/login";
 		}catch(Exception e) {
 			e.printStackTrace();
 			// 가입 실패시 회원가입화면으로 이동
-			model.addAttribute("result", "fail");
-			response.sendRedirect("/user/join");
+			rttr.addFlashAttribute("result", "fail");
+			return "redirect:/user/join";
 		}
 	}
 	
@@ -58,7 +58,7 @@ public class UserController {
 	public void loginPOST(LoginDTO loginDTO, HttpSession session, Model model) throws Exception {
 		
 		UserVO userVO = userService.login(loginDTO);
-	
+		
 		if(userVO == null) {
 			return;
 		}
@@ -72,7 +72,7 @@ public class UserController {
 	
 	// 로그아웃 처리
 	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public void logout(HttpServletRequest request,	HttpServletResponse response, HttpSession session) throws Exception{
+	public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
 		
 		Object obj = session.getAttribute("login");
 		if(obj!=null){
@@ -82,14 +82,16 @@ public class UserController {
 			
 			// 기록된 쿠키 삭제
 			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
-			loginCookie.setMaxAge(0);
-			response.addCookie(loginCookie);
-			
-			// DB에 저장된 내용 업댓
-			UserVO vo = (UserVO) obj;
-			userService.keepLogin(vo.getUid(), session.getId());
+			if(loginCookie != null) {
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				
+				// DB에 저장된 내용 업댓
+				UserVO vo = (UserVO) obj;
+				userService.keepLogin(vo.getUid(), session.getId());
+			}
 		}
 		
-		response.sendRedirect("/");
+		return "redirect:/";
 	}
 }
