@@ -97,46 +97,7 @@
 
 <div class="container">
         <form class="form-horizontal" role="form" method="post">
-            <div class="form-group">
-                <label for="provision" class="col-lg-2 control-label">회원가입약관</label>
-                <div class="col-lg-10" id="provision">
-                    <textarea class="form-control" rows="8" style="resize:none">
-약관동의
-                    </textarea>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="provisionYn" name="provisionYn" value="Y" autofocus="autofocus" checked>
-                            동의합니다.
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="provisionYn" name="provisionYn" value="N">
-                            동의하지 않습니다.
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="memberInfo" class="col-lg-2 control-label">개인정보취급방침</label>
-                <div class="col-lg-10" id="memberInfo">
-                    <textarea class="form-control" rows="8" style="resize:none">
-개인정보의 항목 및 수집방법
-                    </textarea>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="memberInfoYn" name="memberInfoYn" value="Y" checked>
-                            동의합니다.
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" id="memberInfoYn" name="memberInfoYn" value="N">
-                            동의하지 않습니다.
-                        </label>
-                    </div>
-                </div>
-            </div>
+            
             <div class="form-group" id="divId">
                 <label for="inputId" class="col-lg-2 control-label">아이디</label>
                 <div class="col-lg-10">
@@ -161,6 +122,52 @@
                     <input type="text" class="form-control onlyHangul" id="name" data-rule-required="true" placeholder="한글만 입력 가능합니다." maxlength="15">
                 </div>
             </div>
+            
+            <div class="form-group" id="divBirth">
+                <label for="inputBirth" class="col-lg-2 control-label">생년월일</label>
+                
+                <div class="col-lg-2">
+                    <input type="text" class="form-control onlyNumber" id="birthyear" onkeydown="onlyNumber(this)"  maxlength="4">
+                </div>
+                <label for="inputBirth" class="col-lg-2 control-label" style = "width: 1px;">년</label>
+                
+                
+                <div class="col-lg-2">    
+                    <select name="birthmonth" class="form-control onlyNumber">
+                    	<option value="01">01</option>
+                    	<option value="02">02</option>
+                    	<option value="03">03</option>
+                    	<option value="04">04</option>
+                    	<option value="05">05</option>
+                    	<option value="06">06</option>
+                    	<option value="07">07</option>
+                    	<option value="08">08</option>
+                    	<option value="09">09</option>
+                    	<option value="10">10</option>
+                    	<option value="11">11</option>
+                    	<option value="12">12</option>
+                    </select>
+                </div>
+                
+                <div class="col-lg-2">
+                    <input type="text" class="form-control onlyNumber" id="birthday" onkeydown="onlyNumber(this)" maxlength="2">
+                </div>
+            </div>
+            
+            <div class="form-group" id="divGender">
+					<label for="inputGender" class="col-lg-2 control-label">성별</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<label for="gender">
+					<input type="radio" name="gender" class="form-control" id="gender" value="남">남</label>&nbsp;&nbsp;&nbsp;&nbsp;
+					<label for="gender">
+					<input type="radio" name="gender" class="form-control" id="gender" value="여">여</label>&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>	
+             
+            <div class="form-group" id="divPhoneNumber">
+                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
+                <div class="col-lg-10">
+                    <input type="phone" class="form-control onlyNumber" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
+                </div>
+            </div> 
              
             <div class="form-group" id="divNickname">
                 <label for="inputNickname" class="col-lg-2 control-label">주소</label>
@@ -175,21 +182,8 @@
                     <input type="email" class="form-control" id="email" data-rule-required="true" placeholder="이메일" maxlength="40">
                 </div>
             </div>
-            <div class="form-group" id="divPhoneNumber">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">휴대폰 번호</label>
-                <div class="col-lg-10">
-                    <input type="tel" class="form-control onlyNumber" id="phoneNumber" data-rule-required="true" placeholder="-를 제외하고 숫자만 입력하세요." maxlength="11">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">성별</label>
-                <div class="col-lg-10">
-                    <select class="form-control" id="gender">
-                        <option value="M">남</option>
-                        <option value="F">여</option>
-                    </select>
-                </div>
-            </div>
+            
+            
 <div class="form-group">
                 <label for="inputPhoneNumber" class="col-lg-2 control-label">기업회원</label>
                 <div class="col-lg-10">
@@ -210,17 +204,7 @@
                     </label>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="inputPhoneNumber" class="col-lg-2 control-label">SMS 수신여부</label>
-                <div class="col-lg-10">
-                    <label class="radio-inline">
-                        <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="Y" checked> 동의합니다.
-                    </label>
-                    <label class="radio-inline">
-                        <input type="radio" id="smsReceiveYn" name="smsReceiveYn" value="N"> 동의하지 않습니다.
-                    </label>
-                </div>
-            </div>
+            
             <div class="form-group">
                 <div class="col-lg-offset-2">
                     <button type="submit" class="btn btn-success btn-block">회원가입</button>
@@ -261,5 +245,17 @@
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+    
+    <script type="text/javascript">
+    	
+    function onlyNumber(obj) {
+        $(obj).keyup(function(){
+             $(this).val($(this).val().replace(/[^0-9]/g,""));
+        }); 
+    }
+    
+    </script>
+    
+    
 </body>
 </html>
