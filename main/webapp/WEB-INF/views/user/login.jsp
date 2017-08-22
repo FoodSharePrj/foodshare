@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
+<meta charset="UTF-8">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -161,5 +161,11 @@
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+    <script type="text/javascript">
+    	var result = ${result};
+    	if(result == "success"){
+    		alert("회원가입 성공!!");
+    	}
+    </script>
 </body>
 </html>

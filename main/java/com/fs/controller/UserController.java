@@ -31,8 +31,20 @@ public class UserController {
 	
 	// 회원가입 처리
 	@RequestMapping(value="/join", method = RequestMethod.POST)
-	public void joinPOST(UserVO userVO) throws Exception {
-		System.out.println(userVO);
+	public void joinPOST(UserVO userVO, HttpServletRequest request ,HttpServletResponse response, Model model) throws Exception {
+		request.setCharacterEncoding("UTF-8");
+		try {
+			System.out.println(userVO);
+			// 가입 성공시 로그인화면으로 이동
+			userService.insertUser(userVO);
+			model.addAttribute("result", "success");
+			response.sendRedirect("/user/login");
+		}catch(Exception e) {
+			e.printStackTrace();
+			// 가입 실패시 회원가입화면으로 이동
+			model.addAttribute("result", "fail");
+			response.sendRedirect("/user/join");
+		}
 	}
 	
 	// 로그인 화면 이동

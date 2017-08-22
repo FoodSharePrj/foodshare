@@ -15,20 +15,26 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO;
 	
 	@Override
-	public UserVO login(LoginDTO loginDTO) {
+	public UserVO login(LoginDTO loginDTO) throws Exception {
 		
 		return userDAO.login(loginDTO);
 	}
 	
 	@Override
-	public void keepLogin(String uid, String sessionKey) {
+	public void keepLogin(String uid, String sessionKey) throws Exception {
 		
 		userDAO.keepLogin(uid, sessionKey);
 	}
 	
 	@Override
-	public UserVO getUserWithSessionkey(String sessionKey) {
+	public UserVO getUserWithSessionkey(String sessionKey) throws Exception {
 
 		return userDAO.getUserWithSessionkey(sessionKey);
+	}
+
+	@Override
+	public void insertUser(UserVO userVO) throws Exception {
+	
+		userDAO.insertUser(userVO);	
 	}
 }

@@ -20,13 +20,13 @@ public class UserDAOImpl implements UserDAO {
 	private static String namespace = "com.fs.mapper.UserMapper";
 
 	@Override
-	public UserVO login(LoginDTO loginDTO) {
+	public UserVO login(LoginDTO loginDTO) throws Exception {
 	
 		return session.selectOne(namespace+".login", loginDTO);
 	}
 
 	@Override
-	public void keepLogin(String uid, String sessionKey) {
+	public void keepLogin(String uid, String sessionKey) throws Exception {
 		
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("uid", uid);
@@ -36,9 +36,13 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public UserVO getUserWithSessionkey(String sessionKey) {
+	public UserVO getUserWithSessionkey(String sessionKey) throws Exception {
 		
 		return session.selectOne(namespace+".getUserWithSessionkey", sessionKey);
 	}
 
+	@Override
+	public void insertUser(UserVO userVO) throws Exception {
+		session.insert(namespace+".insertUser", userVO);
+	}
 }

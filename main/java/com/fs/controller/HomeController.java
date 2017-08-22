@@ -20,7 +20,7 @@ public class HomeController {
 	UserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpServletRequest request) {
+	public String home(HttpServletRequest request) throws Exception {
 		
 		// 자동로그인 쿠키 유무에 따른 처리
 		Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
