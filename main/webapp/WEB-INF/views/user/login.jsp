@@ -13,31 +13,36 @@
     <link rel="stylesheet" href="/resources/fonts/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css">
     <link rel="stylesheet" href="/resources/css/Pretty-Footer.css">
+    <link rel="stylesheet" href="/resources/css/Login-Center.css">
     <link rel="stylesheet" href="/resources/css/styles.css">
 </head>
 <style type="text/css">
-		.navbar{
-			margin-bottom:0px;
-		}
+	.navbar{
+		margin-bottom:0px;
+	}
 </style>
-<body><!-- 상단 메뉴 시작 -->
-    <nav class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type ="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-		<span class="sr-only"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-		<span class="icon-bar"></span>
-</button>
-<a class="navbar-brand navbar-link" href="/"><img src="/resources/img/logo.jpg" id="logo"><span class="hidden-sm"><strong>FoodShare Project</strong></span></a>
-            </div>
-<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+<body>
+<!-- 상단 메뉴 시작 -->
+<nav class="navbar navbar-inverse">
+	<div class="container">
+		<div class="navbar-header">
+			<button type ="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand navbar-link" href="/">
+				<img src="/resources/img/logo.jpg" id="logo">
+				<span class="hidden-sm"><strong>FoodShare Project</strong></span>
+			</a>
+        </div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
  
-<form class="navbar-form navbar-left hidden-sm hidden-md">
-<div class="input-group">
-		<input type="text" class="form-control" placeholder="내용을 입력하세요">
+			<form class="navbar-form navbar-left hidden-sm hidden-md">
+				<div class="input-group">
+				<input type="text" class="form-control" placeholder="내용을 입력하세요">
 		<span class="input-group-btn">
 		<button class="btn btn-default" type="button">검색</button>
 		</span>
@@ -75,48 +80,54 @@
         </div>
     </nav>
  <!-- 검색창(큰화면, 스마트폰화면 미표시) -->
-   <div class="container hidden-xs hidden-lg">
- <form class="navbar-form">
-<div class="container input-group">
-		<input type="text" class="form-control" placeholder="내용을 입력하세요">
-		<span class="input-group-btn">
-		<button class="btn btn-default" type="button">검색</button>
-		</span>
-</div>
-</form>
+<div class="container hidden-xs hidden-lg">
+	<form class="navbar-form">
+		<div class="container input-group">
+			<input type="text" class="form-control" placeholder="내용을 입력하세요">
+			<span class="input-group-btn">
+				<button class="btn btn-default" type="button">검색</button>
+			</span>
+		</div>
+	</form>
 </div>
 <!-- 검색창 끝 -->
 <!-- 상단 메뉴 끝 -->
-    <div id="promo">
-        <div class="jumbotron">
-            <h1>Start Food Share</h1>
-            <p>나눔을 시작해 보세요. 지금 버리려는 것이 누군가에겐 필요합니다! </p>
-            <p><a class="btn btn-info btn-lg" role="button" href="/board/list">Let's Share</a></p>
-        </div>
-    </div>
+<div id="promo">
+	<div class="jumbotron">
+		<h1>Start Food Share</h1>
+		<p>나눔을 시작해 보세요. 지금 버리려는 것이 누군가에겐 필요합니다! </p>
+		<p><a class="btn btn-info btn-lg" role="button" href="/board/list">Let's Share</a></p>
+	</div>
+</div>
+    
 <div class="container">
- <div class="login-box well">
-        <form accept-charset="UTF-8" role="form" method="post" action="">
-            <legend>로그인</legend>
-            <div class="form-group">
-                <label for="username-email">아이디</label>
-                <input name="user_id" value='' id="username-email" placeholder="E-mail or Username" type="text" class="form-control" />
-            </div>
-            <div class="form-group">
-                <label for="password">비밀번호</label>
-                <input name="password" id="password" value='' placeholder="Password" type="password" class="form-control" />
-            </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-success btn-login-submit btn-block m-t-md" value="로그인" />
-            </div>
-            <span class='text-center'><a href="#" class="text-sm">비밀번호 찾기</a></span>
-            <hr />
-            <div class="form-group">
-                <a href="/user/join" class="btn btn-prymary btn-block"> 회원가입</a>
-            </div>
-        </form>
-          </div>
-          </div>
+	<div class="row row-login">
+		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+			<h1 class="text-center"> FoodShare</h1>
+			<div class="well">
+				<h3 class="text-danger">Login</h3>
+				<form action='loginPost' method="post" accept-charset="UTF-8">
+					<div class="form-group">
+						<label class="control-label">ID </label>
+						<input class="form-control" id='uid' name='uid' type="text" maxlength="15" autofocus>
+					</div>
+					<div class="form-group">
+					<label class="control-label">Password </label>
+						<input class="form-control" type="password" id='upw' name='upw' maxlength='15'>
+					</div>
+					<div class="form-group">
+						<div class="checkbox">
+							<label class="control-label">
+							<input type="checkbox" id='useCookie' name='useCookie'>로그인 상태 유지</label>
+						</div>
+					</div>
+					<button class="btn btn-success btn-block" type="submit">LOGIN</button>
+					<a class="btn btn-link center-block" role="button" href="/user/join">회원가입</a>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
           
     <footer class="hidden-sm hidden-xs">
         <div class="container">

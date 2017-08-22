@@ -25,14 +25,20 @@ public class UserController {
 	
 	// 회원가입 화면 이동
 	@RequestMapping(value="/join", method = RequestMethod.GET)
-	public String join() throws Exception {
-		return "join";
+	public String joinGET() throws Exception {
+		return "/user/join";
+	}
+	
+	// 회원가입 처리
+	@RequestMapping(value="/join", method = RequestMethod.POST)
+	public void joinPOST(UserVO userVO) throws Exception {
+		System.out.println(userVO);
 	}
 	
 	// 로그인 화면 이동
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String loginGET() throws Exception {
-		return "login";
+		return "/user/login";
 	}
 	
 	// 로그인 처리
@@ -40,13 +46,13 @@ public class UserController {
 	public void loginPOST(LoginDTO loginDTO, HttpSession session, Model model) throws Exception {
 		
 		UserVO userVO = userService.login(loginDTO);
-		
+	
 		if(userVO == null) {
 			return;
 		}
 		
 		model.addAttribute("userVO", userVO);
-		
+		// '로그인상태유지' 눌렀을 경우
 		if(loginDTO.isUseCookie()) {
 			userService.keepLogin(userVO.getUid(), session.getId());
 		}

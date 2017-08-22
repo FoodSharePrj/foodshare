@@ -34,13 +34,15 @@
 					<span class="sr-only"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand navbar-link" href="/"><img
-					src="/resources/img/logo.jpg" id="logo"><strong>FoodShare
-						Project</strong></a>
+				<a class="navbar-brand navbar-link" href="/"> <img
+					src="/resources/img/logo.jpg" id="logo"> <span
+					class="hidden-sm"><strong>FoodShare Project</strong></span>
+				</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right">
+
 					<form class="navbar-form navbar-left hidden-sm hidden-md">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="내용을 입력하세요">
@@ -98,59 +100,132 @@
 			<h1>Start Food Share</h1>
 			<p>나눔을 시작해 보세요. 지금 버리려는 것이 누군가에겐 필요합니다!</p>
 			<p>
-				<a class="btn btn-info btn-lg" role="button" href="/board/list">Let's
-					Share</a>
+				<a class="btn btn-info btn-lg" role="button" href="/board/list">Let's Share</a>
 			</p>
 		</div>
 	</div>
-	<div class="dark-section">
-		<div class="container site-section" id="why">
-			<h1>Why Choose Us</h1>
-			<div class="row">
-				<div class="col-md-4 item">
-					<i class="fa fa-tree"></i>
-					<h2>음식물 쓰레기 감소</h2>
-					<p>저희는 버려지는 음식들이 그것을 필요로 하는 사람들에게 공유되도록 기여하고 있습니다.</p>
+
+
+	<div class="container">
+		<div class="page-header">
+			<h1>
+				회원가입 <small>basic form</small>
+			</h1>
+		</div>
+		<div class="col-md-6 col-md-offset-3">
+			<form role="form" accept-charset="UTF-8" id="joinform" method="post">
+				<div class="form-group ">
+					<label for="InputId">ID</label> <input type="text"
+						class="form-control" name="uid" placeholder="ID">
 				</div>
-				<div class="col-md-4 item">
-					<i class="fa fa-heart"></i>
-					<h2>공유문화 확산</h2>
-					<p>버려야 하는 사람과 필요로 하는 사람들을 쉽게 연결해 줍니다.</p>
+				<div class="form-group ">
+					<label for="InputPassword1">비밀번호</label> <input type="password"
+						class="form-control" name="upw" placeholder="비밀번호">
 				</div>
-				<div class="col-md-4 item">
-					<i class="fa fa-calculator"></i>
-					<h2>자원의 효율적 사용</h2>
-					<p>1인 가구 시대, 버려지는 것들에 대한 해결책이 될 수 있습니다.</p>
+				<div class="form-group">
+					<label for="InputPassword2">비밀번호 확인</label> <input type="password"
+						class="form-control" placeholder="비밀번호 확인">
+					<p class="help-block">비밀번호 확인을 위해 다시한번 입력 해 주세요</p>
 				</div>
-			</div>
+				<div class="form-group">
+					<label for="InputUsername">이름</label> <input type="text"
+						class="form-control" name="name" placeholder="이름을 입력해 주세요">
+				</div>
+
+				<div class="form-group">
+					<label for="InputBirth">생년월일</label>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-xs-2">
+						<input type="text" class="form-control " id="InputYear"
+							placeholder="년" onkeydown="onlyNumber(this)" maxlength="4"
+							oninput="maxLengthCheck(this)" maxlength="4">
+					</div>
+					<div class="col-xs-1">
+						<label>년</label>
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control " id="InputMonth"
+							placeholder="월" onkeydown="onlyNumber(this)"
+							oninput="maxLengthCheck(this)" maxlength="2">
+					</div>
+					<div class="col-xs-1">
+						<label>월</label>
+					</div>
+					<div class="col-xs-2">
+						<input type="text" class="form-control" id="InputDay"
+							placeholder="일" onkeydown="onlyNumber(this)"
+							oninput="maxLengthCheck(this)" maxlength="2">
+					</div>
+					<div class="col-xs-1">
+						<label>일</label>
+					</div>
+
+				</div>
+				<input type="hidden" name="birthdate" id="birthdate">
+
+				<div class="form-group">
+					<label for="InputGender">성별</label>
+				</div>
+				<div class="form-group row">
+					<div class="col-xs-1">
+						<input type="radio" name="gender" id="InputGender" value="남">
+					</div>
+					<div class="col-xs-1">
+						<label>남</label>
+					</div>
+					<div class="col-xs-1">
+						<input type="radio" name="gender" id="InputGender" value="여">
+					</div>
+					<div class="col-xs-1">
+						<label>여</label>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="InputPhoneNumber">휴대폰 번호</label>
+				</div>
+				<div class="form-group row">
+					<div class="col-lg-10">
+						<input type="phone" class="form-control onlyNumber" name="phone"
+							placeholder="-를 제외하고 숫자만 입력하세요." onkeydown="onlyNumber(this)"
+							oninput="maxLengthCheck(this)" maxlength="11">
+					</div>
+				</div>
+
+
+				<div class="form-group">
+					<label for="InputEmail">이메일 주소</label>
+				</div>
+				<div class="form-group row">
+					<div class="col-md-5">
+						<input type="email" class="form-control" name="email">
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for="InputAdress">자택 주소</label>
+				</div>
+				<div class="form-group row">
+					<div class="col-lg-10">
+						<input type="text" class="form-control" name="addr"
+							placeholder="주소를 입력하세요.">
+					</div>
+				</div>
+
+				<div class="form-group text-center">
+					<button type="submit" class="btn btn-info">
+						회원가입<i class="fa fa-check spaceLeft"></i>
+					</button>
+					<button type="submit" class="btn btn-warning">
+						가입취소<i class="fa fa-times spaceLeft"></i>
+					</button>
+				</div>
+			</form>
 		</div>
 	</div>
-	<div class="container site-section" id="welcome">
-		<h1>Gallery</h1>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/resources/img/dessert01.jpg" target="_blank"
-						data-lightbox="foods"><img class="img-responsive"
-						src="/resources/img/dessert01.jpg"></a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/resources/img/dessert02.jpg" target="_blank"
-						data-lightbox="foods"><img class="img-responsive"
-						src="/resources/img/dessert02.jpg"></a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/resources/img/dessert03.jpg" target="_blank"
-						data-lightbox="foods"><img class="img-responsive"
-						src="/resources/img/dessert03.jpg"></a>
-				</div>
-			</div>
-		</div>
-	</div>
+
 	<footer class="hidden-sm hidden-xs">
 		<div class="container">
 			<div class="row">
@@ -204,6 +279,32 @@
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
-</body>
 
+	<script type="text/javascript">
+	
+		function onlyNumber(obj) {
+			$(obj).keyup(function() {
+				$(this).val($(this).val().replace(/[^0-9]/g, ""));
+			});
+		}
+	
+	
+	
+		function maxLengthCheck(object) {
+			if (object.value.length > object.maxLength) {
+				object.value = object.value.slice(0, object.maxLength);
+			}
+		}
+	
+		$("#joinform").submit(function(event) {
+			var birthdate = '';
+			birthdate += $("#InputYear").val();
+			birthdate += $("#InputMonth").val();
+			birthdate += $("#InputDay").val();
+			$("#birthdate").val(birthdate);
+			return true;
+		});
+	</script>
+
+</body>
 </html>
