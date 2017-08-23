@@ -20,13 +20,15 @@
 <link rel="stylesheet" href="/resources/css/styles.css">
 </head>
 <style type="text/css">
-.navbar {
-	margin-bottom: 0px;
+body {
+	padding-top : 70px;
 }
+
+
 </style>
 <body>
 	<!-- 상단 메뉴 시작 -->
-	<nav class="navbar navbar-inverse">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -112,7 +114,7 @@
 	</div>
 	<div class="dark-section">
 		<div class="container site-section" id="why">
-			<h1>Why Choose Us</h1>
+			<h1>WHAT WE DO</h1>
 			<div class="row">
 				<div class="col-md-4 item">
 					<i class="fa fa-tree"></i>

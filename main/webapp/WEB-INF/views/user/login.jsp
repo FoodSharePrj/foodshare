@@ -17,13 +17,13 @@
     <link rel="stylesheet" href="/resources/css/styles.css">
 </head>
 <style type="text/css">
-	.navbar{
-		margin-bottom:0px;
+	body{
+		padding-top:70px;
 	}
 </style>
 <body>
 <!-- 상단 메뉴 시작 -->
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			<button type ="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -107,22 +107,27 @@
 			<div class="well">
 				<h3 class="text-danger">Login</h3>
 				<form action='loginPost' method="post" accept-charset="UTF-8">
-					<div class="form-group">
-						<label class="control-label">ID </label>
-						<input class="form-control" id='uid' name='uid' type="text" maxlength="15" autofocus>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-user"></span>
+						</span>
+						<input class="form-control" id='uid' name='uid' type="text" maxlength="15" placeholder="ID" autofocus>
 					</div>
-					<div class="form-group">
-					<label class="control-label">Password </label>
-						<input class="form-control" type="password" id='upw' name='upw' maxlength='15'>
+					<div class="input-group">
+						<span class="input-group-addon">
+							<span class="glyphicon glyphicon-lock"></span>
+						</span>
+						<input class="form-control" type="password" id='upw' name='upw' maxlength='15'  placeholder="PASSWORD">
 					</div>
 					<div class="form-group">
 						<div class="checkbox">
 							<label class="control-label">
-							<input type="checkbox" id='useCookie' name='useCookie'>로그인 상태 유지</label>
+								<input type="checkbox" id='useCookie' name='useCookie'><strong>로그인 상태 유지</strong>
+							</label>
 						</div>
 					</div>
-					<button class="btn btn-success btn-block" type="submit">LOGIN</button>
-					<a class="btn btn-link center-block" role="button" href="/user/join">회원가입</a>
+					<button class="btn btn-success btn-block" type="submit"><strong>LOGIN</strong></button>
+					<a class="btn btn-link center-block" role="button" href="/user/join"><strong>회원가입</strong></a>
 				</form>
 			</div>
 		</div>
