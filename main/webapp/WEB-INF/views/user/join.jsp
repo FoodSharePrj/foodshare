@@ -117,7 +117,17 @@
 			<form role="form" id="joinform" method="post" action="/user/join">
 				<div class="form-group ">
 					<label for="InputId">ID</label> <input type="text"
-						class="form-control" name="uid" placeholder="ID" required>
+						class="form-control" id="uid" name="uid" placeholder="ID" required>
+				</div>
+				<div class="form-group row">	
+					<div class="col-xs-2">
+						<button type="button" class="btn btn-success btn-sm" id="checkId">
+							중복확인
+						</button>	
+					</div>
+					<div class="col-xs-6">
+						<p id="checkIdTag"></p>
+					</div>	
 				</div>
 				<div class="form-group ">
 					<label for="InputPassword1">비밀번호</label> <input type="password"
@@ -292,6 +302,7 @@
 			alert("회원가입 실패!!");
 		}
 		var check1 = false;
+		var check2 = false;
 	
 		function onlyNumber(obj) {
 			$(obj).keyup(function() {
@@ -323,7 +334,7 @@
 		}
 		
 		$("#submitBtn").click(function(){
-			if (check1) {
+			if (check1&&check2) {
 				var birthdate = '';
 				birthdate += $("#InputYear").val();
 				birthdate += $("#InputMonth").val();
@@ -332,6 +343,27 @@
 				
 				$("#joinform").submit();
 			}
+		});
+		
+		$("#checkId").click(function(){
+			var uid =$('#uid').val();
+			$.ajax({
+				type:'get',
+				url:'/user/checkId/'+uid,
+				dataType:'text',
+				success: function(data){
+					if(data=='success'){
+						check2=true;
+						$("#checkIdTag").text("사용 가능한 아이디입니다.");
+						$("#checkIdTag").css("color", "green");
+					}else{
+						check2=false;
+						$("#checkIdTag").text("이미 사용중인 아이디입니다.");
+						$("#checkIdTag").css("color", "red");
+					}
+				}
+			});
+			
 		});
 		
 	</script>

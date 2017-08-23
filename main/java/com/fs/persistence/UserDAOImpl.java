@@ -45,4 +45,12 @@ public class UserDAOImpl implements UserDAO {
 	public void insertUser(UserVO userVO) throws Exception {
 		session.insert(namespace+".insertUser", userVO);
 	}
+
+	@Override
+	public UserVO checkId(String uid) throws Exception {
+		
+		return session.selectOne(namespace + ".checkId",uid);
+	}
+	
+	
 }

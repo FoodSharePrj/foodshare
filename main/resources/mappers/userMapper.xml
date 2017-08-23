@@ -25,4 +25,9 @@
 	values (#{uid},#{upw},#{name},#{birthdate},#{gender},#{phone},#{email},#{addr})
 	</insert>
 	
+	<!-- 아이디 중복 체크 -->
+	<select id="checkId" resultType="UserVO">
+		select * from tbl_user where uid=#{uid};
+	</select>
+	
 </mapper>

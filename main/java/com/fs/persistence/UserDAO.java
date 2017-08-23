@@ -12,4 +12,6 @@ public interface UserDAO {
 	public UserVO getUserWithSessionkey(String sessionKey) throws Exception;
 	
 	public void insertUser(UserVO userVO) throws Exception;
+	
+	public UserVO checkId(String uid) throws Exception;
 }

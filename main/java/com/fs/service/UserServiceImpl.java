@@ -37,4 +37,10 @@ public class UserServiceImpl implements UserService {
 	
 		userDAO.insertUser(userVO);	
 	}
+
+	@Override
+	public UserVO checkId(String uid) throws Exception {
+		 
+		return userDAO.checkId(uid);
+	}
 }

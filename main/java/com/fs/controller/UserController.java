@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
 
@@ -94,4 +96,24 @@ public class UserController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(value="/checkId/{uid}",method=RequestMethod.GET)
+	public @ResponseBody String checkId(@PathVariable String uid) {
+		String result="";
+		try {
+			UserVO userVO = userService.checkId(uid);
+			if(userVO==null) {
+				result="success";
+			}else {
+				result="fail";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}  
+		
+		return result;
+	}
+	
+	
+	
 }
