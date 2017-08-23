@@ -104,7 +104,7 @@
 	<div class="row row-login">
 		<div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
 			<h1 class="text-center"> FoodShare</h1>
-			<div class="well">
+			<div class="well well-lg">
 				<h3 class="text-danger">Login</h3>
 				<form action='loginPost' method="post" accept-charset="UTF-8">
 					<div class="input-group">
