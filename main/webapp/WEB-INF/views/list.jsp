@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>    
 <!DOCTYPE html>
 <html>
 
@@ -16,13 +19,13 @@
     <link rel="stylesheet" href="/resources/css/styles.css">
 </head>
 <style type="text/css">
-		.navbar{
-			margin-bottom:0px;
-		}
+body {
+	padding-top : 70px;
+}
 </style>
 <body>
     <!-- 상단 메뉴 시작 -->
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type ="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -99,249 +102,11 @@
 	<div class="row">
 		<div class="col-sm-4 col-md-3">
     		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
+      			<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
-    	  	</div></a>
-    		</div>
-  		</div>
-  		<div class="col-sm-4 col-md-3">
-    		<div class="thumbnail"><a href="/board/detail">
-      		<img src="/resources/img/jumbo1.jpg" alt="...">
-      		<div class="caption">
-	        	<h3>글제목</h3>
+	        	<p><span id="boardtitle">글제목${boardVO.title} </span><span id="boardwrite">글쓴이${boardVO.writer}</span></p>
+	        	<p><span id="boardspace" class="text-primary">공유장소${boardVO.splace}</span></p>
+	        	<p><span id="boardduedate" class="text-danger">공유기간 ${boardVO.duedate} 까지</span></p>
     	  	</div></a>
     		</div>
   		</div>
