@@ -6,6 +6,21 @@
   margin-top:0px;
   margin-bottom:20px;
 }
+a:hover{
+	text-decoration:none;
+}
+#boardtitle{
+	font-weight:bold;
+}
+#boardwritter{
+	font-weight:100;
+}
+#boardspace{
+	font-weight:100;
+}
+#boardduedate{
+	font-weight:bold;
+}
 #detail{
 	font-size:3ex;
 	margin-top:20px;
