@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page session="false"%>    
+<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 
@@ -19,13 +19,13 @@
     <link rel="stylesheet" href="/resources/css/styles.css">
 </head>
 <style type="text/css">
-body {
-	padding-top : 70px;
-}
+		.navbar{
+			margin-bottom:0px;
+		}
 </style>
 <body>
     <!-- 상단 메뉴 시작 -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-inverse">
         <div class="container">
             <div class="navbar-header">
                 <button type ="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -99,17 +99,22 @@ body {
     </div>
 <div class="container">
 	<h2>나눔리스트</h2>
+	<button type="button" class="btn btn-info" id="cancleBtn">글쓰기<i class="fa fa-times spaceLeft"></i>
+	</button>
 	<div class="row">
+    <c:forEach items="${list}" var="boardVO">
 		<div class="col-sm-4 col-md-3">
     		<div class="thumbnail"><a href="/board/detail">
       			<img src="/resources/img/jumbo1.jpg" alt="...">
       		<div class="caption">
-	        	<p><span id="boardtitle">글제목${boardVO.title} </span><span id="boardwrite">글쓴이${boardVO.writer}</span></p>
-	        	<p><span id="boardspace" class="text-primary">공유장소${boardVO.splace}</span></p>
-	        	<p><span id="boardduedate" class="text-danger">공유기간 ${boardVO.duedate} 까지</span></p>
-    	  	</div></a>
+              <p><span id="boardtitle">${boardVO.title} </span><span id="boardwrite">${boardVO.writer}</span></p>
+              <p><span id="boardspace" class="text-primary">${boardVO.splace}</span></p>
+              <p><span id="boardduedate" class="text-danger"> ${boardVO.duedate} 까지</span></p>
+            </div></a>
     		</div>
   		</div>
+  	</c:forEach>
+
 	</div>
 </div>
     <footer class="hidden-sm hidden-xs">
@@ -141,9 +146,20 @@ body {
             </div>
         </div>
     </footer>
+    <script>
+		var result='${msg}';
+		if(result=='success'){
+			alert("처리가 완료 되었습니다.");
+		}
+	</script>
     <script src="/resources/js/jquery.min.js"></script>
     <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+    <script type="text/javascript">
+		$("#cancleBtn").click(function() {
+			location.href = "/board/regist";
+		});
+	</script>
 </body>
 
 </html>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page session="false"%>
 <!DOCTYPE html>
 <html>
 
@@ -20,15 +22,13 @@
 <link rel="stylesheet" href="/resources/css/styles.css">
 </head>
 <style type="text/css">
-body {
-	padding-top : 70px;
+.navbar {
+	margin-bottom: 0px;
 }
-
-
 </style>
 <body>
 	<!-- 상단 메뉴 시작 -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse">
 		<div class="container">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -43,7 +43,7 @@ body {
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
-				<ul class="nav navbar-nav navbar-right loginchange">
+				<ul class="nav navbar-nav navbar-right">
 					<form class="navbar-form navbar-left hidden-sm hidden-md">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="내용을 입력하세요">
@@ -77,14 +77,8 @@ body {
 								<li><a href="/board/list"> 가공식품</a></li>
 							</ul></li>
 					</ul>
-					<c:if test="${empty login}">
 					<li role="presentation"><a href="/user/login">로그인</a></li>
 					<li role="presentation"><a href="/user/join">회원가입</a></li>
-					</c:if>
-					<c:if test="${not empty login}">
-					<li role="presentation"><a href="/">MyPage</a></li>
-					<li role="presentation"><a href="/user/logout">Logout</a></li>
-					</c:if>
 				</ul>
 			</div>
 		</div>
@@ -112,54 +106,94 @@ body {
 			</p>
 		</div>
 	</div>
-	<div class="dark-section">
-		<div class="container site-section" id="why">
-			<h1>WHAT WE DO</h1>
-			<div class="row">
-				<div class="col-md-4 item">
-					<i class="fa fa-tree"></i>
-					<h2>음식물 쓰레기 감소</h2>
-					<p>저희는 버려지는 음식들이 그것을 필요로 하는 사람들에게 공유되도록 기여하고 있습니다.</p>
-				</div>
-				<div class="col-md-4 item">
-					<i class="fa fa-heart"></i>
-					<h2>공유문화 확산</h2>
-					<p>버려야 하는 사람과 필요로 하는 사람들을 쉽게 연결해 줍니다.</p>
-				</div>
-				<div class="col-md-4 item">
-					<i class="fa fa-calculator"></i>
-					<h2>자원의 효율적 사용</h2>
-					<p>1인 가구 시대, 버려지는 것들에 대한 해결책이 될 수 있습니다.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="container site-section" id="welcome">
-		<h1>Best Share</h1>
+	<!-- 시작 -->
+	<h1 class="text-center">글 쓰기</h1>
+	<div class="container">
 		<div class="row">
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/resources/img/dessert01.jpg" target="_blank"
-						data-lightbox="foods"><img class="img-responsive"
-						src="/resources/img/dessert01.jpg"></a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/resources/img/dessert02.jpg" target="_blank"
-						data-lightbox="foods"><img class="img-responsive"
-						src="/resources/img/dessert02.jpg"></a>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="thumbnail">
-					<a href="/resources/img/dessert03.jpg" target="_blank"
-						data-lightbox="foods"><img class="img-responsive"
-						src="/resources/img/dessert03.jpg"></a>
+			<div
+				class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+				<div class="well well-sm">
+					<form role="form" method="post" action="/board/regist">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="title"> TITLE</label> <input type="text"
+										class="form-control" id="id" name="title" placeholder="Title"
+										required="required" />
+								</div>
+								<div class="form-group">
+									<label for="writer"> WRITER</label> <input type="text"
+										class="form-control" id="writer" name="writer" placeholder="writer"
+										required="required" />
+								</div>
+
+								<div class="form-group">
+									<label for="target"> Target</label> <input type="text"
+										class="form-control" id="target" name="target" placeholder="target"
+										required="required" />
+								</div>
+
+								<div class="form-group">
+									<label for="subject"> Place</label> <select id="splace"
+										name="splace" class="form-control" required="required">
+										<option value="seoul" selected="">서울/인천</option>
+										<option value="gyunggi">경기/강원</option>
+										<option value="daejeon">대전/충청</option>
+										<option value="boosan">부산/울산/경남</option>
+										<option value="dagoo">대구/경북</option>
+										<option value="gwangjoo">광주/전라</option>
+										<option value="jejoo">제주</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="subject"> Category</label> <select id="category"
+										name="category" class="form-control" required="required">
+										<option value="meet" selected="">육류</option>
+										<option value="fish">어패류</option>
+										<option value="vegetable">채소류</option>
+										<option value="apple">과일류</option>
+										<option value="can">가공식품</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="subject"> Status</label> <select id="status"
+										name="status" class="form-control" required="required">
+										<option value="top" selected="">상</option>
+										<option value="middle">중</option>
+										<option value="low">하</option>
+									</select>
+								</div>
+
+								<div class="form-group">
+									<label for="duedate"> Duedate</label> <input type="date"
+										class="form-control" name="duedate"/>
+								</div>
+
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="name"> Content</label>
+									<textarea name="content" id="content" class="form-control"
+										rows="9" cols="30" required="required" placeholder="Content"></textarea>
+								</div>
+							</div>
+							<div class="col-md-12">
+								<button type="submit" class="btn btn-primary pull-right"
+									id="btnContactUs">등록</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
 	</div>
+
+
+
+
+
+
 	<footer class="hidden-sm hidden-xs">
 		<div class="container">
 			<div class="row">
@@ -209,9 +243,12 @@ body {
 			</div>
 		</div>
 	</footer>
+
 	<script src="/resources/js/jquery.min.js"></script>
 	<script src="/resources/bootstrap/js/bootstrap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+
 </body>
 
 </html>
