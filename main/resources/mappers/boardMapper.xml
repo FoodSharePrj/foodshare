@@ -16,7 +16,7 @@
 	update tbl_sequence set rowid = #{rowid} where tid='F001'
 	</update>
 	
-	<select id="listAll" resultType="com.fs.domain.BoardVO">
-	<![CDATA[select bid, title, writer, duedate from tbl_bbs where bid>0 order by bid desc]]>
+	<select id="listAll" resultType="BoardVO">
+	<![CDATA[select bid, title, writer, duedate from tbl_bbs where regdate>0 order by bid desc]]>
 	</select>
 </mapper>
