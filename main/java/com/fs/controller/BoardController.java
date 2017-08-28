@@ -1,5 +1,7 @@
 package com.fs.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -8,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fs.domain.BoardVO;
@@ -27,16 +31,24 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="/regist", method = RequestMethod.POST)
-	public String registerPOST(BoardVO board, RedirectAttributes rttr) throws Exception{
+	public String registerPOST(BoardVO board, MultipartHttpServletRequest mhsr, RedirectAttributes rttr) throws Exception{
 		logger.info("register post.........");
 		logger.info(board.toString());
 		
+		List<MultipartFile> files = mhsr.getFiles("file");
+		logger.info(files.toString());
+				
 		try {
 	         // 가져온 튜플ID를 VO객체에 삽입
 	         board.setBid(service.getrowid());
 	         
 	         // 글 등록
 	         service.regist(board);
+	         if(files!=null) {
+	        	 for(int i = 0; i<files.size(); i++) {
+	        		 
+	        	 }
+	         }
 	         rttr.addFlashAttribute("msg", "success");
 	         return "redirect:/board/list";
 	      }catch(Exception e) {

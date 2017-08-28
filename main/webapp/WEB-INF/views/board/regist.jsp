@@ -2,6 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
+<style>
+.fileDrop {
+	width: 80%;
+	height: 100px;
+	border: 1px dotted gray;
+	background-color: lightslategrey;
+	margin: auto;
+}
+</style>
 <div id="promo">
 	<div class="jumbotron">
 		<h1>Start Food Share</h1>
@@ -13,34 +22,51 @@
 	</div>
 </div>
 <!-- 시작 -->
-<h1 class="text-center">글 쓰기</h1>
+<h1 class="text-center">FoodShare!</h1>
 <div class="container">
 	<div class="row">
 		<div
-			class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
-			<div class="well well-sm">
-				<form role="form" method="post" action="/board/regist">
+			class="col-lg-10 col-lg-offset-1 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+			<div class="well well-lg">
+				<form role="form" method="post" action="/board/regist"
+					enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="title"> TITLE</label> <input type="text"
-									class="form-control" id="id" name="title" placeholder="Title"
+								<label for="title"> 제목</label> <input type="text"
+									class="form-control" id="id" name="title" placeholder="제목"
 									required="required" />
 							</div>
 							<div class="form-group">
-								<label for="writer"> WRITER</label> <input type="text"
+								<label for="writer"> 공유자</label> <input type="text"
 									class="form-control" id="writer" name="writer"
-									placeholder="writer" required="required" />
+									value="${login.uid}" readonly />
 							</div>
-
 							<div class="form-group">
-								<label for="target"> Target</label> <input type="text"
+								<label for="subject"> 식자재 범주</label> <select id="category"
+									name="category" class="form-control" required="required">
+									<option value="meet" selected="">육류</option>
+									<option value="fish">어패류</option>
+									<option value="vegetable">채소류</option>
+									<option value="apple">과일류</option>
+									<option value="can">가공식품</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="target"> 공유식자재</label> <input type="text"
 									class="form-control" id="target" name="target"
-									placeholder="target" required="required" />
+									placeholder="공유할 식자재" required="required" />
 							</div>
-
 							<div class="form-group">
-								<label for="subject"> Place</label> <select id="splace"
+								<label for="subject"> 식자재 상태</label> <select id="status"
+									name="status" class="form-control" required="required">
+									<option value="top" selected>상</option>
+									<option value="middle">중</option>
+									<option value="low">하</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="subject"> 공유장소</label> <select id="splace"
 									name="splace" class="form-control" required="required">
 									<option value="seoul" selected="">서울/인천</option>
 									<option value="gyunggi">경기/강원</option>
@@ -51,42 +77,31 @@
 									<option value="jejoo">제주</option>
 								</select>
 							</div>
-							<div class="form-group">
-								<label for="subject"> Category</label> <select id="category"
-									name="category" class="form-control" required="required">
-									<option value="meet" selected="">육류</option>
-									<option value="fish">어패류</option>
-									<option value="vegetable">채소류</option>
-									<option value="apple">과일류</option>
-									<option value="can">가공식품</option>
-								</select>
-							</div>
 
 							<div class="form-group">
-								<label for="subject"> Status</label> <select id="status"
-									name="status" class="form-control" required="required">
-									<option value="top" selected="">상</option>
-									<option value="middle">중</option>
-									<option value="low">하</option>
-								</select>
-							</div>
-
-							<div class="form-group">
-								<label for="duedate"> Duedate</label> <input type="date"
+								<label for="duedate"> 공유기한</label> <input type="date"
 									class="form-control" name="duedate" />
 							</div>
 
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="name"> Content</label>
+								<label for="name"> 내 용</label>
 								<textarea name="content" id="content" class="form-control"
-									rows="9" cols="30" required="required" placeholder="Content"></textarea>
+									rows="15" cols="30" required="required" placeholder="내용을 입력하세요."></textarea>
+							</div>
+							<div class="form-group">
+								<label for="name"> 사진첨부</label> <input type="file" name="file"
+									id="file" class="form-control" multiple="multiple">
 							</div>
 						</div>
-						<div class="col-md-12">
-							<button type="submit" class="btn btn-primary pull-right"
-								id="btnContactUs">등록</button>
+
+					</div>
+					<div class="row">
+						<div
+							class="col-md-4 col-md-offset-8 col-sm-5 col-sm-offset-7 col-xs-7 col-xs-offset-3">
+							<button type="submit" class="btn btn-primary" id="btnContactUs">등록</button>
+							<button type="button" class="btn btn-warning" id="btn_cancel">취소</button>
 						</div>
 					</div>
 				</form>
@@ -95,3 +110,8 @@
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
+<script>
+	$("#btn_cancel").click(function() {
+		location.href = "/board/list";
+	});
+</script>

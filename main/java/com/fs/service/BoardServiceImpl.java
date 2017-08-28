@@ -3,6 +3,8 @@ package com.fs.service;
 import java.util.List;
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.fs.domain.BoardVO;
 import com.fs.persistence.BoardDAO;
 
@@ -21,7 +23,8 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> listAll() throws Exception {
 		return dao.listAll();
 	}
-
+	
+	@Transactional
 	@Override
 	public String getrowid() throws Exception {
 		String rowid = "";
