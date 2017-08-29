@@ -2,10 +2,12 @@ package com.fs.controller;
 
 import java.util.List;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fs.domain.BoardVO;
 import com.fs.service.BoardService;
+import com.fs.util.MediaUtils;
+import com.fs.util.UploadFileUtils;
 
 @Controller
 @RequestMapping("/board")
@@ -25,6 +29,9 @@ public class BoardController {
 	@Inject
 	private BoardService service;
 
+	@Resource(name="uploadPath")
+	private String uploadPath;
+	
 	@RequestMapping(value = "/regist", method = RequestMethod.GET)
 	public void regist(BoardVO board, Model model) throws Exception {
 		logger.info("register get.........");
@@ -45,9 +52,18 @@ public class BoardController {
 	         // 글 등록
 	         service.regist(board);
 	         if(files!=null) {
+	        	 
 	        	 for(int i = 0; i<files.size(); i++) {
-	        		 
+	        		 MultipartFile file = files.get(i);
+	        		 String originalFileName = file.getOriginalFilename();
+	        		 String formatName = originalFileName.substring(originalFileName.lastIndexOf('.')+1);
+	        		 // 이미지 파일인 경우만
+	        		 MediaType mType = MediaUtils.getMediaType(formatName);
+	        		 if(mType != null) {
+	        			 UploadFileUtils.uploadFile(uploadPath, originalFileName, file.getBytes());
+	        		 }
 	        	 }
+	        	 
 	         }
 	         rttr.addFlashAttribute("msg", "success");
 	         return "redirect:/board/list";

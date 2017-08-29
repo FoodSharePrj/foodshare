@@ -43,7 +43,7 @@
 									value="${login.uid}" readonly />
 							</div>
 							<div class="form-group">
-								<label for="subject"> 식자재 범주</label> <select id="category"
+								<label for="category"> 식자재 범주</label> <select id="category"
 									name="category" class="form-control" required="required">
 									<option value="meet" selected="">육류</option>
 									<option value="fish">어패류</option>
@@ -58,7 +58,7 @@
 									placeholder="공유할 식자재" required="required" />
 							</div>
 							<div class="form-group">
-								<label for="subject"> 식자재 상태</label> <select id="status"
+								<label for="status"> 식자재 상태</label> <select id="status"
 									name="status" class="form-control" required="required">
 									<option value="top" selected>상</option>
 									<option value="middle">중</option>
@@ -66,7 +66,7 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="subject"> 공유장소</label> <select id="splace"
+								<label for="splace"> 공유장소</label> <select id="splace"
 									name="splace" class="form-control" required="required">
 									<option value="seoul" selected="">서울/인천</option>
 									<option value="gyunggi">경기/강원</option>
@@ -86,14 +86,19 @@
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
-								<label for="name"> 내 용</label>
+								<label for="content"> 내 용</label>
 								<textarea name="content" id="content" class="form-control"
-									rows="15" cols="30" required="required" placeholder="내용을 입력하세요."></textarea>
+									rows="10" cols="30" required="required" placeholder="내용을 입력하세요."></textarea>
+							</div>
+							<div class="form-group uploadform">
+								<label for="file"> 사진첨부</label>
+								<input type="file" id='file' name="file" class="form-control" onChange="uploadform(this)" accept="image/*">
 							</div>
 							<div class="form-group">
-								<label for="name"> 사진첨부</label> <input type="file" name="file"
-									id="file" class="form-control" multiple="multiple">
+								<select class="form-control" id="filesList" size='4'>
+								</select>
 							</div>
+							<button type="button" id="btn_removeFile" class="btn btn-danger btn-xs pull-right">삭제</button>
 						</div>
 
 					</div>
@@ -113,5 +118,23 @@
 <script>
 	$("#btn_cancel").click(function() {
 		location.href = "/board/list";
+	});
+	
+	function uploadform(obj){
+		var filePath = obj.value;
+		var fileName = filePath.substr(filePath.lastIndexOf('\\')+1);
+		
+		$(obj).addClass(fileName);
+		obj.style.display='none';
+		
+		var str = "<input type='file' id='file' name='file' class='form-control' onChange='uploadform(this)' accept='image/*' >";
+		$(".uploadform").append(str);
+		
+		var str2 = "<option class='"+fileName+"' value='"+fileName+"'>"+fileName+"</option>";
+		$("#filesList").append(str2);		
+	}
+	
+	$("#btn_removeFile").click(function(){
+		
 	});
 </script>

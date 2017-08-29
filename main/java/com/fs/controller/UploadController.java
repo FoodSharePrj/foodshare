@@ -11,8 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 public class UploadController {
 	
-	@Resource(name="uploadPath")
-	private String uploadPath;
+	
 	
 	@RequestMapping(value="uploadForm", method=RequestMethod.POST)
 	public void uploadForm(MultipartFile file, Model model) throws Exception {
