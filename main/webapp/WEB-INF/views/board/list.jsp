@@ -19,7 +19,7 @@
 	</button>
 	<div class="row">
 		<c:forEach items="${list}" var="boardVO">
-			<div class="col-sm-4 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
 					<a href="/board/detail"> <img src="/resources/img/jumbo1.jpg"
 						alt="...">
@@ -29,7 +29,9 @@
 									id="boardwrite">${boardVO.writer}</span>
 							</p>
 							<p>
-								<span id="boardspace" class="text-primary">${boardVO.splace}</span>
+								<span id="boardspace" class="text-primary">${boardVO.splace1}</span>
+								<span id="boardspace" class="text-primary">${boardVO.splace2}</span>
+								<span id="boardspace" class="text-primary">${boardVO.splace3}</span>
 							</p>
 							<p>
 								<span id="boardduedate" class="text-danger">
@@ -39,7 +41,6 @@
 				</div>
 			</div>
 		</c:forEach>
-
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>

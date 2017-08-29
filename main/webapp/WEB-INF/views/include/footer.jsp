@@ -18,26 +18,26 @@
 				<div>
 					<span class="fa fa-map-marker footer-contacts-icon"> </span>
 					<p>
-						<span class="new-line-span">21 Revolution Street</span> Paris,
-						France
+						<span class="new-line-span">Jonglo-gu</span> Seoul,
+						Korea
 					</p>
 				</div>
 				<div>
 					<i class="fa fa-phone footer-contacts-icon"></i>
-					<p class="footer-center-info email text-left">+1 555 123456</p>
+					<p class="footer-center-info email text-left">02 000 0000</p>
 				</div>
 				<div>
 					<i class="fa fa-envelope footer-contacts-icon"></i>
 					<p>
-						<a href="#" target="_blank">support@company.com</a>
+						<a href="#" target="_blank">foodshare@company.com</a>
 					</p>
 				</div>
 			</div>
 			<div class="clearfix visible-sm-block"></div>
 			<div class="col-md-4 footer-about">
-				<h4>About the company</h4>
-				<p>Lorem ipsum dolor sit amet, consectateur adispicing elit.
-					Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.</p>
+				<h4>About the FoodShare Foundation</h4>
+				<p>2017년 9월 더조은 IT아카데미 스마트웹 개발자 양성과정의 
+					파이널 프로젝트로 제작 되었습니다.</p>
 				<div class="social-links social-icons">
 					<a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i
 						class="fa fa-twitter"></i></a><a href="#"><i

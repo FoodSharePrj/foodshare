@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="com.fs.mapper.BoardMapper">
 	<insert id="regist">
-		insert into tbl_bbs(bid, title, content, writer, regdate, category, target, duedate, splace, status) 
-		values(#{bid}, #{title},#{content},#{writer},now(),#{category}, #{target}, #{duedate}, #{splace}, #{status})
+	insert into tbl_bbs(bid, title, content, writer, regdate, category, target, duedate, splace1, splace2, splace3, status) 
+    values(#{bid}, #{title},#{content},#{writer},now(),#{category}, #{target}, #{duedate}, #{splace1}, #{splace2}, #{splace3}, #{status})
 	</insert>
 	
 	<select id="getrowid" resultType="String">
@@ -17,6 +17,6 @@
 	</update>
 	
 	<select id="listAll" resultType="BoardVO">
-	<![CDATA[select bid, title, writer, duedate from tbl_bbs where regdate>0 order by bid desc]]>
+	<![CDATA[select * from tbl_bbs where regdate>0 order by bid desc]]>
 	</select>
 </mapper>

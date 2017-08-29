@@ -2,15 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
-<style>
-.fileDrop {
-	width: 80%;
-	height: 100px;
-	border: 1px dotted gray;
-	background-color: lightslategrey;
-	margin: auto;
-}
-</style>
+
 <div id="promo">
 	<div class="jumbotron">
 		<h1>Start Food Share</h1>
@@ -66,16 +58,11 @@
 								</select>
 							</div>
 							<div class="form-group">
-								<label for="splace"> 공유장소</label> <select id="splace"
-									name="splace" class="form-control" required="required">
-									<option value="seoul" selected="">서울/인천</option>
-									<option value="gyunggi">경기/강원</option>
-									<option value="daejeon">대전/충청</option>
-									<option value="boosan">부산/울산/경남</option>
-									<option value="dagoo">대구/경북</option>
-									<option value="gwangjoo">광주/전라</option>
-									<option value="jejoo">제주</option>
-								</select>
+								<label for="splace1"> 공유 장소 입력</label>
+								<input type="button" class="btn btn-sm btn-info pull-right" onclick="addr()" value="위치 선택">							
+								<input type="text" id="splace1" name="splace1" class="form-control" placeholder="시ㆍ도">								
+								<input	type="text" id="splace2" name="splace2" class="form-control" placeholder="구ㆍ군">
+								<input type="text" id="splace3" name="splace3" class="form-control" placeholder="동ㆍ면">
 							</div>
 
 							<div class="form-group">
@@ -91,14 +78,16 @@
 									rows="10" cols="30" required="required" placeholder="내용을 입력하세요."></textarea>
 							</div>
 							<div class="form-group uploadform">
-								<label for="file"> 사진첨부</label>
-								<input type="file" id='file' name="file" class="form-control" onChange="uploadform(this)" accept="image/*">
+								<label for="file"> 사진첨부</label> <input type="file" name="file"
+									class="form-control" onChange="uploadform(this)"
+									accept="image/*">
 							</div>
 							<div class="form-group">
 								<select class="form-control" id="filesList" size='4'>
 								</select>
 							</div>
-							<button type="button" id="btn_removeFile" class="btn btn-danger btn-xs pull-right">삭제</button>
+							<button type="button" id="btn_removeFile"
+								class="btn btn-danger btn-xs pull-right">삭제</button>
 						</div>
 
 					</div>
@@ -115,26 +104,72 @@
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+	
+	function uploadform(obj) {
+		var filePath = obj.value;
+		var fileNameWithFormat = filePath.substr(filePath.lastIndexOf('\\') + 1);
+		var fileName = fileNameWithFormat.slice(0, fileNameWithFormat.lastIndexOf('.'));
+		var formatName = fileNameWithFormat.substr(fileNameWithFormat.lastIndexOf('.') + 1);
+		var pattern = /jpg|gif|png|jpeg/i;
+		
+		$(obj).attr("id", fileName + "_" + formatName);
+		obj.style.display = 'none';
+
+		var str = "<input type='file' name='file' class='form-control' onChange='uploadform(this)' accept='image/*' >";
+		$(".uploadform").append(str);
+
+		if (pattern.test(formatName)) {
+			var str2 = "<option value='" + fileNameWithFormat + "'>" + fileNameWithFormat + "</option>";
+			$("#filesList").append(str2);
+		} else {
+			$(obj).remove();
+		}
+	}
+
+	$("#btn_removeFile").click(function() {
+		var fileNameWithFormat = $("#filesList option:selected").text();
+		var fileName = fileNameWithFormat.slice(0, fileNameWithFormat.lastIndexOf('.'));
+		var formatName = fileNameWithFormat.substr(fileNameWithFormat.lastIndexOf('.') + 1);
+
+		$("#filesList option:selected").remove();
+		$("#" + fileName + "_" + formatName).remove();
+	});
+
 	$("#btn_cancel").click(function() {
 		location.href = "/board/list";
 	});
-	
-	function uploadform(obj){
-		var filePath = obj.value;
-		var fileName = filePath.substr(filePath.lastIndexOf('\\')+1);
-		
-		$(obj).addClass(fileName);
-		obj.style.display='none';
-		
-		var str = "<input type='file' id='file' name='file' class='form-control' onChange='uploadform(this)' accept='image/*' >";
-		$(".uploadform").append(str);
-		
-		var str2 = "<option class='"+fileName+"' value='"+fileName+"'>"+fileName+"</option>";
-		$("#filesList").append(str2);		
-	}
-	
-	$("#btn_removeFile").click(function(){
-		
-	});
+</script>
+<script>
+   function addr() {
+      new daum.Postcode({
+         oncomplete : function(data) {
+            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+            // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+            // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+            var fullAddr1 = ''; // 최종 주소 변수1
+            var fullAddr2 = ''; // 최종 주소 변수2
+            var fullAddr3 = ''; // 최종 주소 변수3
+            var extraAddr = ''; // 조합형 주소 변수
+
+            // 사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+            if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+               fullAddr1 = data.sido;
+               fullAddr2 = data.sigungu;
+               fullAddr3 = data.bname;
+
+            } else { // 사용자가 지번 주소를 선택했을 경우(J)
+               fullAddr1 = data.sido;
+                fullAddr2 = data.sigungu;
+                fullAddr3 = data.bname;
+            }
+
+            document.getElementById('splace1').value = fullAddr1;
+            document.getElementById('splace2').value = fullAddr2;
+            document.getElementById('splace3').value = fullAddr3;
+         }
+      }).open();
+   }
 </script>

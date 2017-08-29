@@ -36,7 +36,7 @@
 	</div>
 </div>
 <div class="container site-section" id="welcome">
-	<h1>Best Share</h1>
+	<h1>Recent Shared Food</h1>
 	<div class="row">
 		<div class="col-md-4">
 			<div class="thumbnail">
