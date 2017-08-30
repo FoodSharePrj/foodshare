@@ -41,7 +41,7 @@ public class BoardController {
 	public void regist(BoardVO board, Model model) throws Exception {
 		logger.info("register get.........");
 	}
-
+	
 	@RequestMapping(value="/regist", method = RequestMethod.POST)
 	public String registerPOST(BoardVO board, MultipartHttpServletRequest mhsr, RedirectAttributes rttr) throws Exception{
 		logger.info("register post.........");

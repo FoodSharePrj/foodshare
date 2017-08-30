@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fs.util.MediaUtils;
 
@@ -22,23 +23,24 @@ public class UploadController {
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
+	@ResponseBody
 	@RequestMapping("/displayFile")
-	public ResponseEntity<byte[]> displayFile(@RequestParam(name="fileName") String fileName) throws Exception {
-		System.out.println(fileName);
+	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
+		
 		String formatName = fileName.substring(fileName.lastIndexOf('.')+1);
 		ResponseEntity<byte[]> entity = null;
 		InputStream in = null;
 		
 		try {
-			in = new FileInputStream("d:/foodshareupload"+fileName);
+			in = new FileInputStream(uploadPath+fileName);
 			
-			//HttpHeaders headers = new HttpHeaders();
+			HttpHeaders headers = new HttpHeaders();
 			MediaType mType = MediaUtils.getMediaType(formatName);
 			if(mType != null) {
-				//headers.setContentType(mType);
+				headers.setContentType(mType);
 			}
 			
-			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), HttpStatus.OK);
+			entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.OK);
 		} catch(Exception e){
 			e.printStackTrace();
 			entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);

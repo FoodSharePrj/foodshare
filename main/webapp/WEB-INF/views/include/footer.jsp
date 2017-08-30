@@ -35,7 +35,7 @@
 			</div>
 			<div class="clearfix visible-sm-block"></div>
 			<div class="col-md-4 footer-about">
-				<h4>About the FoodShare Foundation</h4>
+				<h4>About the FoodShare Project</h4>
 				<p>2017년 9월 더조은 IT아카데미 스마트웹 개발자 양성과정의 
 					파이널 프로젝트로 제작 되었습니다.</p>
 				<div class="social-links social-icons">

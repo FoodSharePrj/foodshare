@@ -19,7 +19,7 @@
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
 					<a href="/board/detail">
-					 <img src="/displayFile?'fileName'='\2017\08\30\11f6756c-8544-47de-834b-1a2a268bc314_dessert03.jpg'">
+					 <img src="/displayFile?fileName=/2017/08/31/4a65887a-37d0-4710-bb20-e88056cec5a0_dessert02.jpg">
 						<div class="caption">
 							<p>
 								<span id="boardtitle">${boardVO.title} </span><br> <span
