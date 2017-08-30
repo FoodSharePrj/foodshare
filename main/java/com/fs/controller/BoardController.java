@@ -74,6 +74,7 @@ public class BoardController {
 	        			 // 서버에 저장 그리고 저장 경로 반환
 	        			 route = UploadFileUtils.uploadFile(uploadPath, originalFileName, file.getBytes());
 	        			 
+	        			 // DB에 업로드 이미지 정보 기록
 	        			 if(route!=null) {
 	        				 uploadVO = new UploadVO();
 			        		 uploadVO.setFid(uploadService.getRowid());

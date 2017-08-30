@@ -51,7 +51,7 @@ public class BoardVO {
 	}
 
 	public String getRegdate() {
-		return regdate;
+		return regdate.substring(0, 10);
 	}
 
 	public void setRegdate(String regdate) {
@@ -75,7 +75,7 @@ public class BoardVO {
 	}
 
 	public String getDuedate() {
-		return duedate;
+		return duedate.substring(0, 10);
 	}
 
 	public void setDuedate(String duedate) {

@@ -13,16 +13,13 @@
 	</div>
 </div>
 <div class="container">
-	<h2>나눔리스트</h2>
-	<button type="button" class="btn btn-info" id="cancleBtn">
-		글쓰기<i class="fa fa-times spaceLeft"></i>
-	</button>
+	<h2>나눔리스트&nbsp;&nbsp;<button type="button" class="btn btn-sm btn-warning" id="cancleBtn">글쓰기</button></h2>
 	<div class="row sharelist">
 		<c:forEach items="${list}" var="boardVO">
-			<div class="col-sm-4 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<a href="/board/detail"> <img src="/resources/img/jumbo1.jpg"
-						alt="...">
+					<a href="/board/detail">
+					 <img src="/displayFile?'fileName'='\2017\08\30\11f6756c-8544-47de-834b-1a2a268bc314_dessert03.jpg'">
 						<div class="caption">
 							<p>
 								<span id="boardtitle">${boardVO.title} </span><br> <span
@@ -32,16 +29,42 @@
 							</p>
 							<p>
 								<span id="boardduedate1" class="text-danger">${boardVO.regdate}</span>
-								<span class="text-danger">&nbsp;~&nbsp;</span> <span
-									id="boardduedate2" class="text-danger">${boardVO.duedate}</span>
+								<span class="text-danger">&nbsp;~&nbsp;</span>
+								<span id="boardduedate2" class="text-danger">${boardVO.duedate}</span>
 							</p>
-						</div></a>
+						</div>
+					</a>
 				</div>
 			</div>
 		</c:forEach>
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script id="listTemplate" type="text/x-handlebars-template">
+{{#each.}}
+<div class="col-sm-4 col-md-3">
+	<div class="thumbnail">
+		<a href="/board/detail">
+			<img src="/resources/img/jumbo1.jpg" alt="...">
+			<div class="caption">
+				<p>
+					<span id="boardtitle">${boardVO.title} </span><br>
+					<span id="boardwrite1">${boardVO.splace1}</span> 
+					<span id="boardwrite2">${boardVO.splace2}</span>
+					<span id="boardwrite3">${boardVO.splace3}</span>
+				</p>
+				<p>
+					<span id="boardduedate1" class="text-danger">${boardVO.regdate}</span>
+					<span class="text-danger">&nbsp;~&nbsp;</span>
+					<span id="boardduedate2" class="text-danger">${boardVO.duedate}</span>
+				</p>
+			</div>
+		</a>
+	</div>
+</div>
+{{/each}}
+</script>
 <script>
 	var result = '${msg}';
 	if (result == 'success') {
@@ -51,15 +74,4 @@
 	$("#cancleBtn").click(function() {
 		location.href = "/board/regist";
 	});
-</script>
-<script>
-	var str1 = $("#boardduedate1").text();
-	var str2 = str1.slice(0, 10);
-
-	$(".sharelist #boardduedate1").text(str2);
-
-	var str3 = $("#boardduedate2").text();
-	var str4 = str3.slice(0, 10);
-
-	$(".sharelist #boardduedate2").text(str4);
 </script>
