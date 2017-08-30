@@ -38,4 +38,6 @@ public class BoardServiceImpl implements BoardService {
 		dao.setrowid(Hextot);
 		return rowid;
 	}
+
+	
 }

@@ -14,21 +14,19 @@ public class UploadFileUtils {
 	private static final Logger logger = 
 			LoggerFactory.getLogger(UploadFileUtils.class);
 	
-	public static String uploadFile(
-							String uploadPath,
-							String originalName,
-							byte[] fileData) throws Exception{
+	public static String uploadFile(String uploadPath, String originalName, byte[] fileData) throws Exception{
 		
 		UUID uid = UUID.randomUUID();
 			
-		String savedName = uid.toString() + "_" + originalName;
-		String savedPath = calcPath(uploadPath);// 저장될 경로
+		String savedName = uid.toString() + "_" + originalName; //저장될 파일 이름
+		String savedPath = calcPath(uploadPath);// 저장될 디렉토리
+		String fullName = savedPath+File.separator+savedName; // 디렉토리+파일이름
+		
 		File target = new File(uploadPath+savedPath, savedName);
-	
 		
 		FileCopyUtils.copy(fileData, target);
 		
-		return "";
+		return fullName.replace(File.separatorChar, '/');
 	}
 	
 	// /년/월/일 디렉토리 주소 문자열 생성 및 makeDir메서드 실행하여 디렉토리생성

@@ -106,28 +106,35 @@
 <%@ include file="../include/footer.jsp"%>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
-	
+	// input 태그에 파일 선택했을 경우
 	function uploadform(obj) {
+		//파일 경로
 		var filePath = obj.value;
+		// 파일이름.jpg
 		var fileNameWithFormat = filePath.substr(filePath.lastIndexOf('\\') + 1);
+		// 파일이름 only
 		var fileName = fileNameWithFormat.slice(0, fileNameWithFormat.lastIndexOf('.'));
+		// jpg
 		var formatName = fileNameWithFormat.substr(fileNameWithFormat.lastIndexOf('.') + 1);
+		// 이미지 파일만 업로드하기 위한 정규식
 		var pattern = /jpg|gif|png|jpeg/i;
-		
+		// 파일 선택한 input 태그는 숨김
 		$(obj).attr("id", fileName + "_" + formatName);
 		obj.style.display = 'none';
-
+		// 새로운 파일용 input  태그 추가
 		var str = "<input type='file' name='file' class='form-control' onChange='uploadform(this)' accept='image/*' >";
 		$(".uploadform").append(str);
-
+		
+		// 이미지 파일인 경우
 		if (pattern.test(formatName)) {
+			//select 태그에 추가
 			var str2 = "<option value='" + fileNameWithFormat + "'>" + fileNameWithFormat + "</option>";
 			$("#filesList").append(str2);
-		} else {
-			$(obj).remove();
+		} else { //이미지 파일이 아닌 경우
+			$(obj).remove(); //인풋태그 제거
 		}
 	}
-
+	//첨부파일 삭제 버튼 눌렀을 경우
 	$("#btn_removeFile").click(function() {
 		var fileNameWithFormat = $("#filesList option:selected").text();
 		var fileName = fileNameWithFormat.slice(0, fileNameWithFormat.lastIndexOf('.'));
