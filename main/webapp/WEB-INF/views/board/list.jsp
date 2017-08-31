@@ -18,8 +18,7 @@
 		나눔리스트&nbsp;&nbsp;
 		<button type="button" class="btn btn-sm btn-warning" id="cancleBtn">글쓰기</button>
 	</h2>
-	<div class="row shareList">
-	
+	<div class="row shareList" style="display:flex; flex-wrap:wrap">
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
@@ -47,19 +46,22 @@
 	</div>
 </div>
 </script>
+
 <script>
 	var listNumber = 0;
 	var template = Handlebars.compile($("#listTemplate").html());
 	
 	$(document).ready(function(){
+
 		getList();
 		
 		$(document).scroll(function(){
+			
 			var maxHeight = $(document).height();
 			var currentScroll = $(window).scrollTop() + $(window).height();
 
-			if (maxHeight <= currentScroll + 100) {
-				getList();		
+			if (maxHeight <= currentScroll) {
+				getList();
 			}
 		});
 	});

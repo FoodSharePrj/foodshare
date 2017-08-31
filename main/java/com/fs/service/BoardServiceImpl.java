@@ -43,7 +43,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<ListObjVO> getList(int i) throws Exception {
 		
-		return dao.getList(i*20);
+		return dao.getList(i*12);
 	}
 
 	
