@@ -3,6 +3,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
 
+<style>
+body{background:#f0f6fc;}
+</style>
 <div id="promo">
 	<div class="jumbotron">
 		<h1>Start Food Share</h1>
@@ -13,6 +16,7 @@
 		</p>
 	</div>
 </div>
+
 <div class="container">
 	<h2>
 		나눔리스트&nbsp;&nbsp;
@@ -21,9 +25,11 @@
 	<div class="row shareList" style="display:flex; flex-wrap:wrap">
 	</div>
 </div>
+
 <%@ include file="../include/footer.jsp"%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+<script src="/resources/js/simpleparallax.js"></script>	
 <script id="listTemplate" type="text/x-handlebars-template">
 <div class="col-sm-6 col-md-3">
 	<div class="thumbnail">
@@ -52,7 +58,7 @@
 	var template = Handlebars.compile($("#listTemplate").html());
 	
 	$(document).ready(function(){
-
+	
 		getList();
 		
 		$(document).scroll(function(){
