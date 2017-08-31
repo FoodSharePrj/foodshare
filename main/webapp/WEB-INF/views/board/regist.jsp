@@ -37,11 +37,12 @@
 							<div class="form-group">
 								<label for="category"> 식자재 범주</label> <select id="category"
 									name="category" class="form-control" required="required">
-									<option value="meet" selected="">육류</option>
-									<option value="fish">어패류</option>
-									<option value="vegetable">채소류</option>
-									<option value="apple">과일류</option>
-									<option value="can">가공식품</option>
+									<option value="육류" selected>육류</option>
+									<option value="어패류">어패류</option>
+									<option value="채소류">채소류</option>
+									<option value="과일류">과일류</option>
+									<option value="가공식품">가공식품</option>
+									<option value="기타">기타</option>
 								</select>
 							</div>
 							<div class="form-group">
@@ -52,9 +53,9 @@
 							<div class="form-group">
 								<label for="status"> 식자재 상태</label> <select id="status"
 									name="status" class="form-control" required="required">
-									<option value="top" selected>상</option>
-									<option value="middle">중</option>
-									<option value="low">하</option>
+									<option value="상" selected>상</option>
+									<option value="중">중</option>
+									<option value="하">하</option>
 								</select>
 							</div>
 							<div class="form-group">

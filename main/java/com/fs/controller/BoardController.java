@@ -10,13 +10,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fs.domain.BoardVO;
+import com.fs.domain.ListObjVO;
 import com.fs.domain.UploadVO;
 import com.fs.service.BoardService;
 import com.fs.service.UploadService;
@@ -56,9 +59,17 @@ public class BoardController {
 	         // 글 등록
 	         service.regist(board);
 	         
-	         // 업로드 파일 저장 및 DB기록
-	         if(files!=null) {
-	        	 UploadVO uploadVO=null;
+	         UploadVO uploadVO=null;
+	         // 사진 첨부 안했을 경우
+	         if(files.size()==1) {
+	        	uploadVO = new UploadVO();
+	        	uploadVO.setFid(uploadService.getRowid());
+	        	uploadVO.setBid(board.getBid());
+	        	uploadVO.setRoute("/resources/img/file.png");
+	        	uploadVO.setIsmain("y");  	
+	        	uploadService.insertFile(uploadVO);
+	        // 사진 첨부 했을 경우
+	         }else {
 	        	 
 	        	 for(int i = 0; i<files.size(); i++) {
 	        		 
@@ -100,10 +111,14 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(Model model) throws Exception {
-		logger.info("show all list.........");
-		model.addAttribute("list", service.listAll());
+	public String list() throws Exception {
 		return "/board/list";
+	}
+
+	@ResponseBody
+	@RequestMapping(value="/getList/{i}", method=RequestMethod.GET)
+	public List<ListObjVO> getListObj(@PathVariable("i") Integer i) throws Exception{
+		return service.getList(i);
 	}
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)

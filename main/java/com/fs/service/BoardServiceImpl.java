@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fs.domain.BoardVO;
+import com.fs.domain.ListObjVO;
 import com.fs.persistence.BoardDAO;
 
 @Service
@@ -37,6 +38,12 @@ public class BoardServiceImpl implements BoardService {
 
 		dao.setrowid(Hextot);
 		return rowid;
+	}
+
+	@Override
+	public List<ListObjVO> getList(int i) throws Exception {
+		
+		return dao.getList(i*20);
 	}
 
 	

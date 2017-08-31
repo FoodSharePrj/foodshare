@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import com.fs.domain.BoardVO;
+import com.fs.domain.ListObjVO;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -30,5 +31,10 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public void setrowid(String rowid) throws Exception {
 		session.update(namespace+".setrowid", rowid);
+	}
+
+	@Override
+	public List<ListObjVO> getList(int i) throws Exception {
+		return session.selectList(namespace+".getList", i);
 	}
 }

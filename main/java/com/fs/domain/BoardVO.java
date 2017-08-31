@@ -1,17 +1,13 @@
 package com.fs.domain;
 
-import java.util.Date;
-
 public class BoardVO {
 	private String bid;
 	private String title;
 	private String content;
 	private String writer;
-	// private Date regdate;
 	private String regdate;
 	private String category;
 	private String target;
-	// private Date duedate;
 	private String duedate;
 	private String splace1;
 	private String splace2;
@@ -51,7 +47,7 @@ public class BoardVO {
 	}
 
 	public String getRegdate() {
-		return regdate.substring(0, 10);
+		return regdate;
 	}
 
 	public void setRegdate(String regdate) {
@@ -75,7 +71,7 @@ public class BoardVO {
 	}
 
 	public String getDuedate() {
-		return duedate.substring(0, 10);
+		return duedate;
 	}
 
 	public void setDuedate(String duedate) {

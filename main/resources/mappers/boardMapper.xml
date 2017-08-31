@@ -19,4 +19,12 @@
 	<select id="listAll" resultType="BoardVO">
 	<![CDATA[select * from tbl_bbs where regdate>0 order by bid desc]]>
 	</select>
+	
+	<select id="getList" resultType="ListObjVO">
+	select * 
+	from tbl_bbs b, tbl_file f 
+	where b.bid=f.bid and ismain='y' 
+	order by duedate asc, b.bid asc 
+	limit #{i}, 20
+	</select>
 </mapper>
