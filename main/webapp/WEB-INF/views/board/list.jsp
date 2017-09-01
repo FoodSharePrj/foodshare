@@ -58,16 +58,14 @@ body{background:#f0f6fc;}
 	var template = Handlebars.compile($("#listTemplate").html());
 	
 	$(document).ready(function(){
-	
 		getList();
 		
 		$(document).scroll(function(){
-			
 			var maxHeight = $(document).height();
 			var currentScroll = $(window).scrollTop() + $(window).height();
-
-			if (maxHeight <= currentScroll) {
+			if (maxHeight <= currentScroll+15) {
 				getList();
+				$(window).scrollTop($(window).scrollTop()-30);
 			}
 		});
 	});

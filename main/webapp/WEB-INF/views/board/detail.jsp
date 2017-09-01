@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp"%>
 
 <div id="promo">
@@ -13,49 +14,100 @@
 	</div>
 </div>
 <div class="container" id="detail">
+	<button class="btn btn-sm btn-primary" id="goList">목록</button>
+	<c:if test="${login.uid == boardVO.writer}">
+	<button class="btn btn-sm btn-warning" id="modify">수정</button>
+	<button class="btn btn-sm btn-danger" id="delete">삭제</button>
+	</c:if>
 	<div class="row">
-		<div class="col-md-6 thumbnail">
-			<img src="/resources/img/jumbo1.jpg" alt="...">
+		<div class="col-md-6">
+			<div id="carousel-generic" class="carousel slide">
+				<div class="carousel-inner">
+					
+				</div>
+				<a class="left carousel-control" href="#carousel-generic" data-slide="prev">
+					<span class="icon-prev"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-generic" data-slide="next">
+					<span class="icon-next"></span>
+				</a>
+			</div>
 		</div>
 		<div class="col-md-6">
 			<table class="table">
-				<thead>
-					<tr>
-						<th>상품명</th>
-						<th>상품명글제목</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<th>작성자</th>
-						<th>작성자아이디</th>
-					</tr>
-					<tr>
-						<th>카테고리</th>
-						<th>카테고리내용</th>
-					</tr>
-					<tr>
-						<th>지역</th>
-						<th>지역명</th>
-					</tr>
-					<tr>
-						<th>기한</th>
-						<th>유통기한날짜</th>
-					</tr>
-				</tbody>
+				<tr>
+					<th>제목</th>
+					<th>${boardVO.title}</th>
+				</tr>
+				<tr>
+					<th>작성자</th>
+					<th>${boardVO.writer}</th>
+				</tr>
+				<tr>
+					<th>종류</th>
+					<th>${boardVO.category}</th>
+				</tr>
+				<tr>
+					<th>상태</th>
+					<th>${boardVO.status}</th>
+				</tr>
+				<tr>
+					<th>장소</th>
+					<th>${boardVO.splace}</th>
+				</tr>
+				<tr>
+					<th>기한</th>
+					<th>${boardVO.duedate}</th>
+				</tr>
+				<tr>
+					<th>내용</th>
+					<th>${boardVO.content}</th>
+				</tr>
 			</table>
-			<!-- 데스크톱 화면 전용 버튼 -->
-			<button class="btn btn-success btn-lg btn-block hidden-sm hidden-xs"
-				type="submit">나눔신청하기</button>
 		</div>
 	</div>
+	<hr/>
 	<div class="row">
 		<div class="col-md-12">상세정보 글내용</div>
 	</div>
-	<div class="row hidden-lg hidden-md" id="btnmobile">
-		<!-- 스마트폰 화면 전용 버튼 -->
-		<button class="btn btn-success btn-lg btn-block hidden-lg hidden-md"
-			type="submit">나눔신청하기</button>
-	</div>
 </div>
 <%@ include file = "../include/footer.jsp" %>
+<script>
+$(function(){
+	$("#goList").click(function(){
+		location.href="/board/list";
+	});
+	
+	$("#modify").click(function(){
+		
+	});
+	
+	$("#delete").click(function(){
+		location.href="/board/delete?bid="+"${boardVO.bid}";
+	});
+	
+	$.getJSON("/getUploadList/"+"${boardVO.bid}", function(list) {
+		$(list).each(function(index, element) {
+			
+			var imgSrc=element.route;
+			if(imgSrc.substring(0,10)!="/resources"){
+				imgSrc="/displayFile?fileName="+imgSrc;
+			}
+			
+			var str = '';
+			if(index==0){
+				str += "<div class='item active'>";	
+			}else{
+				str += "<div class='item'>";
+			}
+			str += "<img src='"+imgSrc+"'>";
+			str += "</div>";
+			$(".carousel-inner").append(str);
+		});
+	});
+	
+	$('.carousel').carousel({
+		interval:3000
+	});	
+});
+</script>

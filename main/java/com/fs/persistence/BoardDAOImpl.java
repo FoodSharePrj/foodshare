@@ -37,4 +37,10 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<ListObjVO> getList(int i) throws Exception {
 		return session.selectList(namespace+".getList", i);
 	}
+
+	@Override
+	public BoardVO getBoardVO(String bid) throws Exception {
+		
+		return session.selectOne(namespace+".getBoardVO", bid);
+	}
 }

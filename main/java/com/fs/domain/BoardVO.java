@@ -7,13 +7,16 @@ public class BoardVO {
 	private String writer;
 	private String regdate;
 	private String category;
-	private String target;
+	private String progress;
 	private String duedate;
 	private String splace1;
 	private String splace2;
 	private String splace3;
 	private String status;
 
+	public String getSplace() {
+		return splace1+" "+splace2+" "+splace3;
+	}
 	public String getBid() {
 		return bid;
 	}
@@ -62,12 +65,12 @@ public class BoardVO {
 		this.category = category;
 	}
 
-	public String getTarget() {
-		return target;
+	public String getprogress() {
+		return progress;
 	}
 
-	public void setTarget(String target) {
-		this.target = target;
+	public void setprogress(String progress) {
+		this.progress = progress;
 	}
 
 	public String getDuedate() {
@@ -113,7 +116,7 @@ public class BoardVO {
 	@Override
 	public String toString() {
 		return "BoardVO [bid=" + bid + ", title=" + title + ", content=" + content + ", writer=" + writer + ", regdate="
-				+ regdate + ", category=" + category + ", target=" + target + ", duedate=" + duedate + ", splace1="
+				+ regdate + ", category=" + category + ", progress=" + progress + ", duedate=" + duedate + ", splace1="
 				+ splace1 + ", splace2=" + splace2 + ", splace3=" + splace3 + ", status=" + status + "]";
 	}
 

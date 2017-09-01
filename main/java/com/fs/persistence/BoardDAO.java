@@ -11,6 +11,7 @@ public interface BoardDAO {
 	public String getrowid()throws Exception;
 	public void setrowid(String rowid) throws Exception;
 	public List<ListObjVO> getList(int i) throws Exception;
+	public BoardVO getBoardVO(String bid) throws Exception;
 }
 
 

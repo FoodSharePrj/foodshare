@@ -7,7 +7,7 @@ public class ListObjVO {
 	private String writer;
 	private String regdate;
 	private String category;
-	private String target;
+	private String progress;
 	private String duedate;
 	private String splace1;
 	private String splace2;
@@ -52,11 +52,11 @@ public class ListObjVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getTarget() {
-		return target;
+	public String getprogress() {
+		return progress;
 	}
-	public void setTarget(String target) {
-		this.target = target;
+	public void setprogress(String progress) {
+		this.progress = progress;
 	}
 	public String getDuedate() {
 		return duedate.substring(0, 10);
@@ -103,7 +103,7 @@ public class ListObjVO {
 	@Override
 	public String toString() {
 		return "ListObjVO [bid=" + bid + ", title=" + title + ", content=" + content + ", writer=" + writer
-				+ ", regdate=" + regdate + ", category=" + category + ", target=" + target + ", duedate=" + duedate
+				+ ", regdate=" + regdate + ", category=" + category + ", progress=" + progress + ", duedate=" + duedate
 				+ ", splace1=" + splace1 + ", splace2=" + splace2 + ", splace3=" + splace3 + ", status=" + status
 				+ ", fid=" + fid + ", route=" + route + "]";
 	}

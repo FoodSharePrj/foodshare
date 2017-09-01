@@ -46,5 +46,11 @@ public class BoardServiceImpl implements BoardService {
 		return dao.getList(i*12);
 	}
 
+	@Override
+	public BoardVO getBoardVO(String bid) throws Exception {
+
+		return dao.getBoardVO(bid);
+	}
+
 	
 }

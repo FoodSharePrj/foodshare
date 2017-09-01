@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
 <mapper namespace="com.fs.mapper.BoardMapper">
 	<insert id="regist">
-	insert into tbl_bbs(bid, title, content, writer, regdate, category, target, duedate, splace1, splace2, splace3, status) 
-    values(#{bid}, #{title},#{content},#{writer},now(),#{category}, #{target}, #{duedate}, #{splace1}, #{splace2}, #{splace3}, #{status})
+	insert into tbl_bbs(bid, title, content, writer, regdate, category, duedate, splace1, splace2, splace3, status) 
+    values(#{bid}, #{title},#{content},#{writer},now(),#{category},#{duedate}, #{splace1}, #{splace2}, #{splace3}, #{status})
 	</insert>
 	
 	<select id="getrowid" resultType="String">
@@ -16,15 +16,15 @@
 	update tbl_sequence set rowid = #{rowid} where tid='F001'
 	</update>
 	
-	<select id="listAll" resultType="BoardVO">
-	<![CDATA[select * from tbl_bbs where regdate>0 order by bid desc]]>
-	</select>
-	
 	<select id="getList" resultType="ListObjVO">
 	select * 
 	from tbl_bbs b, tbl_file f 
 	where b.bid=f.bid and ismain='y' 
 	order by duedate asc, b.bid asc 
 	limit #{i}, 12
+	</select>
+	
+	<select id="getBoardVO" resultType="BoardVO">
+	select * from tbl_bbs where bid=#{bid}
 	</select>
 </mapper>

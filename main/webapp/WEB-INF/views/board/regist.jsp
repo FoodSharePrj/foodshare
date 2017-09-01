@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.0/themes/base/jquery-ui.css" />
 
 <div id="promo">
 	<div class="jumbotron">
@@ -35,8 +36,8 @@
 									value="${login.uid}" readonly />
 							</div>
 							<div class="form-group">
-								<label for="category"> 식자재 범주</label> <select id="category"
-									name="category" class="form-control" required="required">
+								<label for="category"> 식자재 범주</label>
+								<select id="category" name="category" class="form-control" required="required">
 									<option value="육류" selected>육류</option>
 									<option value="어패류">어패류</option>
 									<option value="채소류">채소류</option>
@@ -44,11 +45,6 @@
 									<option value="가공식품">가공식품</option>
 									<option value="기타">기타</option>
 								</select>
-							</div>
-							<div class="form-group">
-								<label for="target"> 공유식자재</label> <input type="text"
-									class="form-control" id="target" name="target"
-									placeholder="공유할 식자재" required="required" />
 							</div>
 							<div class="form-group">
 								<label for="status"> 식자재 상태</label> <select id="status"
@@ -68,7 +64,7 @@
 
 							<div class="form-group">
 								<label for="duedate"> 공유기한</label> <input type="date"
-									class="form-control" name="duedate" />
+									class="form-control" name="duedate" id="duedate"/>
 							</div>
 
 						</div>
@@ -105,8 +101,29 @@
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
+<script src="http://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+$(function() {
+	$("#duedate").datepicker({
+	dateFormat: 'yy-mm-dd',
+	monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'],
+	dayNamesMin: ['일','월','화','수','목','금','토'],
+	closeText: '닫기',
+    prevText: '이전달',
+    nextText: '다음달',
+    currentText: '오늘',
+    showAnim: 'show',
+    maxDate: '+2m',
+    minDate: '-0',
+	changeMonth: true, //월변경가능
+	changeYear: true, //년변경가능
+	showMonthAfterYear: true, //년 뒤에 월 표시
+	
+	});
+});
+
+
 	// input 태그에 파일 선택했을 경우
 	function uploadform(obj) {
 		//파일 경로

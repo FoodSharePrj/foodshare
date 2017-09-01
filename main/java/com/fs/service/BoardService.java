@@ -10,4 +10,5 @@ public interface BoardService {
 	public List<BoardVO> listAll()throws Exception;
 	public String getrowid() throws Exception;
 	public List<ListObjVO> getList(int i) throws Exception;
+	public BoardVO getBoardVO(String bid) throws Exception;
 }
