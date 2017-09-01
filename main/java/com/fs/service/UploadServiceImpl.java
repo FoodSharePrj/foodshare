@@ -1,5 +1,7 @@
 package com.fs.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -34,4 +36,12 @@ public class UploadServiceImpl implements UploadService {
 		
 		dao.insertFile(uploadVO);		
 	}
+
+	@Override
+	public List<UploadVO> getUploadList(String bid) throws Exception {
+		
+		return dao.getUploadList(bid);
+	}
+	
+	
 }

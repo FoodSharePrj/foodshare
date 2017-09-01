@@ -1,5 +1,7 @@
 package com.fs.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -28,5 +30,11 @@ public class UploadDAOImpl implements UploadDAO{
 	@Override
 	public void insertFile(UploadVO uploadVO) throws Exception {
 		session.insert(namespace+".insertFile", uploadVO);
+	}
+
+	@Override
+	public List<UploadVO> getUploadList(String bid) throws Exception {
+
+		return session.selectList(namespace+".getUploadList", bid);
 	}
 }

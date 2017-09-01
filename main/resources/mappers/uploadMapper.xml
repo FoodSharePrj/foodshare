@@ -16,4 +16,8 @@
 	insert into tbl_file (fid, route, bid, ismain) values (#{fid}, #{route}, #{bid}, #{ismain})
 	</insert>
 	
+	<select id="getUploadList" resultType="UploadVO">
+	select * from tbl_file where bid=#{bid} order by regdate
+	</select>
+	
 </mapper>

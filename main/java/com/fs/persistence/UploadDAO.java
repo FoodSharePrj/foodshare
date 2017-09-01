@@ -1,5 +1,7 @@
 package com.fs.persistence;
 
+import java.util.List;
+
 import com.fs.domain.UploadVO;
 
 public interface UploadDAO {
@@ -10,4 +12,5 @@ public interface UploadDAO {
 	
 	public void insertFile(UploadVO uploadVO) throws Exception;
 	
+	public List<UploadVO> getUploadList(String bid) throws Exception;
 }
