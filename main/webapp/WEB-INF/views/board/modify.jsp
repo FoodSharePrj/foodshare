@@ -75,8 +75,7 @@
 							</div>
 							<div class="form-group uploadform">
 								<label for="file"> 사진첨부</label> <input type="file" name="file"
-									class="form-control" onChange="uploadform(this)"
-									accept="image/*">
+									class="form-control" onChange="uploadform(this)" accept="image/*">
 							</div>
 							<div class="form-group">
 								<select class="form-control" id="filesList" size='4'>
@@ -120,7 +119,6 @@ $(function() {
 	
 	});
 });
-
 
 	// input 태그에 파일 선택했을 경우
 	function uploadform(obj) {

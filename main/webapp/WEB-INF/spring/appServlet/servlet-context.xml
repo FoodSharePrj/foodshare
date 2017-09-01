@@ -39,6 +39,8 @@
 		<!-- 로그인 인증 인터셉터 -->
 		<interceptor>
 			<mapping path="/board/regist"/>
+			<mapping path="/board/modify"/>
+			<mapping path="/board/delete"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		

@@ -129,6 +129,20 @@ public class BoardController {
 		return "/board/detail";
 	}
 	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public String modifyGET(@RequestParam("bid") String bid, Model model) throws Exception {
+		model.addAttribute(service.getBoardVO(bid));
+		
+		return "/board/detail";
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyPOST(@RequestParam("bid") String bid, Model model) throws Exception {
+		model.addAttribute(service.getBoardVO(bid));
+		
+		return "/board/detail";
+	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String delete(@RequestParam("bid") String bid, Model model) throws Exception {
 		
