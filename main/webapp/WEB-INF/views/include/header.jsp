@@ -37,7 +37,7 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand navbar-link" href="/"><img
-					src="/resources/img/logo.jpg" id="logo"><strong>FoodShare
+					src="/resources/img/sharing.png" id="logo"><strong>FoodShare
 						Project</strong></a>
 			</div>
 			<div class="collapse navbar-collapse"
@@ -81,7 +81,7 @@ body {
 						<li role="presentation"><a href="/user/join">회원가입</a></li>
 					</c:if>
 					<c:if test="${not empty login}">
-						<li role="presentation"><a href="/">MyPage</a></li>
+						<li role="presentation"><a href="/user/mypage">MyPage</a></li>
 						<li role="presentation"><a href="/user/logout">Logout</a></li>
 					</c:if>
 				</ul>

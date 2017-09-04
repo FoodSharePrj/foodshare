@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fs.domain.BoardVO;
 import com.fs.domain.ListObjVO;
 import com.fs.domain.UploadVO;
+import com.fs.service.ApplyService;
 import com.fs.service.BoardService;
 import com.fs.service.UploadService;
 import com.fs.util.MediaUtils;
@@ -37,6 +38,9 @@ public class BoardController {
 	
 	@Inject
 	private UploadService uploadService;
+	
+	@Inject
+	private ApplyService applyService;
 
 	@Resource(name="uploadPath")
 	private String uploadPath;
@@ -124,7 +128,10 @@ public class BoardController {
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(@RequestParam("bid") String bid, Model model) throws Exception {
-		model.addAttribute(service.getBoardVO(bid));
+		
+		BoardVO boardVO = service.getBoardVO(bid);
+		boardVO.setApplycnt(applyService.getApplyCnt(bid));
+		model.addAttribute(boardVO);
 		
 		return "/board/detail";
 	}
@@ -143,7 +150,7 @@ public class BoardController {
 		return "/board/detail";
 	}
 	
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(@RequestParam("bid") String bid, Model model) throws Exception {
 		
 		return "/board/list";

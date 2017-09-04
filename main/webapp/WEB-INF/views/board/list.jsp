@@ -29,7 +29,6 @@ body{background:#f0f6fc;}
 <%@ include file="../include/footer.jsp"%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-<script src="/resources/js/simpleparallax.js"></script>	
 <script id="listTemplate" type="text/x-handlebars-template">
 <div class="col-sm-6 col-md-3">
 	<div class="thumbnail">

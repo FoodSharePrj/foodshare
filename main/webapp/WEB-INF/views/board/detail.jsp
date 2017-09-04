@@ -67,48 +67,44 @@
 	<!-- 댓글 등록 영역 -->
 	<div class="row">
 		<div class="col-md-12">
-			<div class="box box-success">
+			<form class="form-horizontal">
 				<div class="box-header">
-					<h3 class="box-title">ADD NEW REPLY</h3>
+					<h4 class="text-danger">신청합니다!</h4>
 				</div>
-				<c:if test="${not empty login}">
-					<div class="box-body">
-						<label for="newReplyWriter">Writer</label> <input
-							class="form-control" type="text" id="newReplyWriter"
-							placeholder="USER ID"> <label for="newReplyText">ReplyText</label>
-						<input class="form-control" type="text" placeholder="REPLY TEXT"
-							id="newReplyText">
+				<div class="form-group">
+				<c:if test="${not empty login and login.uid eq boardVO.writer}">
+				<div class="container">
+					<h4 class="text-primary"><u>본인이 작성한 글입니다.</u></h4></a>
+				</div>
+				</c:if>
+				<c:if test="${not empty login and login.uid ne boardVO.writer}">				
+					<label class="col-xs-2 col-md-2 col-lg-2" style="text-align:center" for="newApplyText">
+					<img src="/resources/img/apply.png"> ${login.uid}</label>
+					<div class="col-xs-8 col-md-8 col-lg-8">
+						<input class="form-control" type="text" placeholder="신청내용" id="newApplyText">
 					</div>
-					<div class="box-footer">
-						<button type="submit" class="btn btn-primary" id="replyAddBtn">ADD
-							REPLY</button>
+					<div class="col-xs-2 col-md-2 col-lg-2">
+						<button type="button" class="btn btn-primary btn-block" id="applyAddBtn">신청</button>
 					</div>
+				</div>
 				</c:if>
 				<c:if test="${empty login}">
-					<div class="box-body">
-						<div>
-							<a href="/user/login">Login Please</a>
-						</div>
-					</div>
+				<div class="container">
+					<a href="/user/login"><h4 class="text-primary"><u>Login Please</u></h4></a>
+				</div>
 				</c:if>
-			</div>
-			<!-- 댓글의 목록과 페이징 처리 영역 -->
-			<ul class="timeline">
-				<li class="time-label" id="repliesDiv">
-					<span class="bg-green">Replies List <small id='replycntSmall'> [ ${boardVO.replycnt} ]</small>
-					</span>
-				</li>
+			</form>
+			<hr/>
+			<ul class="well applies-section">
+				
 			</ul>
-
-			<div class="text-center">
-				<ul id="pagination" class="pagination pagination-sm no-margin">
-				</ul>
-			</div>
 		</div>
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
+
 <script>
+
 $(function(){
 	$("#goList").click(function(){
 		location.href="/board/list";
@@ -120,6 +116,31 @@ $(function(){
 	
 	$("#delete").click(function(){
 		location.href="/board/delete?bid="+"${boardVO.bid}";
+	});
+	
+	getList();
+	
+	$("#applyAddBtn").click(function(){
+		var applicant = "${login.uid}";
+		var content = $("#newApplyText").val();
+		var bid = "${boardVO.bid}";
+		
+		$.ajax({
+			type:'post',
+			url:'/apply/insertApplyVO',
+			headers:{
+				"Content-Type":"application/json",
+			},
+			data:JSON.stringify({
+				applicant:applicant,
+				content:content,
+				bid:bid
+			}),
+			dataType:'json',
+			success:function(result){
+				addApplyObj(result);
+			}
+		});
 	});
 	
 	$.getJSON("/getUploadList/"+"${boardVO.bid}", function(list) {
@@ -146,4 +167,47 @@ $(function(){
 		interval:3000
 	});	
 });
+
+function getList() {
+	$.getJSON("/apply/getApplyList/"+"${boardVO.bid}", function(list) {
+		$(list).each(function() {
+			addApplyObj(this);
+		});
+	});
+}
+
+function addApplyObj(applyObj){
+	var writer = "${boardVO.writer}";
+	var aid = applyObj.aid;
+	var applicant = applyObj.applicant;
+	var regdate = applyObj.regdate;
+	var content = applyObj.content;
+	
+	var str ="";
+	str += '<li class="media" data-aid="'+aid+'">';
+	str += '<div class="form-group">';
+	str += '<label class="col-md-2 col-lg-2">';
+	str += '<img src="/resources/img/apply.png">&nbsp;';
+	str += applicant+'</label>';
+	str += '<div class="col-md-2 col-lg-2">';
+	str += '<p><small>'+regdate+'</small></p>';
+	str += '</div>';
+	str += '<div class="col-md-6 col-lg-6">';
+	str += '<span class="form-control-static" style="word-break:break-all;word-wrap:break-word;"><small>'+content+'</small></span>';
+	str += '</div>';
+	str += '<div class="col-md-2 col-lg-2">';
+	if("${login.uid}"==writer){
+		str += '<button type="button" class="btn btn-danger" id="choiceBtn">선택</button>';
+		str += '<button type="button" class="btn btn-info" id="chatBtn">채팅</button>';	
+	}else if("${login.uid}"==applicant){
+		str += '<button type="button" class="btn btn-danger" id="modifyBtn">수정</button>';
+	}else{
+		str+='';
+	}
+	str += '</div>';
+	str += '</div>';
+	str += '</li>';
+	
+	$(".applies-section").append(str);
+}
 </script>

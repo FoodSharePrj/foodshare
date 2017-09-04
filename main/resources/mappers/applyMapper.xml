@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.fs.mapper.ApplyMapper">
+	
+	<select id="getrowid" resultType="String">
+	select rowid from tbl_sequence where tid='F003'
+	</select>
+	
+	<update id="setrowid">
+	update tbl_sequence set rowid = #{rowid} where tid='F003'
+	</update>
+	
+	<select id="getApplyCnt" resultType="int">
+	select count(bid) from tbl_apply where bid=#{bid}
+	</select>
+	
+	<select id="getApplyList" resultType="ApplyVO">
+	select * from tbl_apply where bid=#{bid} order by regdate
+	</select>
+	
+	<insert id="insertApplyObj">
+	insert into tbl_apply (aid, applicant, content, bid) values (#{aid},#{applicant},#{content},#{bid})
+	</insert>
+	
+	<select id="getApplyObj" resultType="ApplyVO">
+	select * from tbl_apply where aid=#{aid}
+	</select>	
+</mapper>

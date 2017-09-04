@@ -43,4 +43,21 @@ public class UserServiceImpl implements UserService {
 		 
 		return userDAO.checkId(uid);
 	}
+	
+	@Override
+	public void usermodify(UserVO userVO) throws Exception {
+		userDAO.Usermodify(userVO);
+	}
+
+
+	@Override
+	public void delete(UserVO userVO) throws Exception {
+		userDAO.delete(userVO);
+	}
+
+	@Override
+	public UserVO getUserObj(String uid) throws Exception {
+		
+		return userDAO.getUserObj(uid);
+	}
 }

@@ -114,6 +114,53 @@ public class UserController {
 		return result;
 	}
 	
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	public void mypage()throws Exception{
+		
+	}
+	@RequestMapping(value="/usermodify", method=RequestMethod.GET)
+	public void usermodifyGET() throws Exception{
+		
+	}
 	
+	@RequestMapping(value="/usermodify", method=RequestMethod.POST)
+	public String usermodifyPOST(UserVO userVO, RedirectAttributes rttr, HttpSession session) throws Exception{
+
+		userService.usermodify(userVO);
+		// 세션에 기록된 UserVO객체 삭제
+		session.removeAttribute("login");
+		session.setAttribute("login", userService.getUserObj(userVO.getUid()));
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/user/mypage";
+	}
 	
+	@RequestMapping(value="/userdelete", method=RequestMethod.GET)
+	public void userdelteGET() throws Exception{
+		
+	}
+	
+	@RequestMapping(value="/userdelete", method=RequestMethod.POST)
+	public String userdeltePOST(UserVO userVO, RedirectAttributes rttr, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+		
+		userService.delete(userVO);
+		
+		Object obj = session.getAttribute("login");
+		if(obj!=null){
+			// 세션에 기록된 UserVO객체 삭제
+			session.removeAttribute("login");
+			session.invalidate();
+			
+			// 기록된 쿠키 삭제
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			if(loginCookie != null) {
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+			}
+		}
+		
+		rttr.addFlashAttribute("msg", "success");
+		
+		return "redirect:/";	
+	}	
 }

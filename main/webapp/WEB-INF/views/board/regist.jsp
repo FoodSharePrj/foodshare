@@ -62,7 +62,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="duedate"> 공유기한</label> <input type="date"
+								<label for="duedate"> 공유기한</label> <input type="text"
 									class="form-control" name="duedate" id="duedate"/>
 							</div>
 
