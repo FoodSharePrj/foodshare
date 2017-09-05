@@ -1,6 +1,7 @@
 package com.fs.service;
 
 import java.util.List;
+
 import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -50,5 +51,10 @@ public class BoardServiceImpl implements BoardService {
 	public BoardVO getBoardVO(String bid) throws Exception {
 
 		return dao.getBoardVO(bid);
-	}	
+	}
+
+	@Override
+	public void modifyBoard(BoardVO boardVO) throws Exception {
+		dao.modifyBoard(boardVO);		
+	}
 }

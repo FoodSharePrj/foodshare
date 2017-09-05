@@ -29,12 +29,6 @@ public class ApplyDAOImpl implements ApplyDAO {
 	}
 
 	@Override
-	public int getApplyCnt(String bid) throws Exception {
-		
-		return session.selectOne(namespace+".getApplyCnt", bid);
-	}
-
-	@Override
 	public List<ApplyVO> getApplyList(String bid) throws Exception {
 		
 		return session.selectList(namespace+".getApplyList", bid);

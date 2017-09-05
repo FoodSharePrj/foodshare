@@ -36,7 +36,7 @@ body{background:#f0f6fc;}
 			<img src="{{imgSrc}}" alt="...">
 			<div class="caption">
 				<p>
-					<span id="boardtitle">{{title}} </span><br>
+					<span id="boardtitle">{{title}} </span>&nbsp;<span class="label label-success pull-right">{{applycnt}}</span><br>
 					<span id="boardwrite1">{{splace1}}</span> 
 					<span id="boardwrite2">{{splace2}}</span>
 					<span id="boardwrite3">{{splace3}}</span>
@@ -91,13 +91,14 @@ body{background:#f0f6fc;}
 		var regdate = listObj.regdate;
 		var duedate = listObj.duedate;
 		var imgSrc = listObj.route;
+		var applycnt = listObj.applycnt;
 		if(imgSrc.substring(0,10)!="/resources"){
 			
 			imgSrc="/displayFile?fileName="+imgSrc;
 		}
 		
 		return {bid:bid, getLink:getLink, title:title, splace1:splace1, splace2:splace2, splace3:splace3, regdate:regdate,
-				duedate:duedate, imgSrc:imgSrc};
+				duedate:duedate, imgSrc:imgSrc, applycnt:applycnt};
 		
 	}
 </script>

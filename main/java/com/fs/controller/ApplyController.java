@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fs.domain.ApplyVO;
@@ -32,7 +31,9 @@ public class ApplyController {
 	
 	@RequestMapping(value="/insertApplyVO", method=RequestMethod.POST)
 	public ApplyVO insertApplyVO(@RequestBody ApplyVO applyVO) throws Exception {
+		
 		applyVO.setAid(service.getrowid());
+		
 		return service.insertApplyObj(applyVO);
 	}
 	
@@ -52,11 +53,11 @@ public class ApplyController {
 		return entity;
 	}
 	
-	@RequestMapping(value="/deleteApply/{aid}", method=RequestMethod.POST)
-	public ResponseEntity<String> deleteApply(@PathVariable("aid") String aid) throws Exception{
+	@RequestMapping(value="/deleteApply/{aid}/{bid}", method=RequestMethod.POST)
+	public ResponseEntity<String> deleteApply(@PathVariable("aid") String aid, @PathVariable("bid") String bid) throws Exception{
 		ResponseEntity<String> entity = null;
 		try {
-			service.deleteApply(aid);
+			service.deleteApply(aid, bid);
 			entity = new ResponseEntity<String>("success",HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();

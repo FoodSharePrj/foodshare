@@ -1,6 +1,7 @@
 package com.fs.persistence;
 
 import java.util.List;
+
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
@@ -42,5 +43,21 @@ public class BoardDAOImpl implements BoardDAO{
 	public BoardVO getBoardVO(String bid) throws Exception {
 		
 		return session.selectOne(namespace+".getBoardVO", bid);
+	}
+
+	@Override
+	public void increaseApplyCnt(String bid) throws Exception {
+		session.update(namespace+".increaseApplyCnt", bid);
+	}
+	
+	@Override
+	public void decreaseApplyCnt(String bid) throws Exception {
+		session.update(namespace+".decreaseApplyCnt", bid);
+	}
+
+	@Override
+	public void modifyBoard(BoardVO boardVO) throws Exception {
+		session.update(namespace+".modifyBoard", boardVO);
+		
 	}
 }

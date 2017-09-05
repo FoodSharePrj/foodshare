@@ -27,4 +27,24 @@
 	<select id="getBoardVO" resultType="BoardVO">
 	select * from tbl_bbs where bid=#{bid}
 	</select>
+	
+	<update id="increaseApplyCnt">
+	update tbl_bbs set applycnt=applycnt+1 where bid=#{bid}
+	</update>
+	
+	<update id="decreaseApplyCnt">
+	update tbl_bbs set applycnt=applycnt-1 where bid=#{bid}
+	</update>
+	
+	<update id="modifyBoard">
+	update tbl_bbs  
+	set 
+	title=#{title}, 
+	category=#{category}, status=#{status}, splace1=#{splace1}, splace2=#{splace2}, splace3=#{splace3},	duedate=#{duedate}, content=#{content}  
+	where bid=#{bid}
+	</update>
+	
+	<delete id="deleteBoard">
+	delete tbl_bbs where bid=#{bid}
+	</delete>
 </mapper>

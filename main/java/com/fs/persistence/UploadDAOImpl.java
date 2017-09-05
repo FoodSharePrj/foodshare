@@ -37,4 +37,21 @@ public class UploadDAOImpl implements UploadDAO{
 
 		return session.selectList(namespace+".getUploadList", bid);
 	}
+
+	@Override
+	public void deleteFile(String route) throws Exception {
+		session.delete(namespace+".deleteFile", route);
+	}
+
+	@Override
+	public void setAllIsMainNo(String bid) throws Exception {
+		session.update(namespace+".setAllIsMainNo", bid);		
+	}
+
+	@Override
+	public void setFirstIsMainYes(String fid) throws Exception {
+		session.update(namespace+".setFirstIsMainYes", fid);		
+	}
+	
+	
 }

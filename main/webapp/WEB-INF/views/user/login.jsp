@@ -30,7 +30,7 @@
 						<span class="input-group-addon"> <span
 							class="glyphicon glyphicon-user"></span>
 						</span> <input class="form-control" id='uid' name='uid' type="text"
-							maxlength="15" placeholder="ID" autofocus>
+							maxlength="15" placeholder="ID" autofocus="autofocus">
 					</div>
 					<div class="input-group">
 						<span class="input-group-addon"> <span

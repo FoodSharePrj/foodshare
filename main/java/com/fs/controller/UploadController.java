@@ -1,5 +1,6 @@
 package com.fs.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
@@ -12,16 +13,18 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fs.domain.UploadVO;
 import com.fs.service.UploadService;
 import com.fs.util.MediaUtils;
 
-@Controller
+
+@RestController
 public class UploadController {
 
 	@Resource(name="uploadPath")
@@ -30,7 +33,6 @@ public class UploadController {
 	@Inject
 	private UploadService service;
 	
-	@ResponseBody
 	@RequestMapping("/displayFile")
 	public ResponseEntity<byte[]> displayFile(String fileName) throws Exception {
 		
@@ -59,8 +61,28 @@ public class UploadController {
 	}
 	
 	@RequestMapping("/getUploadList/{bid}")
-	public @ResponseBody List<UploadVO> getUploadVOList(@PathVariable String bid) throws Exception{
+	public List<UploadVO> getUploadVOList(@PathVariable String bid) throws Exception{
 		
 		return service.getUploadList(bid);
+	}
+	
+	@RequestMapping(value="/deleteFiles", method=RequestMethod.POST)
+	public ResponseEntity<String> deleteFiles(@RequestParam("files[]") String[] files) throws Exception{
+		
+		if(files==null | files.length==0){
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		}
+		try {
+			for(String fileName : files){
+				
+				new File((uploadPath+fileName).replace('/', File.separatorChar)).delete();
+				service.deleteFile(fileName);
+			}
+		
+			return new ResponseEntity<String>("deleted", HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
 	}
 }

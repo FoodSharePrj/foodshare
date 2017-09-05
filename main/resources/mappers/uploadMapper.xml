@@ -20,4 +20,19 @@
 	select * from tbl_file where bid=#{bid} order by regdate
 	</select>
 	
+	<delete id="deleteFile">
+	delete from tbl_file where route=#{route}
+	</delete>
+	
+	<delete id="deleteAllFile">
+	delete from tbl_file where bid=#{bid}
+	</delete>
+	
+	<update id="setAllIsMainNo">
+	update tbl_file set ismain='n' where bid=#{bid}
+	</update>
+	
+	<update id="setFirstIsMainYes">
+	update tbl_file set ismain='y' where fid=#{fid}
+	</update>
 </mapper>

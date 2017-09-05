@@ -12,10 +12,6 @@
 	update tbl_sequence set rowid = #{rowid} where tid='F003'
 	</update>
 	
-	<select id="getApplyCnt" resultType="int">
-	select count(bid) from tbl_apply where bid=#{bid}
-	</select>
-	
 	<select id="getApplyList" resultType="ApplyVO">
 	select * from tbl_apply where bid=#{bid} order by regdate
 	</select>
@@ -36,4 +32,7 @@
 	delete from tbl_apply where aid=#{aid}
 	</delete>
 	
+	<delete id="deleteAllApply">
+	delete from tbl_apply where bid=#{bid}
+	</delete>
 </mapper>

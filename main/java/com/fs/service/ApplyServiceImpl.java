@@ -9,12 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fs.domain.ApplyVO;
 import com.fs.persistence.ApplyDAO;
+import com.fs.persistence.BoardDAO;
 
 @Service
 public class ApplyServiceImpl implements ApplyService {
 
 	@Inject
 	private ApplyDAO dao;
+	
+	@Inject
+	private BoardDAO boardDAO;
 	
 	@Transactional
 	@Override
@@ -33,12 +37,6 @@ public class ApplyServiceImpl implements ApplyService {
 	}
 
 	@Override
-	public int getApplyCnt(String bid) throws Exception {
-
-		return dao.getApplyCnt(bid);
-	}
-
-	@Override
 	public List<ApplyVO> getApplyList(String bid) throws Exception {
 
 		return dao.getApplyList(bid);
@@ -48,6 +46,7 @@ public class ApplyServiceImpl implements ApplyService {
 	@Override
 	public ApplyVO insertApplyObj(ApplyVO applyVO) throws Exception {
 		dao.insertApplyObj(applyVO);
+		boardDAO.increaseApplyCnt(applyVO.getBid());
 		return dao.getApplyObj(applyVO.getAid());
 	}
 
@@ -56,8 +55,10 @@ public class ApplyServiceImpl implements ApplyService {
 		dao.modifyApply(vo);
 	}
 
+	@Transactional
 	@Override
-	public void deleteApply(String aid) throws Exception {
-		dao.deleteApply(aid);		
+	public void deleteApply(String aid, String bid) throws Exception {
+		dao.deleteApply(aid);
+		boardDAO.decreaseApplyCnt(bid);
 	}
 }

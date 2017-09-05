@@ -42,6 +42,19 @@ public class UploadServiceImpl implements UploadService {
 		
 		return dao.getUploadList(bid);
 	}
+
+	@Override
+	public void deleteFile(String route) throws Exception {
+		dao.deleteFile(route);
+	}
+	
+	@Transactional
+	@Override
+	public void isMainConfirm(String bid, String fid) throws Exception {
+		dao.setAllIsMainNo(bid);
+		dao.setFirstIsMainYes(fid);
+		
+	}
 	
 	
 }

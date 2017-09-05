@@ -74,8 +74,8 @@
 				<div class="form-group">
 				<c:if test="${not empty login and login.uid eq boardVO.writer}">
 				<div class="container">
-					<h4 class="text-primary"><u>본인이 작성한 글입니다.</u></h4></a>
-				</div>
+					<h4 class="text-primary"><u>공유하고자 하는 분을 선택해주세요.</u></h4></a>
+				</div>	
 				</c:if>
 				<c:if test="${not empty login and login.uid ne boardVO.writer}">				
 					<label class="col-xs-2 col-md-2 col-lg-2" style="text-align:center" for="newApplyText">
@@ -131,15 +131,53 @@
 <script>
 
 $(function(){
+	var result = '${msg}';
+	if (result == 'success') {
+		alert("처리가 완료 되었습니다.");
+	}
+	
+	//선택
+	$(".applies-section").on("click","li #selectBtn",function(){
+		var selectBtn = $(this);
+		var btn_section = selectBtn.parent(".btn-section");
+		var aid = btn_section.attr("data-aid");
+		var bid = "${boardVO.bid}";
+		
+		$(".applies-section li #selectBtn").addClass("hide");
+		btn_section.find("#chatBtn").removeClass("hide");
+		btn_section.find("#selectCancelBtn").removeClass("hide");
+		
+	});
+	//취소
+	$(".applies-section").on("click","li #selectCancelBtn",function(){
+		var cancelBtn = $(this);
+		var btn_section = cancelBtn.parent(".btn-section");
+		var aid = btn_section.attr("data-aid");
+		var bid = "${boardVO.bid}";
+		
+		$(".applies-section li #selectBtn").removeClass("hide");
+		cancelBtn.addClass("hide");
+		btn_section.find("#chatBtn").addClass("hide");
+		
+	});
+	//채팅
+	$(".applies-section").on("click","li #chatBtn",function(){
+		var selectBtn = $(this);
+		var btn_section = selectBtn.parent(".btn-section");
+		var aid = btn_section.attr("data-aid");
+		var bid = "${boardVO.bid}";
+		
+	});
+	
 	$("#goList").click(function(){
 		location.href="/board/list";
 	});
 	
-	$("#modify").click(function(){
-		
+	$("#modifyBtn").click(function(){
+		location.href="/board/modify?bid="+"${boardVO.bid}";
 	});
 	
-	$("#delete").click(function(){
+	$("#deleteBtn").click(function(){
 		location.href="/board/delete?bid="+"${boardVO.bid}";
 	});
 	if(${boardVO.applycnt}>0){
@@ -156,9 +194,14 @@ $(function(){
 	});
 	
 	$("#applyAddBtn").click(function(){
-		var applicant = "${login.uid}";
 		var content = $("#newApplyText").val();
+		if(content=="" || content.length==0){
+			alert("내용을 입력해주세요.");
+			return;
+		}
+		var applicant = "${login.uid}";
 		var bid = "${boardVO.bid}";
+		var applycnt = ${boardVO.applycnt}+1;
 		
 		$.ajax({
 			type:'post',
@@ -202,10 +245,10 @@ $(function(){
 	
 	$("#applyDelBtn").click(function(){
 		var aid = $(".modal-title").text();
-		
+		var bid = "${boardVO.bid}";
 		$.ajax({
 			type:'post',
-			url:'/apply/deleteApply/'+aid,
+			url:'/apply/deleteApply/'+aid+'/'+bid,
 			headers:{"Content-Type":"application/json"},
 			dataType:'text',
 			success:function(result){
@@ -268,10 +311,10 @@ function addApplyObj(applyObj){
 	str += '<div class="col-sm-6 col-md-8 col-lg-8">';
 	str += '<span class="form-control-static apply-content" style="word-break:break-all;word-wrap:break-word;">'+content+'</span>';
 	str += '</div>';
-	str += '<div class="col-sm-3 col-md-2 col-lg-2 btn-section">';
+	str += '<div class="col-sm-3 col-md-2 col-lg-2 btn-section" data-aid="'+aid+'">';
 	if("${login.uid}"==writer){
-		str += '<button type="button" class="btn btn-danger" id="selectBtn">선택</button>';
-		str += '<button type="button" class="btn btn-info hide" id="chatBtn">채팅</button>';
+		str += '<button type="button" class="btn btn-danger btn-block" id="selectBtn">선택</button>';
+		str += '<button type="button" class="btn btn-success hide" id="chatBtn">채팅</button>';
 		str += '<button type="button" class="btn btn-warning hide" id="selectCancelBtn">취소</button>';
 	}else if("${login.uid}"==applicant){
 		str += '<button type="button" class="btn btn-warning btn-block" id="modifyApplyBtn" data-toggle="modal" data-target="#modifyModal">수정</button>';

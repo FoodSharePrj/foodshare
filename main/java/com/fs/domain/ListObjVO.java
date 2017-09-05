@@ -15,7 +15,15 @@ public class ListObjVO {
 	private String status;
 	private String fid;
 	private String route;
+	private Integer applycnt;
 	
+	
+	public Integer getApplycnt() {
+		return applycnt;
+	}
+	public void setApplycnt(Integer applycnt) {
+		this.applycnt = applycnt;
+	}
 	public String getBid() {
 		return bid;
 	}
@@ -105,6 +113,7 @@ public class ListObjVO {
 		return "ListObjVO [bid=" + bid + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", regdate=" + regdate + ", category=" + category + ", progress=" + progress + ", duedate=" + duedate
 				+ ", splace1=" + splace1 + ", splace2=" + splace2 + ", splace3=" + splace3 + ", status=" + status
-				+ ", fid=" + fid + ", route=" + route + "]";
+				+ ", fid=" + fid + ", route=" + route + ", applycnt=" + applycnt + "]";
 	}
+	
 }
