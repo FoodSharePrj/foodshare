@@ -51,5 +51,13 @@ public class ApplyServiceImpl implements ApplyService {
 		return dao.getApplyObj(applyVO.getAid());
 	}
 
-	
+	@Override
+	public void modifyApply(ApplyVO vo) throws Exception {
+		dao.modifyApply(vo);
+	}
+
+	@Override
+	public void deleteApply(String aid) throws Exception {
+		dao.deleteApply(aid);		
+	}
 }

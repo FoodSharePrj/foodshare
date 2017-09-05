@@ -27,4 +27,13 @@
 	<select id="getApplyObj" resultType="ApplyVO">
 	select * from tbl_apply where aid=#{aid}
 	</select>	
+	
+	<update id="modifyApply">
+	update tbl_apply set content=#{content} where aid=#{aid}
+	</update>
+	
+	<delete id="deleteApply">
+	delete from tbl_apply where aid=#{aid}
+	</delete>
+	
 </mapper>

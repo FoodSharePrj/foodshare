@@ -12,4 +12,6 @@ public interface ApplyDAO {
 	public List<ApplyVO> getApplyList(String bid) throws Exception;
 	public void insertApplyObj(ApplyVO applyVO) throws Exception;
 	public ApplyVO getApplyObj(String aid) throws Exception;
+	public void modifyApply(ApplyVO vo) throws Exception;
+	public void deleteApply(String aid) throws Exception;
 }

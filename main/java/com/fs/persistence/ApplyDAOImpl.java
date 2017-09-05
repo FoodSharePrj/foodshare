@@ -52,4 +52,14 @@ public class ApplyDAOImpl implements ApplyDAO {
 		return session.selectOne(namespace+".getApplyObj", aid);
 	}
 
+	@Override
+	public void modifyApply(ApplyVO vo) throws Exception {
+		session.update(namespace+".modifyApply", vo);
+	}
+
+	@Override
+	public void deleteApply(String aid) throws Exception {
+		session.delete(namespace+".deleteApply", aid);		
+	}
+
 }

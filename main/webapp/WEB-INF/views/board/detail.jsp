@@ -16,8 +16,8 @@
 <div class="container" id="detail">
 	<button class="btn btn-sm btn-primary" id="goList">목록</button>
 	<c:if test="${login.uid == boardVO.writer}">
-		<button class="btn btn-sm btn-warning" id="modify">수정</button>
-		<button class="btn btn-sm btn-danger" id="delete">삭제</button>
+		<button class="btn btn-sm btn-warning" id="modifyBtn">수정</button>
+		<button class="btn btn-sm btn-danger" id="deleteBtn">삭제</button>
 	</c:if>
 	<div class="row">
 		<div class="col-md-6">
@@ -101,6 +101,31 @@
 		</div>
 	</div>
 </div>
+<!-- Modal -->
+<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">
+				 &times;</button>
+				 <h4 class="modal-title hide"></h4>
+				 <h4>신청내역 수정</h4>
+			</div>
+			<div class="modal-body" data-rno>
+				<p><input type="text" id="modalcontent" class="form-control"></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button"
+				 class="btn btn-info" id="applyModBtn">수정</button>
+				<button type="button"
+				 class="btn btn-danger" id="applyDelBtn">삭제</button>
+				<button type="button"
+				 class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
 <%@ include file="../include/footer.jsp"%>
 
 <script>
@@ -117,8 +142,18 @@ $(function(){
 	$("#delete").click(function(){
 		location.href="/board/delete?bid="+"${boardVO.bid}";
 	});
+	if(${boardVO.applycnt}>0){
+		getList();	
+	}
 	
-	getList();
+	$(".applies-section").on("click",".applyObj",function(){
+		var apply = $(this);
+		var applytext = apply.find(".apply-content").text();
+		var data_aid = apply.attr("data-aid");
+		
+		$(".modal-title").text(data_aid);
+		$("#modalcontent").val(applytext);
+	});
 	
 	$("#applyAddBtn").click(function(){
 		var applicant = "${login.uid}";
@@ -139,6 +174,47 @@ $(function(){
 			dataType:'json',
 			success:function(result){
 				addApplyObj(result);
+				$("#newApplyText").val("");
+			}
+		});
+	});
+	
+	$("#applyModBtn").click(function(){
+		var aid = $(".modal-title").text();
+		var content = $("#modalcontent").val();
+		
+		$.ajax({
+			type:'post',
+			url:'/apply/modifyApply/'+aid,
+			headers:{"Content-Type":"application/json"},
+			data:JSON.stringify({content:content}),
+			dataType:'text',
+			success:function(result){
+				if(result=='success'){
+					alert("수정 되었습니다.");
+					$("#modifyModal").modal('hide');
+					$(".applies-section .applyObj").remove();
+					getList();					
+				}
+			}
+		});
+	});
+	
+	$("#applyDelBtn").click(function(){
+		var aid = $(".modal-title").text();
+		
+		$.ajax({
+			type:'post',
+			url:'/apply/deleteApply/'+aid,
+			headers:{"Content-Type":"application/json"},
+			dataType:'text',
+			success:function(result){
+				if(result=='success'){
+					alert("삭제 되었습니다.");
+					$("#modifyModal").modal('hide');
+					$(".applies-section .applyObj").remove();
+					getList();					
+				}
 			}
 		});
 	});
@@ -184,23 +260,21 @@ function addApplyObj(applyObj){
 	var content = applyObj.content;
 	
 	var str ="";
-	str += '<li class="media" data-aid="'+aid+'">';
+	str += '<li class="media applyObj" data-aid="'+aid+'">';
 	str += '<div class="form-group">';
-	str += '<label class="col-md-2 col-lg-2">';
+	str += '<label class="col-sm-3 col-md-2 col-lg-2">';
 	str += '<img src="/resources/img/apply.png">&nbsp;';
-	str += applicant+'</label>';
-	str += '<div class="col-md-2 col-lg-2">';
-	str += '<p><small>'+regdate+'</small></p>';
+	str += '<span class="applicant-section">'+applicant+'</span><br><span style="font-size:15px">'+regdate+'</span></label>';
+	str += '<div class="col-sm-6 col-md-8 col-lg-8">';
+	str += '<span class="form-control-static apply-content" style="word-break:break-all;word-wrap:break-word;">'+content+'</span>';
 	str += '</div>';
-	str += '<div class="col-md-6 col-lg-6">';
-	str += '<span class="form-control-static" style="word-break:break-all;word-wrap:break-word;"><small>'+content+'</small></span>';
-	str += '</div>';
-	str += '<div class="col-md-2 col-lg-2">';
+	str += '<div class="col-sm-3 col-md-2 col-lg-2 btn-section">';
 	if("${login.uid}"==writer){
-		str += '<button type="button" class="btn btn-danger" id="choiceBtn">선택</button>';
-		str += '<button type="button" class="btn btn-info" id="chatBtn">채팅</button>';	
+		str += '<button type="button" class="btn btn-danger" id="selectBtn">선택</button>';
+		str += '<button type="button" class="btn btn-info hide" id="chatBtn">채팅</button>';
+		str += '<button type="button" class="btn btn-warning hide" id="selectCancelBtn">취소</button>';
 	}else if("${login.uid}"==applicant){
-		str += '<button type="button" class="btn btn-danger" id="modifyBtn">수정</button>';
+		str += '<button type="button" class="btn btn-warning btn-block" id="modifyApplyBtn" data-toggle="modal" data-target="#modifyModal">수정</button>';
 	}else{
 		str+='';
 	}
