@@ -34,7 +34,7 @@ public class UserController {
 	
 	// 회원가입 처리
 	@RequestMapping(value="/join", method = RequestMethod.POST)
-	public String joinPOST(UserVO userVO, HttpServletRequest request ,HttpServletResponse response, Model model, RedirectAttributes rttr) throws Exception {
+	public String joinPOST(UserVO userVO, HttpServletRequest request,HttpServletResponse response, Model model, RedirectAttributes rttr) throws Exception {
 		
 		try {
 			// 가입 성공시 로그인화면으로 이동
@@ -113,6 +113,11 @@ public class UserController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	   public void Mypage()throws Exception{
+	     
+	   }
 	
 	
 	
