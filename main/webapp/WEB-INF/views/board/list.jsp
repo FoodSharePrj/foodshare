@@ -90,6 +90,9 @@ body{background:#f0f6fc;}
 		var splace3 = listObj.splace3;
 		var regdate = listObj.regdate;
 		var duedate = listObj.duedate;
+		if(listObj.route==null){
+			listObj.route="/resources/img/file.png";
+		}
 		var imgSrc = listObj.route;
 		var applycnt = listObj.applycnt;
 		if(imgSrc.substring(0,10)!="/resources"){

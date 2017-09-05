@@ -17,10 +17,8 @@
 	</update>
 	
 	<select id="getList" resultType="ListObjVO">
-	select * 
-	from tbl_bbs b, tbl_file f 
-	where b.bid=f.bid and ismain='y' 
-	order by duedate asc, b.bid asc 
+	select b.*, f.route from tbl_bbs b left outer join tbl_file f on b.bid=f.bid and f.ismain='y' 
+	order by b.duedate asc, b.bid asc 
 	limit #{i}, 12
 	</select>
 	

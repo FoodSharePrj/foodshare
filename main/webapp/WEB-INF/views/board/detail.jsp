@@ -131,10 +131,6 @@
 <script>
 
 $(function(){
-	var result = '${msg}';
-	if (result == 'success') {
-		alert("처리가 완료 되었습니다.");
-	}
 	
 	//선택
 	$(".applies-section").on("click","li #selectBtn",function(){
@@ -263,23 +259,29 @@ $(function(){
 	});
 	
 	$.getJSON("/getUploadList/"+"${boardVO.bid}", function(list) {
-		$(list).each(function(index, element) {
-			
-			var imgSrc=element.route;
-			if(imgSrc.substring(0,10)!="/resources"){
-				imgSrc="/displayFile?fileName="+imgSrc;
-			}
-			
+		
+		if(list.length==0){
 			var str = '';
-			if(index==0){
-				str += "<div class='item active'>";	
-			}else{
-				str += "<div class='item'>";
-			}
-			str += "<img src='"+imgSrc+"'>";
+			str += "<div class='item active'>";	
+			str += "<img src='/resources/img/file.png'>";
 			str += "</div>";
 			$(".carousel-inner").append(str);
-		});
+		}else{
+			$(list).each(function(index, element) {
+				var imgSrc=element.route;
+				imgSrc="/displayFile?fileName="+imgSrc;
+								
+				var str = '';
+				if(index==0){
+					str += "<div class='item active'>";	
+				}else{
+					str += "<div class='item'>";
+				}
+				str += "<img src='"+imgSrc+"'>";
+				str += "</div>";
+				$(".carousel-inner").append(str);
+			});
+		}	
 	});
 	
 	$('.carousel').carousel({

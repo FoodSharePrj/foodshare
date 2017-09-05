@@ -62,17 +62,9 @@ public class BoardController {
 			service.regist(board);
 
 			UploadVO uploadVO = null;
-			// 사진 첨부 안했을 경우
-			if (files.size() == 1) {
-				uploadVO = new UploadVO();
-				uploadVO.setFid(uploadService.getRowid());
-				uploadVO.setBid(board.getBid());
-				uploadVO.setRoute("/resources/img/file.png");
-				uploadVO.setIsmain("y");
-				uploadService.insertFile(uploadVO);
-				// 사진 첨부 했을 경우
-			} else {
-
+			// 첨부했을 경우, 안한경우 files.size()==1 임
+			if (files.size() > 1) {
+				
 				for (int i = 0; i < files.size(); i++) {
 
 					MultipartFile file = files.get(i);
@@ -142,7 +134,7 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyPOST(BoardVO board, MultipartHttpServletRequest mhsr, RedirectAttributes rttr)
+	public String modifyPOST(BoardVO board, MultipartHttpServletRequest mhsr)
 			throws Exception {
 
 		List<MultipartFile> files = mhsr.getFiles("file");
@@ -184,25 +176,15 @@ public class BoardController {
 			
 			List<UploadVO> uploadList = null;
 			uploadList = uploadService.getUploadList(board.getBid());
-			if(uploadList==null || uploadList.size()==0) {
-				UploadVO vo = new UploadVO();
-				vo.setFid(uploadService.getRowid()); 
-				vo.setBid(board.getBid());
-				vo.setRoute("/resources/img/file.png"); 
-				vo.setIsmain("y");
-				uploadService.insertFile(vo);
-			} else {
-				uploadService.isMainConfirm(board.getBid(), uploadList.get(0).getFid());				
+			if((uploadList.size()!=0) || (uploadList!=null)) {
+				uploadService.isMainConfirm(board.getBid(), uploadList.get(0).getFid());
 			}
 			
-			rttr.addFlashAttribute("msg", "success");
 		} catch (Exception e) {
 			e.printStackTrace();
-			rttr.addFlashAttribute("msg", "fail");
 		}
-
-		rttr.addAttribute(service.getBoardVO(board.getBid()));
-		return "/board/detail";
+		
+		return "redirect:/board/detail?bid="+board.getBid();
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)

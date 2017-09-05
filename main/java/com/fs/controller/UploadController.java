@@ -60,7 +60,7 @@ public class UploadController {
 		return entity;
 	}
 	
-	@RequestMapping("/getUploadList/{bid}")
+	@RequestMapping(value="/getUploadList/{bid}", method=RequestMethod.GET)
 	public List<UploadVO> getUploadVOList(@PathVariable String bid) throws Exception{
 		
 		return service.getUploadList(bid);

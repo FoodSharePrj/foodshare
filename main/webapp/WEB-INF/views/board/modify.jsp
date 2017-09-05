@@ -119,15 +119,17 @@ $(function() {
 	});
 	
 	$.getJSON("/getUploadList/"+"${boardVO.bid}", function(list){
-		$(list).each(function(){
-			//파일 경로
-			var filePath = this.route;
-			// 파일이름.jpg
-			var fileNameWithFormat = filePath.substr(filePath.lastIndexOf('_') + 1);
-			
-			var str = "<option value='" + filePath + "' data-isnew='old'>" + fileNameWithFormat + "</option>";
-			$("#filesList").append(str);
-		});
+		if(list.length != 0){
+			$(list).each(function(){
+				//파일 경로
+				var filePath = this.route;
+				// 파일이름.jpg
+				var fileNameWithFormat = filePath.substr(filePath.lastIndexOf('_') + 1);
+				
+				var str = "<option value='" + filePath + "' data-isnew='old'>" + fileNameWithFormat + "</option>";
+				$("#filesList").append(str);
+			});	
+		}
 	});
 	
 	$("#duedate").datepicker({
@@ -179,20 +181,20 @@ $(function() {
 	//첨부파일 삭제 버튼 눌렀을 경우
 	$("#btn_removeFile").click(function() {
 		var isnew = $("#filesList option:selected").attr("data-isnew");
-		
-		if(isnew=="new"){
-			var fileNameWithFormat = $("#filesList option:selected").text();
-			var fileName = fileNameWithFormat.slice(0, fileNameWithFormat.lastIndexOf('.'));
-			var formatName = fileNameWithFormat.substr(fileNameWithFormat.lastIndexOf('.') + 1);
+		if(isnew){
+			if(isnew=="new"){
+				var fileNameWithFormat = $("#filesList option:selected").text();
+				var fileName = fileNameWithFormat.slice(0, fileNameWithFormat.lastIndexOf('.'));
+				var formatName = fileNameWithFormat.substr(fileNameWithFormat.lastIndexOf('.') + 1);
 
-			$("#filesList option:selected").remove();
-			$("#" + fileName + "_" + formatName).remove();	
-		}else{
-			var filepath = $("#filesList option:selected").val();
-			deleteFiles.push(filepath);
-			$("#filesList option:selected").remove();
-		}
-		
+				$("#filesList option:selected").remove();
+				$("#" + fileName + "_" + formatName).remove();	
+			}else{
+				var filepath = $("#filesList option:selected").val();
+				deleteFiles.push(filepath);
+				$("#filesList option:selected").remove();
+			}	
+		}		
 	});
 
 </script>
