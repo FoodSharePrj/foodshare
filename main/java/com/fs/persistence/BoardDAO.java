@@ -15,6 +15,7 @@ public interface BoardDAO {
 	public void increaseApplyCnt(String bid) throws Exception;
 	public void decreaseApplyCnt(String bid) throws Exception;
 	public void modifyBoard(BoardVO boardVO) throws Exception;
+	public void deleteBoard(String bid) throws Exception;
 }
 
 

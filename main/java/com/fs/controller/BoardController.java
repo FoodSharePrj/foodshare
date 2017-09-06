@@ -7,10 +7,13 @@ import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -187,9 +190,17 @@ public class BoardController {
 		return "redirect:/board/detail?bid="+board.getBid();
 	}
 
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(@RequestParam("bid") String bid, Model model) throws Exception {
-
-		return "/board/list";
+	@RequestMapping(value = "/deleteBoard", method = RequestMethod.POST)
+	public @ResponseBody ResponseEntity<String> delete(@RequestParam("bid") String bid) throws Exception {
+		ResponseEntity<String> entity = null;
+		try {
+			service.deleteBoard(bid);
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+			return entity;
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+			return entity;
+		}
 	}
 }

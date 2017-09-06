@@ -60,4 +60,9 @@ public class BoardDAOImpl implements BoardDAO{
 		session.update(namespace+".modifyBoard", boardVO);
 		
 	}
+
+	@Override
+	public void deleteBoard(String bid) throws Exception {
+		session.delete(namespace+".deleteBoard", bid);
+	}
 }

@@ -43,6 +43,6 @@
 	</update>
 	
 	<delete id="deleteBoard">
-	delete tbl_bbs where bid=#{bid}
+	delete from tbl_bbs where bid=#{bid}
 	</delete>
 </mapper>

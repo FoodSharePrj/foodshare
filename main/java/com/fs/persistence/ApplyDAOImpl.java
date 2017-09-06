@@ -56,4 +56,9 @@ public class ApplyDAOImpl implements ApplyDAO {
 		session.delete(namespace+".deleteApply", aid);		
 	}
 
+	@Override
+	public void deleteAllApply(String bid) throws Exception {
+		session.delete(namespace+".deleteAllApply", bid);
+	}
+
 }

@@ -13,4 +13,5 @@ public interface ApplyDAO {
 	public ApplyVO getApplyObj(String aid) throws Exception;
 	public void modifyApply(ApplyVO vo) throws Exception;
 	public void deleteApply(String aid) throws Exception;
+	public void deleteAllApply(String bid) throws Exception;
 }

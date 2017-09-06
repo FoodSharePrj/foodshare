@@ -16,6 +16,8 @@ public interface UploadDAO {
 	
 	public void deleteFile(String route) throws Exception;
 	
+	public void deleteAllFile(String bid) throws Exception;
+	
 	public void setAllIsMainNo(String bid) throws Exception;
 	
 	public void setFirstIsMainYes(String fid) throws Exception;

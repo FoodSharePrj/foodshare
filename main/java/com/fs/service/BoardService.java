@@ -12,4 +12,5 @@ public interface BoardService {
 	public List<ListObjVO> getList(int i) throws Exception;
 	public BoardVO getBoardVO(String bid) throws Exception;
 	public void modifyBoard(BoardVO boardVO) throws Exception;
+	public void deleteBoard(String bid) throws Exception;
 }

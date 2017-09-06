@@ -174,7 +174,23 @@ $(function(){
 	});
 	
 	$("#deleteBtn").click(function(){
-		location.href="/board/delete?bid="+"${boardVO.bid}";
+		var bid = "${boardVO.bid}";
+		$.ajax({
+			type:'post',
+			url:'/board/deleteBoard?bid='+bid,
+			headers:{
+				"Content-Type":"application/json",
+			},
+			dataType:'text',
+			success:function(result){
+				alert("삭제 완료");
+				location.href="/board/list";
+			},
+			error:function(){
+				alert("삭제 실패");
+				location.href="/board/detail?bid="+bid;
+			}
+		});
 	});
 	if(${boardVO.applycnt}>0){
 		getList();	

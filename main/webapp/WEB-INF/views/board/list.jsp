@@ -101,8 +101,7 @@ body{background:#f0f6fc;}
 		}
 		
 		return {bid:bid, getLink:getLink, title:title, splace1:splace1, splace2:splace2, splace3:splace3, regdate:regdate,
-				duedate:duedate, imgSrc:imgSrc, applycnt:applycnt};
-		
+				duedate:duedate, imgSrc:imgSrc, applycnt:applycnt};	
 	}
 </script>
 <script>

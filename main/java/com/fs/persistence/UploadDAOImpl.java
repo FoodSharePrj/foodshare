@@ -52,6 +52,11 @@ public class UploadDAOImpl implements UploadDAO{
 	public void setFirstIsMainYes(String fid) throws Exception {
 		session.update(namespace+".setFirstIsMainYes", fid);		
 	}
+
+	@Override
+	public void deleteAllFile(String bid) throws Exception {
+		session.delete(namespace+".deleteAllFile", bid);
+	}
 	
 	
 }
