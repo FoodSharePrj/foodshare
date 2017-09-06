@@ -3,9 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
 
-<style>
-body{background:#f0f6fc;}
-</style>
 <div id="promo">
 	<div class="jumbotron">
 		<h1>Start Food Share</h1>

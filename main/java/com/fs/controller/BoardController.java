@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -191,8 +190,9 @@ public class BoardController {
 	}
 
 	@RequestMapping(value = "/deleteBoard", method = RequestMethod.POST)
-	public @ResponseBody ResponseEntity<String> delete(@RequestParam("bid") String bid) throws Exception {
+	public @ResponseBody ResponseEntity<String> delete(@RequestParam(value="bid") String bid) throws Exception {
 		ResponseEntity<String> entity = null;
+		
 		try {
 			service.deleteBoard(bid);
 			entity = new ResponseEntity<String>("success",HttpStatus.OK);

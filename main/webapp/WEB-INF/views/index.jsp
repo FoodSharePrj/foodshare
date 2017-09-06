@@ -2,7 +2,14 @@
 	pageEncoding="UTF-8"%>
 
 <%@include file="./include/header.jsp"%>
-
+<style>
+body {
+	background-color:#ffffff;
+}
+.dark-section {
+  background-color:#f0f6fc;
+}
+</style>
 <div id="promo">
 	<div class="jumbotron">
 		<h1>Start Food Share</h1>
@@ -35,7 +42,7 @@
 		</div>
 	</div>
 </div>
-<div class="container site-section" id="welcome">
+<!-- <div class="container site-section" id="welcome">
 	<h1>Recent Shared Food</h1>
 	<div class="row">
 		<div class="col-md-4">
@@ -60,7 +67,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+</div> -->
 <%@include file="./include/footer.jsp"%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>

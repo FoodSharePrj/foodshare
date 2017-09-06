@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fs.domain.ApplyVO;
+import com.fs.domain.BoardVO;
+import com.fs.domain.ChatroomVO;
 import com.fs.persistence.ApplyDAO;
 import com.fs.persistence.BoardDAO;
 
@@ -60,5 +62,21 @@ public class ApplyServiceImpl implements ApplyService {
 	public void deleteApply(String aid, String bid) throws Exception {
 		dao.deleteApply(aid);
 		boardDAO.decreaseApplyCnt(bid);
+	}
+
+	@Transactional
+	@Override
+	public void applySelectClick(ApplyVO applyVO, ChatroomVO chatroomVO, BoardVO boardVO) throws Exception {
+		dao.setIschoice(applyVO);
+		dao.insertChatroom(chatroomVO);
+		boardDAO.setProgress(boardVO);
+	}
+
+	@Transactional
+	@Override
+	public void applyCancelClick(ApplyVO applyVO, String roomname, BoardVO boardVO) throws Exception {
+		dao.setIschoice(applyVO);
+		dao.deleteChatroom(roomname);
+		boardDAO.setProgress(boardVO);
 	}
 }

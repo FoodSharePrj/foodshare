@@ -65,4 +65,9 @@ public class BoardDAOImpl implements BoardDAO{
 	public void deleteBoard(String bid) throws Exception {
 		session.delete(namespace+".deleteBoard", bid);
 	}
+
+	@Override
+	public void setProgress(BoardVO vo) throws Exception {
+		session.update(namespace+".setProgress", vo);
+	}
 }

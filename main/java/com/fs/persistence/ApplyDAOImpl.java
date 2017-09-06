@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.fs.domain.ApplyVO;
+import com.fs.domain.ChatroomVO;
 
 @Repository
 public class ApplyDAOImpl implements ApplyDAO {
@@ -59,6 +60,21 @@ public class ApplyDAOImpl implements ApplyDAO {
 	@Override
 	public void deleteAllApply(String bid) throws Exception {
 		session.delete(namespace+".deleteAllApply", bid);
+	}
+
+	@Override
+	public void setIschoice(ApplyVO vo) throws Exception {
+		session.update(namespace+".setIschoice", vo);		
+	}
+
+	@Override
+	public void insertChatroom(ChatroomVO vo) throws Exception {
+		session.insert(namespace+".insertChatroom", vo);		
+	}
+
+	@Override
+	public void deleteChatroom(String roomname) throws Exception {
+		session.delete(namespace+".deleteChatroom", roomname);		
 	}
 
 }

@@ -136,12 +136,24 @@ $(function(){
 	$(".applies-section").on("click","li #selectBtn",function(){
 		var selectBtn = $(this);
 		var btn_section = selectBtn.parent(".btn-section");
-		var aid = btn_section.attr("data-aid");
+		var aid = ''+btn_section.attr("data-aid");
 		var bid = "${boardVO.bid}";
-		
-		$(".applies-section li #selectBtn").addClass("hide");
+		var writer = "${boardVO.writer}";
+		var applicant = btn_section.parent().find(".applicant-section").text();
+	
+		selectBtn.addClass("hide");
 		btn_section.find("#chatBtn").removeClass("hide");
 		btn_section.find("#selectCancelBtn").removeClass("hide");
+		
+		$.ajax({
+			type:'post',
+			url:'/apply/applySelectClick?writer='+writer,
+			headers:{"Content-Type":"application/json"},
+			data:JSON.stringify({aid:aid, applicant:applicant,ischoice:'y',bid:bid}),
+			dataType:'text',
+			success:function(result){	
+			}
+		});
 		
 	});
 	//취소
@@ -151,9 +163,19 @@ $(function(){
 		var aid = btn_section.attr("data-aid");
 		var bid = "${boardVO.bid}";
 		
-		$(".applies-section li #selectBtn").removeClass("hide");
 		cancelBtn.addClass("hide");
 		btn_section.find("#chatBtn").addClass("hide");
+		btn_section.find("#selectBtn").removeClass("hide");
+		
+		$.ajax({
+			type:'post',
+			url:'/apply/applyCancelClick',
+			headers:{"Content-Type":"application/json"},
+			data:JSON.stringify({aid:aid, ischoice:'n',bid:bid}),
+			dataType:'text',
+			success:function(result){	
+			}
+		});
 		
 	});
 	//채팅
@@ -162,7 +184,7 @@ $(function(){
 		var btn_section = selectBtn.parent(".btn-section");
 		var aid = btn_section.attr("data-aid");
 		var bid = "${boardVO.bid}";
-		
+		window.open("http://192.168.0.154:3000/chatroom?roomname='하이'&uid='khj'",'','width=400,heiht=430');
 	});
 	
 	$("#goList").click(function(){
@@ -175,22 +197,22 @@ $(function(){
 	
 	$("#deleteBtn").click(function(){
 		var bid = "${boardVO.bid}";
-		$.ajax({
-			type:'post',
-			url:'/board/deleteBoard?bid='+bid,
-			headers:{
-				"Content-Type":"application/json",
-			},
-			dataType:'text',
-			success:function(result){
-				alert("삭제 완료");
-				location.href="/board/list";
-			},
-			error:function(){
-				alert("삭제 실패");
-				location.href="/board/detail?bid="+bid;
-			}
-		});
+		if(confirm("[삭제]를 진행하시겠습니까?")==true){
+			$.ajax({
+				type:'post',
+				url:'/board/deleteBoard?bid='+bid,
+				headers:{"Content-Type":"application/json"},
+				dataType:'text',
+				success:function(result){
+					alert("삭제 완료");
+					location.href="/board/list";
+				},
+				error:function(){
+					alert("삭제 실패");
+					location.href="/board/detail?bid="+bid;
+				}
+			});
+		}
 	});
 	if(${boardVO.applycnt}>0){
 		getList();	
@@ -319,6 +341,7 @@ function addApplyObj(applyObj){
 	var applicant = applyObj.applicant;
 	var regdate = applyObj.regdate;
 	var content = applyObj.content;
+	var ischoice = applyObj.ischoice;
 	
 	var str ="";
 	str += '<li class="media applyObj" data-aid="'+aid+'">';
@@ -331,9 +354,16 @@ function addApplyObj(applyObj){
 	str += '</div>';
 	str += '<div class="col-sm-3 col-md-2 col-lg-2 btn-section" data-aid="'+aid+'">';
 	if("${login.uid}"==writer){
-		str += '<button type="button" class="btn btn-danger btn-block" id="selectBtn">선택</button>';
-		str += '<button type="button" class="btn btn-success hide" id="chatBtn">채팅</button>';
-		str += '<button type="button" class="btn btn-warning hide" id="selectCancelBtn">취소</button>';
+		if(ischoice=='n'){
+			str += '<button type="button" class="btn btn-danger btn-block" id="selectBtn">선택</button>';
+			str += '<button type="button" class="btn btn-success btn-block hide" id="chatBtn">채팅</button>';
+			str += '<button type="button" class="btn btn-warning btn-block hide" id="selectCancelBtn">취소</button>';
+		}
+		else{
+			str += '<button type="button" class="btn btn-danger btn-block hide" id="selectBtn">선택</button>';
+			str += '<button type="button" class="btn btn-success btn-block" id="chatBtn">채팅</button>';
+			str += '<button type="button" class="btn btn-warning btn-block" id="selectCancelBtn">취소</button>';
+		}
 	}else if("${login.uid}"==applicant){
 		str += '<button type="button" class="btn btn-warning btn-block" id="modifyApplyBtn" data-toggle="modal" data-target="#modifyModal">수정</button>';
 	}else{

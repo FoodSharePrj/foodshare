@@ -35,4 +35,16 @@
 	<delete id="deleteAllApply">
 	delete from tbl_apply where bid=#{bid}
 	</delete>
+	
+	<update id="setIschoice">
+	update tbl_apply set ischoice=#{ischoice} where aid=#{aid}
+	</update>
+	
+	<insert id="insertChatroom" parameterType="ChatroomVO">
+	insert into tbl_chatroom (roomname, player1, player2, progress, bid) values (#{roomname}, #{player1}, #{player2}, #{progress}, #{bid})
+	</insert>
+	
+	<delete id="deleteChatroom">
+	delete from tbl_chatroom where roomname=#{roomname}
+	</delete>
 </mapper>

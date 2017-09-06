@@ -10,9 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fs.domain.ApplyVO;
+import com.fs.domain.BoardVO;
+import com.fs.domain.ChatroomVO;
 import com.fs.service.ApplyService;
 
 @RestController
@@ -58,6 +61,50 @@ public class ApplyController {
 		ResponseEntity<String> entity = null;
 		try {
 			service.deleteApply(aid, bid);
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	@RequestMapping(value="/applySelectClick", method=RequestMethod.POST)
+	public ResponseEntity<String> applySelectClick(@RequestParam("writer") String writer, @RequestBody ApplyVO vo) throws Exception{
+		
+		ResponseEntity<String> entity = null;
+		
+		ChatroomVO cvo = new ChatroomVO();
+		cvo.setRoomname(vo.getAid());
+		cvo.setBid(vo.getBid());
+		cvo.setProgress("선택완료");
+		cvo.setPlayer1(writer);
+		cvo.setPlayer2(vo.getApplicant());
+		
+		BoardVO bvo = new BoardVO();
+		bvo.setBid(vo.getBid());
+		bvo.setProgress("선택완료");
+		
+		try {
+			service.applySelectClick(vo, cvo, bvo);
+			entity = new ResponseEntity<String>("success",HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity = new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	@RequestMapping(value="/applyCancelClick", method=RequestMethod.POST)
+	public ResponseEntity<String> applyCancelClick(@RequestBody ApplyVO vo) throws Exception{
+		
+		ResponseEntity<String> entity = null;
+		String roomname = vo.getAid();
+		BoardVO bvo = new BoardVO();
+		bvo.setBid(vo.getBid());
+		bvo.setProgress("공유중");
+		try {
+			service.applyCancelClick(vo, roomname, bvo);
 			entity = new ResponseEntity<String>("success",HttpStatus.OK);
 		}catch(Exception e) {
 			e.printStackTrace();
