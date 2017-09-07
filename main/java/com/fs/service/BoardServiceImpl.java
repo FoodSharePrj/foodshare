@@ -46,5 +46,10 @@ public class BoardServiceImpl implements BoardService {
 		return dao.getList(i*12);
 	}
 
+	@Override
+	public List<ListObjVO> getSearchList(String splace) throws Exception {
+		return dao.getSearchList(splace);
+	}
+
 	
 }

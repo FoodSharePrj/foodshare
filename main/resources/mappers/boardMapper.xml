@@ -27,4 +27,14 @@
 	order by duedate asc, b.bid asc 
 	limit #{i}, 12
 	</select>
+	
+	<select id="getSearchList" resultType="ListObjVO">
+	select * 
+	from tbl_bbs b, tbl_file f 
+	where b.bid=f.bid and ismain='y' and b.splace1=#{splace}
+	order by duedate asc, b.bid asc 
+	limit #{i}, 12
+	</select>
+	
+	
 </mapper>

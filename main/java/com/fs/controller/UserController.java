@@ -6,11 +6,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.WebUtils;
@@ -23,6 +26,7 @@ import com.fs.service.UserService;
 @RequestMapping("/user")
 public class UserController {
 	
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	@Inject
 	UserService userService;
 	
@@ -114,6 +118,61 @@ public class UserController {
 		return result;
 	}
 	
+	@RequestMapping(value="/mypage", method=RequestMethod.GET)
+	public void Mypage()throws Exception{
+		
+	}
+	@RequestMapping(value="/Usermodify", method=RequestMethod.GET)
+	public void UsermodifyGET() throws Exception{
+		logger.info("Usermodify get.........");
+		
+		
+	}
 	
+	@RequestMapping(value="/Usermodify", method=RequestMethod.POST)
+	public String UsermodifyPOST(UserVO userVO, RedirectAttributes rttr) throws Exception{
+		logger.info("Usermodify Post.........");
+		
+		userService.Usermodify(userVO);
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/user/mypage";
+	}
 	
+	@RequestMapping(value="/Userdelete", method=RequestMethod.GET)
+	public void UserdelteGET() throws Exception{
+		logger.info("Userdelete get.........");
+		
+	}
+	
+	@RequestMapping(value="/Userdelete", method=RequestMethod.POST)
+	public String UserdeltePOST(UserVO userVO, RedirectAttributes rttr, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception{
+		logger.info("Userdelete post.........");
+		System.out.println(userVO.getUpw());
+		
+		userService.delete(userVO);
+		
+		Object obj = session.getAttribute("login");
+		if(obj!=null){
+			// 세션에 기록된 UserVO객체 삭제
+			session.removeAttribute("login");
+			session.invalidate();
+			
+			// 기록된 쿠키 삭제
+			Cookie loginCookie = WebUtils.getCookie(request, "loginCookie");
+			if(loginCookie != null) {
+				loginCookie.setMaxAge(0);
+				response.addCookie(loginCookie);
+				
+				// DB에 저장된 내용 업댓
+				UserVO vo = (UserVO) obj;
+				userService.keepLogin(vo.getUid(), session.getId());
+			}
+		}
+		
+		rttr.addFlashAttribute("msg", "SUCCESS");
+		
+		return "redirect:/";
+		
+	}
 }

@@ -47,6 +47,9 @@
 		</div>
 	</div>
 </footer>
+	<!-- 앵귤 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/js/lightbox-plus-jquery.min.js"></script>
+    <!-- 끝 -->
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
 <script

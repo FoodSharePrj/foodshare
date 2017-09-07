@@ -51,6 +51,22 @@ public class UserDAOImpl implements UserDAO {
 		
 		return session.selectOne(namespace + ".checkId",uid);
 	}
+
+	@Override
+	public void Usermodify(UserVO userVO) throws Exception {
+		session.update(namespace+".modify",userVO);
+	}
+
+	@Override
+	public UserVO read(UserVO userVO) throws Exception {
+		System.out.println("ddd");
+		return session.selectOne(namespace+".read", userVO);
+	}
+
+	@Override
+	public void delete(UserVO userVO) throws Exception {
+		session.delete(namespace+".delete", userVO);
+	}
 	
 	
 }

@@ -7,6 +7,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
 <meta charset="utf-8">
+<!-- 앵귤러 -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+<script src="/resources/js/listangular.js"></script>
+<!-- 앵귤러 끝 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Test</title>
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
@@ -17,8 +22,16 @@
 <link rel="stylesheet" href="/resources/fonts/font-awesome.min.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css">
+	
 <link rel="stylesheet" href="/resources/css/Pretty-Footer.css">
 <link rel="stylesheet" href="/resources/css/styles.css">
+<!-- 추가 -->
+<link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,700">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cookie">
+<link rel="stylesheet" href="resources/fonts/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.9.0/css/lightbox.min.css">
+<!-- 끝 -->
 </head>
 <style type="text/css">
 body {
@@ -43,11 +56,11 @@ body {
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right loginchange">
-					<form class="navbar-form navbar-left hidden-sm hidden-md">
+					<form class="navbar-form navbar-left hidden-sm hidden-md" role="form" method="post" action="/board/serach">
 						<div class="input-group">
 							<input type="text" class="form-control" placeholder="내용을 입력하세요">
 							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">검색</button>
+								<button class="btn btn-default" type="submit" name="splace1">검색</button>
 							</span>
 						</div>
 					</form>
@@ -65,23 +78,21 @@ body {
 								<li><a href="/board/list"> 광주/전라</a></li>
 								<li><a href="/board/list"> 제주도</a></li>
 							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">종류별 검색<span class="caret"></span></a>
-							<ul class="dropdown-menu">
+						<li  role="presentation"><a href="/board/search">종류별 검색<span class="caret"></span></a>
+							<!-- <ul class="dropdown-menu">
 								<li><a href="/board/list"> 육류</a></li>
 								<li><a href="/board/list"> 어패류</a></li>
 								<li><a href="/board/list"> 채소류</a></li>
 								<li><a href="/board/list"> 과일류</a></li>
 								<li><a href="/board/list"> 가공식품</a></li>
-							</ul></li>
+							</ul> --></li>
 					</ul>
 					<c:if test="${empty login}">
 						<li role="presentation"><a href="/user/login">로그인</a></li>
 						<li role="presentation"><a href="/user/join">회원가입</a></li>
 					</c:if>
 					<c:if test="${not empty login}">
-						<li role="presentation"><a href="/">MyPage</a></li>
+						<li role="presentation"><a href="/user/mypage">MyPage</a></li>
 						<li role="presentation"><a href="/user/logout">Logout</a></li>
 					</c:if>
 				</ul>

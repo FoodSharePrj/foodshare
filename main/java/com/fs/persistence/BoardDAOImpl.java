@@ -37,4 +37,9 @@ public class BoardDAOImpl implements BoardDAO{
 	public List<ListObjVO> getList(int i) throws Exception {
 		return session.selectList(namespace+".getList", i);
 	}
+
+	@Override
+	public List<ListObjVO> getSearchList(String splace) throws Exception {
+		return session.selectList(namespace+".getSearchList", splace);
+	}
 }

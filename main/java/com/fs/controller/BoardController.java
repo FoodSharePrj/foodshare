@@ -125,4 +125,16 @@ public class BoardController {
 	public String detail() {
 		return "/board/detail";
 	}
+	
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public void search() throws Exception{
+		logger.info("search get.........");
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/search/{splace}", method = RequestMethod.POST)
+	public List<ListObjVO> search(@PathVariable("splace") String splace) throws Exception{
+		logger.info("search post.........");
+		return service.getSearchList(splace);
+	}
 }

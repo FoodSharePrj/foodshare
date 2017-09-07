@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
-
 <div id="promo">
 	<div class="jumbotron">
 		<h1>Start Food Share</h1>
@@ -22,7 +21,7 @@
 	</div>
 </div>
 <%@ include file="../include/footer.jsp"%>
-<script
+<script.
 	src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
 <script id="listTemplate" type="text/x-handlebars-template">
 <div class="col-sm-6 col-md-3">

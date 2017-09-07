@@ -26,7 +26,7 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="title"> 제목</label> <input type="text"
-									class="form-control" id="id" name="title" placeholder="제목"
+									class="form-control" id="title" name="title" placeholder="제목"
 									required="required" />
 							</div>
 							<div class="form-group">
@@ -67,8 +67,11 @@
 							</div>
 
 							<div class="form-group">
-								<label for="duedate"> 공유기한</label> <input type="date"
-									class="form-control" name="duedate" />
+								<label for="duedate"> 공유기한</label><br>
+								<input type="radio" id="duedate" name="duedate" value="today">당일&nbsp;
+								<input type="radio" id="duedate" name="duedate" value="tomorrow">내일&nbsp;
+								<input type="radio" id="duedate" name="duedate" value="tomorrow2">모레&nbsp;
+								<input type="radio" id="duedate" name="duedate" value="week">일주일
 							</div>
 
 						</div>
@@ -180,4 +183,7 @@
          }
       }).open();
    }
+</script>
+<script>
+	
 </script>
