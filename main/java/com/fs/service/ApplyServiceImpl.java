@@ -12,6 +12,7 @@ import com.fs.domain.BoardVO;
 import com.fs.domain.ChatroomVO;
 import com.fs.persistence.ApplyDAO;
 import com.fs.persistence.BoardDAO;
+import com.fs.persistence.ChatDAO;
 
 @Service
 public class ApplyServiceImpl implements ApplyService {
@@ -21,6 +22,9 @@ public class ApplyServiceImpl implements ApplyService {
 	
 	@Inject
 	private BoardDAO boardDAO;
+	
+	@Inject
+	private ChatDAO chatDAO;
 	
 	@Transactional
 	@Override
@@ -68,7 +72,7 @@ public class ApplyServiceImpl implements ApplyService {
 	@Override
 	public void applySelectClick(ApplyVO applyVO, ChatroomVO chatroomVO, BoardVO boardVO) throws Exception {
 		dao.setIschoice(applyVO);
-		dao.insertChatroom(chatroomVO);
+		chatDAO.insertChatroom(chatroomVO);
 		boardDAO.setProgress(boardVO);
 	}
 
@@ -76,7 +80,7 @@ public class ApplyServiceImpl implements ApplyService {
 	@Override
 	public void applyCancelClick(ApplyVO applyVO, String roomname, BoardVO boardVO) throws Exception {
 		dao.setIschoice(applyVO);
-		dao.deleteChatroom(roomname);
+		chatDAO.deleteChatroom(roomname);
 		boardDAO.setProgress(boardVO);
 	}
 }

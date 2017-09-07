@@ -3,7 +3,6 @@ package com.fs.persistence;
 import java.util.List;
 
 import com.fs.domain.ApplyVO;
-import com.fs.domain.ChatroomVO;
 
 public interface ApplyDAO {
 
@@ -16,6 +15,5 @@ public interface ApplyDAO {
 	public void deleteApply(String aid) throws Exception;
 	public void deleteAllApply(String bid) throws Exception;
 	public void setIschoice(ApplyVO vo) throws Exception;
-	public void insertChatroom(ChatroomVO vo) throws Exception;
-	public void deleteChatroom(String roomname) throws Exception;
+	
 }

@@ -184,7 +184,8 @@ $(function(){
 		var btn_section = selectBtn.parent(".btn-section");
 		var aid = btn_section.attr("data-aid");
 		var bid = "${boardVO.bid}";
-		window.open("http://192.168.0.154:3000/chatroom?roomname='하이'&uid='khj'",'','width=400,heiht=430');
+		var uid = "${login.uid}";
+		window.open("http://192.168.0.222:3000/chatroom?roomname="+aid+"&uid="+uid, aid,'width=400,heiht=430');
 	});
 	
 	$("#goList").click(function(){

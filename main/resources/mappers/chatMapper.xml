@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fs.mapper.ChatMapper">
+	
+	<insert id="insertChatroom" parameterType="ChatroomVO">
+	insert into tbl_chatroom (roomname, player1, player2, progress, bid) 
+	values (#{roomname}, #{player1}, #{player2}, #{progress}, #{bid})
+	</insert>
+
+	<delete id="deleteChatroom">
+	delete from tbl_chatroom where roomname=#{roomname}
+	</delete>
+	
+	<select id="getChatroomList" resultType="ChatroomVO">
+	select * from tbl_chatroom where player1=#{uid} or player2=#{uid}
+	</select>
+
+</mapper>
