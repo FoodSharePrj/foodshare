@@ -25,43 +25,7 @@ body {
 	padding-top: 70px;
 }
 </style>
-<script type="text/javascript">
 
-var chatList = new Array();
-var uid="${login.uid}";
-if(uid != ""){
-
-	$.getJSON("/chat/getChatroomList/"+uid, function(list) {
-		
-		if(list.length!=0){
-			$(list).each(function() {
-				chatList.push(this.roomname);
-				var html ='';
-				html += "<iframe src='http://192.168.0.222:3000/wait?roomname="+this.roomname;
-				html +=	"&uid="+uid"'>";
-				html += "</iframe>";
-
-				$(".iframe-section").append(html);
-			});
-			
-			if(window.addEventListener) {
-				window.addEventListener ("message", receiveMessage, false);
-			}else{
-				if(window.attachEvent) {  
-					window.attachEvent("onmessage", receiveMessage);
-				}
-			}
-		}
-	});
-}
-
-function receiveMessage(event){
-	/* 이부분 수정 chatList에 event.data가 들어있음 여부에 따라 분기 */
-	if(event.data){
-		window.open("http://192.168.0.222:3000/chatroom?roomname=000003&uid="+"${login.uid}", '000003','width=400,heiht=430');
-	}
-}
-</script>
 <body>
 	<!-- 상단 메뉴 시작 -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">

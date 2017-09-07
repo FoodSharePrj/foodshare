@@ -62,4 +62,5 @@
 	if (result == "success") {
 		alert("회원가입 성공!!");
 	}
+	$("#uid").focus();
 </script>

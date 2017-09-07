@@ -49,5 +49,48 @@
 </footer>
 <script src="/resources/js/jquery.min.js"></script>
 <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+var chatList = new Array();
+var uid="${login.uid}";
+if(uid != ""){
+
+	$.getJSON("/chat/getChatroomList/"+uid, function(list) {
+		
+		if(list.length>0){
+			$(list).each(function() {
+				chatList.push(this.roomname);
+				var html ='';
+				html += "<iframe class='"+this.roomname+"' src='http://192.168.0.222:3000/wait?roomname="+this.roomname;
+				html +=	"&uid="+uid+"'>";
+				html += "</iframe>";
+
+				$(".iframe-section").append(html);
+			});
+			
+			if(window.addEventListener) {
+				window.addEventListener ("message", receiveMessage, false);
+			}else{
+				if(window.attachEvent) {  
+					window.attachEvent("onmessage", receiveMessage);
+				}
+			}
+		}
+	});
+}
+
+function receiveMessage(event){
+	/* 이부분 수정 chatList에 event.data가 들어있음 여부에 따라 분기 */
+	if(event.data){
+		for(var i = 0 ; i<chatList.length; i++){
+			if(chatList[i]==event.data){
+				window.open("http://192.168.0.222:3000/chatroom?roomname="+event.data+"&uid="+"${login.uid}", event.data,'width=400,heiht=430');
+				$(".iframe-section ."+event.data).remove();
+			}
+		}
+		
+	}
+}
+</script>
 </body>
 </html>
