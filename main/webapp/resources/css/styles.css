@@ -71,8 +71,22 @@ body {
 
 #why .item i {
   font-size:42px;
-  color:rgb(251,185,163);
+  color:rgb(252,147,141);
 }
+
+#why .item:hover i {
+	color:rgb(245,77,66);
+}
+
+#why .item:hover h2 {
+	font-weight:bold;
+	font-size:25px;
+}
+
+#why .item:hover p{
+	font-weight:bold;
+}
+
 
 #why .item h2 {
   font-weight:normal;

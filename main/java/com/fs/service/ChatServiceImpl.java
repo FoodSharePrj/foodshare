@@ -1,6 +1,7 @@
 package com.fs.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -19,5 +20,11 @@ public class ChatServiceImpl implements ChatService {
 	public List<ChatroomVO> getChatroomList(String uid) throws Exception {
 
 		return dao.getChatroomList(uid);
+	}
+
+	@Override
+	public int getIsreadCnt(Map<String, Object> map) throws Exception {
+
+		return dao.getIsreadCnt(map);
 	}
 }

@@ -1,6 +1,8 @@
 package com.fs.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -23,5 +25,17 @@ public class ChatController {
 	public List<ChatroomVO> getChatroomList(@PathVariable("uid") String uid) throws Exception {
 		
 		return service.getChatroomList(uid);
+	}
+	
+	@RequestMapping(value="/getIsreadCnt/{roomname}/{uid}", method=RequestMethod.POST)
+	public String getIsreadCnt(@PathVariable("roomname") String roomname, @PathVariable("uid") String uid) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("roomname", roomname);
+		map.put("writer", uid);
+		
+		Integer cnt = service.getIsreadCnt(map);
+		
+		return cnt.toString(); 
 	}
 }

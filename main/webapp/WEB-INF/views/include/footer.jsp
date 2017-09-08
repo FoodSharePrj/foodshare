@@ -76,6 +76,26 @@ if(uid != ""){
 				}
 			}
 		}
+		if(chatList.length>0){
+			var applyCnt = 0;
+			
+			$(chatList).each(function(){
+				$.ajax({
+					type:'post',
+					async: false,
+					url:'/chat/getIsreadCnt/'+this+'/'+uid,
+					headers:{"Content-Type":"application/json"},
+					dataType:'text',
+					success:function(result){	
+						applyCnt += parseInt(result);
+					}
+				});
+			});
+			
+			if(applyCnt>0){
+				$("#isread").text(applyCnt+"");
+			}
+		}
 	});
 }
 
@@ -88,7 +108,6 @@ function receiveMessage(event){
 				$(".iframe-section ."+event.data).remove();
 			}
 		}
-		
 	}
 }
 </script>

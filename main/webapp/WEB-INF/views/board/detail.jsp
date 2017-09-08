@@ -253,6 +253,7 @@ $(function(){
 			success:function(result){
 				addApplyObj(result);
 				$("#newApplyText").val("");
+				$("#newApplyText").attr("readonly","readonly");
 			}
 		});
 	});
@@ -290,6 +291,7 @@ $(function(){
 				if(result=='success'){
 					alert("삭제 되었습니다.");
 					$("#modifyModal").modal('hide');
+					$("#newApplyText").removeAttr("readonly");
 					$(".applies-section .applyObj").remove();
 					getList();					
 				}
@@ -332,6 +334,9 @@ function getList() {
 	$.getJSON("/apply/getApplyList/"+"${boardVO.bid}", function(list) {
 		$(list).each(function() {
 			addApplyObj(this);
+			if(this.applicant=="${login.uid}"){
+				$("#newApplyText").attr("readonly","readonly");
+			}
 		});
 	});
 }

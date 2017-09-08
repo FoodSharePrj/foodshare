@@ -8,7 +8,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Test</title>
+<title>FoodShare</title>
+<link rel="icon" type="image/x-icon" href="/resources/img/favicon.ico">
 <link rel="stylesheet" href="/resources/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Raleway:400,700">
@@ -24,6 +25,19 @@
 body {
 	padding-top: 70px;
 }
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
 </style>
 
 <body>
@@ -38,11 +52,10 @@ body {
 						class="icon-bar"></span> <span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand navbar-link" href="/"><img
-					src="/resources/img/sharing.png" id="logo"><strong>FoodShare
+					src="/resources/img/groceries.png" id="logo"><strong>FoodShare
 						Project</strong></a>
 			</div>
-			<div class="collapse navbar-collapse"
-				id="bs-example-navbar-collapse-1">
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right loginchange">
 					<form class="navbar-form navbar-left hidden-sm hidden-md">
 						<div class="input-group">
@@ -78,12 +91,15 @@ body {
 							</ul></li>
 					</ul>
 					<c:if test="${empty login}">
-						<li role="presentation"><a href="/user/login">로그인</a></li>
-						<li role="presentation"><a href="/user/join">회원가입</a></li>
+					<li role="presentation"><a href="/user/login">로그인</a></li>
+					<li role="presentation"><a href="/user/join">회원가입</a></li>
 					</c:if>
 					<c:if test="${not empty login}">
-						<li role="presentation"><a href="/user/mypage">MyPage</a></li>
-						<li role="presentation"><a href="/user/logout">Logout</a></li>
+					<li role="presentation">
+						<a href="/user/mypage">MyPage
+						<span class="label label-danger" id="isread"></span></a>
+					</li>
+					<li role="presentation"><a href="/user/logout">Logout</a></li>
 					</c:if>
 				</ul>
 			</div>

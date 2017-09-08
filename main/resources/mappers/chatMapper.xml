@@ -16,5 +16,9 @@
 	<select id="getChatroomList" resultType="ChatroomVO">
 	select * from tbl_chatroom where player1=#{uid} or player2=#{uid}
 	</select>
+	
+	<select id="getIsreadCnt" resultType="int">
+	select count(cid) from tbl_chat where isread='n' and roomname=#{roomname} and writer != #{writer}
+	</select>
 
 </mapper>

@@ -1,6 +1,7 @@
 package com.fs.persistence;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -29,5 +30,11 @@ public class ChatDAOImpl implements ChatDAO {
 	@Override
 	public List<ChatroomVO> getChatroomList(String uid) throws Exception {
 		return session.selectList(namespace+".getChatroomList", uid);
+	}
+
+	@Override
+	public int getIsreadCnt(Map<String, Object> map) throws Exception {
+		
+		return session.selectOne(namespace+".getIsreadCnt", map);
 	}
 }
