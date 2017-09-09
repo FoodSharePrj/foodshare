@@ -1009,7 +1009,7 @@
 		<div class="clearfix"></div>
 		<br><br>
 		<form class="form-inline">
-			<input type="text" class="form-control" style="radius:15px;" id="searchInput" size="40" placeholder="Search..." required>
+			<input type="text" class="form-control" id="searchInput" size="40" placeholder="Search..." required>
 			<button type="submit" class="btn btn-success btn-md"><span class="glyphicon glyphicon-search"></span></button>
 		</form>
 		<hr>
