@@ -57,39 +57,9 @@ body {
 			</div>
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav navbar-right loginchange">
-					<form class="navbar-form navbar-left hidden-sm hidden-md">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="내용을 입력하세요">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button">검색</button>
-							</span>
-						</div>
-					</form>
-					<li class="active" role="presentation"><a href="/">푸드쉐어</a></li>
-					<ul class="nav navbar-nav">
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">지역별 검색<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/board/list"> 서울/인천</a></li>
-								<li><a href="/board/list"> 경기/강원</a></li>
-								<li><a href="/board/list"> 대전/충청</a></li>
-								<li><a href="/board/list"> 부산/울산/경남</a></li>
-								<li><a href="/board/list"> 대구/경북</a></li>
-								<li><a href="/board/list"> 광주/전라</a></li>
-								<li><a href="/board/list"> 제주도</a></li>
-							</ul></li>
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">종류별 검색<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/board/list"> 육류</a></li>
-								<li><a href="/board/list"> 어패류</a></li>
-								<li><a href="/board/list"> 채소류</a></li>
-								<li><a href="/board/list"> 과일류</a></li>
-								<li><a href="/board/list"> 가공식품</a></li>
-							</ul></li>
-					</ul>
+					
+					<li class="active" role="presentation"><a href="/">홈</a></li>
+					<li role="presentation"><a href="/board/list">푸드쉐어</a></li>
 					<c:if test="${empty login}">
 					<li role="presentation"><a href="/user/login">로그인</a></li>
 					<li role="presentation"><a href="/user/join">회원가입</a></li>
@@ -105,17 +75,7 @@ body {
 			</div>
 		</div>
 	</nav>
-	<!-- 검색창(큰화면, 스마트폰화면 미표시) -->
-	<div class="container hidden-xs hidden-lg">
-		<form class="navbar-form">
-			<div class="container input-group">
-				<input type="text" class="form-control" placeholder="내용을 입력하세요">
-				<span class="input-group-btn">
-					<button class="btn btn-default" type="button">검색</button>
-				</span>
-			</div>
-		</form>
-	</div>
+	
 	<div class="iframe-section hide">
 		
 	</div>
