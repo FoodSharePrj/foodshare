@@ -215,6 +215,7 @@ $(function(){
 			});
 		}
 	});
+	
 	if(${boardVO.applycnt}>0){
 		getList();	
 	}
@@ -236,7 +237,6 @@ $(function(){
 		}
 		var applicant = "${login.uid}";
 		var bid = "${boardVO.bid}";
-		var applycnt = ${boardVO.applycnt}+1;
 		
 		$.ajax({
 			type:'post',

@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 import com.fs.domain.BoardVO;
 import com.fs.domain.ListObjVO;
+import com.fs.dto.SearchCriteria;
 
 @Repository
 public class BoardDAOImpl implements BoardDAO{
@@ -35,8 +36,8 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<ListObjVO> getList(int i) throws Exception {
-		return session.selectList(namespace+".getList", i);
+	public List<ListObjVO> getList(SearchCriteria cri) throws Exception {
+		return session.selectList(namespace+".getList", cri);
 	}
 
 	@Override

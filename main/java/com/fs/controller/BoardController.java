@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -21,9 +22,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.fs.domain.ApplyVO;
 import com.fs.domain.BoardVO;
 import com.fs.domain.ListObjVO;
 import com.fs.domain.UploadVO;
+import com.fs.dto.SearchCriteria;
 import com.fs.service.BoardService;
 import com.fs.service.UploadService;
 import com.fs.util.MediaUtils;
@@ -112,10 +115,17 @@ public class BoardController {
 	}
 
 	@ResponseBody
+	@RequestMapping(value = "/getList", method = RequestMethod.POST)
+	public List<ListObjVO> getListObj(@RequestBody SearchCriteria cri) throws Exception {
+		
+		return service.getList(cri);
+	}
+		
+	/*@ResponseBody
 	@RequestMapping(value = "/getList/{i}", method = RequestMethod.GET)
 	public List<ListObjVO> getListObj(@PathVariable("i") Integer i) throws Exception {
 		return service.getList(i);
-	}
+	}*/
 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String detail(@RequestParam("bid") String bid, Model model) throws Exception {

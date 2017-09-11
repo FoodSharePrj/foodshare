@@ -17,9 +17,19 @@
 	</update>
 	
 	<select id="getList" resultType="ListObjVO">
-	select b.*, f.route from tbl_bbs b left outer join tbl_file f on b.bid=f.bid and f.ismain='y' 
-	order by b.duedate asc, b.bid asc 
-	limit #{i}, 12
+	select t.* from (select b.*, f.route from tbl_bbs b left outer join tbl_file f on b.bid=f.bid and f.ismain='y' order by b.duedate asc, b.bid asc limit #{index}, 12) t 
+	<if test ="keyword != null">
+	where title like CONCAT('%',#{keyword},'%')
+	</if>
+	<if test ="splace1 != null">
+	and splace1 like CONCAT('%',#{splace1},'%')
+	</if>
+	<if test ="splace2 != null">
+	and splace2 like CONCAT('%',#{splace2},'%')
+	</if>
+	<if test ="category != null">  
+	and category like CONCAT('%',#{category},'%')
+	</if>
 	</select>
 	
 	<select id="getBoardVO" resultType="BoardVO">

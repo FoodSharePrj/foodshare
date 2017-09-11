@@ -13,7 +13,6 @@ public class ListObjVO {
 	private String splace2;
 	private String splace3;
 	private String status;
-	private String fid;
 	private String route;
 	private Integer applycnt;
 	
@@ -96,12 +95,6 @@ public class ListObjVO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String getFid() {
-		return fid;
-	}
-	public void setFid(String fid) {
-		this.fid = fid;
-	}
 	public String getRoute() {
 		return route;
 	}
@@ -113,7 +106,7 @@ public class ListObjVO {
 		return "ListObjVO [bid=" + bid + ", title=" + title + ", content=" + content + ", writer=" + writer
 				+ ", regdate=" + regdate + ", category=" + category + ", progress=" + progress + ", duedate=" + duedate
 				+ ", splace1=" + splace1 + ", splace2=" + splace2 + ", splace3=" + splace3 + ", status=" + status
-				+ ", fid=" + fid + ", route=" + route + ", applycnt=" + applycnt + "]";
+				+ ", route=" + route + ", applycnt=" + applycnt + "]";
 	}
 	
 }

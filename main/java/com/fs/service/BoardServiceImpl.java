@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fs.domain.BoardVO;
 import com.fs.domain.ListObjVO;
+import com.fs.dto.SearchCriteria;
 import com.fs.persistence.ApplyDAO;
 import com.fs.persistence.BoardDAO;
 import com.fs.persistence.UploadDAO;
@@ -50,9 +51,9 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	@Override
-	public List<ListObjVO> getList(int i) throws Exception {
-		
-		return dao.getList(i*12);
+	public List<ListObjVO> getList(SearchCriteria cri) throws Exception {
+		cri.setIndex(cri.getIndex()*12);
+		return dao.getList(cri);
 	}
 
 	@Override
