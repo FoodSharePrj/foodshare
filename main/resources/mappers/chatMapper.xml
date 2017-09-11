@@ -20,5 +20,9 @@
 	<select id="getIsreadCnt" resultType="int">
 	select count(cid) from tbl_chat where isread='n' and roomname=#{roomname} and writer != #{writer}
 	</select>
+	
+	<update id="setProgress">
+	update tbl_chatroom set progress=#{progress} where bid=#{bid}
+	</update>
 
 </mapper>

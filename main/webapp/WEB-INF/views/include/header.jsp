@@ -66,7 +66,7 @@ body {
 					</c:if>
 					<c:if test="${not empty login}">
 					<li role="presentation">
-						<a href="/user/mypage">MyPage
+						<a href="/user/mypage_shareState">MyPage
 						<span class="label label-danger" id="isread"></span></a>
 					</li>
 					<li role="presentation"><a href="/user/logout">Logout</a></li>

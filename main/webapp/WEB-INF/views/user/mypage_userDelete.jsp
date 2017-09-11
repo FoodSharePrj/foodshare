@@ -64,26 +64,18 @@ p.small.text-muted {
         <div class="fading-side-menu" data-spy="affix" data-offset-top="350" id="li">
             <h2>My Page</h2><hr class="no-margin">
             <ul class="list-unstyled">
-                <li>
-                    <a href="#intro">
-                        <span class="fa fa-angle-double-right text-primary"></span>공유현황
-                    </a>
-                </li>
-                <li>
-                    <a href="#getting-started">
-                        <span class="fa fa-angle-double-right text-primary"></span>신청현황
-                    </a>
-                </li>
-                <li>
-                    <a href="/user/usermodify">
-                        <span class="fa fa-angle-double-right text-primary"></span>회원정보 수정
-                    </a>
-                </li>
-                <li>
-                    <a href="/user/userdelete">
-                        <span class="fa fa-angle-double-right text-primary"></span>회원탈퇴
-                    </a>
-                </li>
+                <li><a href="/user/mypage_shareState"> <span
+						class="fa fa-angle-double-right text-primary"></span>공유현황
+				</a></li>
+				<li><a href="/user/mypage_applyState"> <span
+						class="fa fa-angle-double-right text-primary"></span>신청현황
+				</a></li>
+				<li><a href="/user/mypage_userModify"> <span
+						class="fa fa-angle-double-right text-primary"></span>회원정보 수정
+				</a></li>
+				<li><a href="/user/mypage_userDelete"> <span
+						class="fa fa-angle-double-right text-primary"></span>회원탈퇴
+				</a></li>
             </ul>
         </div>
     </div>

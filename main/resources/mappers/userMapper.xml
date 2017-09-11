@@ -44,4 +44,12 @@
 	<delete id="delete">
 		delete from tbl_user where uid=#{uid}
 	</delete>
+	
+	<select id="getApplyStateList" resultType="ApplyStateVO">
+		select aid,b.bid,title, progress, a.regdate, ischoice from tbl_bbs b, tbl_apply a where b.bid=a.bid and applicant =#{uid} order by regdate desc; 
+	</select>
+	
+	<select id="getShareStateList" resultType="BoardVO">
+		select * from tbl_bbs where writer=#{uid} order by regdate desc;
+	</select>
 </mapper>

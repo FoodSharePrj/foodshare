@@ -1,6 +1,7 @@
 package com.fs.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -8,6 +9,8 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fs.domain.ApplyStateVO;
+import com.fs.domain.BoardVO;
 import com.fs.domain.UserVO;
 import com.fs.dto.LoginDTO;
 
@@ -66,6 +69,18 @@ public class UserDAOImpl implements UserDAO {
 	public UserVO getUserObj(String uid) throws Exception {
 
 		return session.selectOne(namespace+".getUserObj", uid);
+	}
+	
+	@Override
+	public List<ApplyStateVO> getApplyStateList(String uid) throws Exception {
+		
+		return session.selectList(namespace+".getApplyStateList",uid);
+	}
+
+	@Override
+	public List<BoardVO> getShareStateList(String uid) throws Exception {
+		
+		return session.selectList(namespace+".getShareStateList",uid);
 	}
 	
 }

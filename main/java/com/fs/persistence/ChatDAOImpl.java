@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.fs.domain.BoardVO;
 import com.fs.domain.ChatroomVO;
 
 @Repository
@@ -36,5 +37,10 @@ public class ChatDAOImpl implements ChatDAO {
 	public int getIsreadCnt(Map<String, Object> map) throws Exception {
 		
 		return session.selectOne(namespace+".getIsreadCnt", map);
+	}
+
+	@Override
+	public void setProgress(BoardVO vo) throws Exception {
+		session.update(namespace+".setProgress", vo);		
 	}
 }
