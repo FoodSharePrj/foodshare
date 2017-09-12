@@ -44,7 +44,7 @@ public class BoardVO {
 		this.writer = writer;
 	}
 	public String getRegdate() {
-		return regdate;
+		return regdate.substring(0,16);
 	}
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;

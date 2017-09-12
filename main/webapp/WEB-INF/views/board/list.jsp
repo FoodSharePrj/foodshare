@@ -1167,14 +1167,19 @@
 		});
 	});
 
-
 	/* 검색부분 */
 	var index = 0;
 	var splace1 = '';
 	var splace2 = '';
 	var category = '';
 	var keyword = '';
-
+	
+	$("#searchInput").keyup(function (e) {
+		if (e.which == 13){
+			$('#searchBtn').trigger("click");
+		}
+	});
+	
 	$("#searchBtn").click(function() {
 		
 		if ($(":radio[name=splace2]:checked").val()) {
