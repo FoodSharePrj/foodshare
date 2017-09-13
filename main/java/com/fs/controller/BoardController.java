@@ -51,7 +51,7 @@ public class BoardController {
 		logger.info("register get.........");
 	}
 
-	@RequestMapping(value = "/regist", method = RequestMethod.POST)
+	@RequestMapping(value = "/regist", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String registerPOST(BoardVO board, MultipartHttpServletRequest mhsr, RedirectAttributes rttr)
 			throws Exception {
 		logger.info("register post.........");
