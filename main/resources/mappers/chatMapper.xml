@@ -24,5 +24,9 @@
 	<update id="setProgress">
 	update tbl_chatroom set progress=#{progress} where bid=#{bid}
 	</update>
+	
+	<select id="get">
+	select roomname,count(cid) from tbl_chat where isread='y'  and writer != 'TEST1' group by roomname
+	</select>
 
 </mapper>
