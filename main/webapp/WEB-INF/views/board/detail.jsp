@@ -20,7 +20,7 @@
 		<button class="btn btn-sm btn-danger" id="deleteBtn">삭제</button>
 	</c:if>
 	<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<div id="carousel-generic" class="carousel slide">
 				<div class="carousel-inner"></div>
 				<a class="left carousel-control" href="#carousel-generic"
@@ -30,10 +30,10 @@
 				</a>
 			</div>
 		</div>
-		<div class="col-md-6">
+		<div class="col-md-7">
 			<table class="table">
 				<tr>
-					<th>제목</th>
+					<th width="100px">제목</th>
 					<th>${boardVO.title}</th>
 				</tr>
 				<tr>

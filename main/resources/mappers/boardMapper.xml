@@ -17,7 +17,7 @@
 	</update>
 	
 	<select id="getList" resultType="ListObjVO">
-	select t.* from (select b.*, f.route from tbl_bbs b left outer join tbl_file f on b.bid=f.bid and f.ismain='y' order by b.duedate asc, b.bid asc limit #{index}, 12) t 
+	select t.* from (select b.*, f.route from tbl_bbs b left outer join tbl_file f on b.bid=f.bid and f.ismain='y' order by b.duedate asc, b.bid asc) t 
 	<if test ="keyword != null">
 	where title like CONCAT('%',#{keyword},'%')
 	</if>
@@ -30,6 +30,7 @@
 	<if test ="category != null">  
 	and category like CONCAT('%',#{category},'%')
 	</if>
+	and t.duedate > date_add(now(), interval -1 day) limit #{index}, 12
 	</select>
 	
 	<select id="getBoardVO" resultType="BoardVO">
