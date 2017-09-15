@@ -125,12 +125,18 @@ p.small.text-muted {
 				str +=	'<td style="text-align:center;" id="td_progress">'+this.progress+'</td>';
 				str +=	'<td style="text-align:center;">'+this.ischoice+'</td>';
 				if(this.ischoice=="채택"){
-					str +=	'<td style="text-align:center;"><button class="btn btn-success btn-sm" id="chatbtn" data-aid="'+this.aid+'">대화하기</button></td>';
+					str +=	'<td style="text-align:center;"><button class="btn btn-success btn-sm" id="chatbtn" data-aid="'+this.aid+'">';
+					if(this.cnt>0){
+						str += '대화하기<span class="label label-danger">'+this.cnt+'</span></button></td>';
+					}else{
+						str += '대화하기</button></td>';	
+					}
+					
 				}else{
 					str +=	'<td style="text-align:center;"><button class="btn btn-success btn-sm" disabled>대화하기</button></td>';
 				}
-				if(this.progress=="선택완료"){
-					str +=	'<td style="text-align:center;"><button class="btn btn-success btn-sm" id="finishbtn" data-bid="'+this.bid+'">거래완료</button></td>';	
+				if(this.ischoice=="채택"){
+					str +=	'<td style="text-align:center;"><button class="btn btn-success btn-sm" id="finishbtn" data-bid="'+this.bid+'">거래완료</button></td>';
 				}else{
 					str +=	'<td style="text-align:center;"><button class="btn btn-success btn-sm" disabled>거래완료</button></td>';
 				}

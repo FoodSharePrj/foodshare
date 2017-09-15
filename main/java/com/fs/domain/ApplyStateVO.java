@@ -8,7 +8,14 @@ public class ApplyStateVO {
 	private String progress;
 	private String regdate;
 	private String ischoice;
+	private int cnt;
 	
+	public int getCnt() {
+		return cnt;
+	}
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
 	public String getAid() {
 		return aid;
 	}
@@ -52,7 +59,7 @@ public class ApplyStateVO {
 	@Override
 	public String toString() {
 		return "ApplyStateVO [aid=" + aid + ", bid=" + bid + ", title=" + title + ", progress=" + progress
-				+ ", regdate=" + regdate + ", ischoice=" + ischoice + "]";
+				+ ", regdate=" + regdate + ", ischoice=" + ischoice + ", cnt=" + cnt + "]";
 	}
 	
 }

@@ -45,8 +45,12 @@
 		delete from tbl_user where uid=#{uid}
 	</delete>
 	
-	<select id="getApplyStateList" resultType="ApplyStateVO">
-		select aid,b.bid,title, progress, a.regdate, ischoice from tbl_bbs b, tbl_apply a where b.bid=a.bid and applicant =#{uid} order by regdate desc; 
+	<select id="getApplyStateList" resultType="ApplyStateVO">	
+		select aid,b.bid,title, progress, a.regdate, ischoice, count(cid) cnt 
+		from tbl_bbs b, tbl_apply a ,tbl_chat c 
+		where b.bid=a.bid and a.aid=c.roomname and applicant =#{uid} and isread='n' 
+		group by aid 
+		order by regdate desc
 	</select>
 	
 	<select id="getShareStateList" resultType="BoardVO">
